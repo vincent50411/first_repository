@@ -1,0 +1,15 @@
+
+
+
+1、JDK配置
+	idea为每一个项目手动配置JDK版本，打开项目配置界面，选择sdks，选择+配置。
+
+2、tomcat配置
+	如果setting中的application server中没有tomcat，则需要在plugins中搜索tomcat，选中。
+	
+
+3、SVN设置，
+	在setting中的version项目中选择Subversion ， General中，User command line client中选择本地安装的SlikSvn bin 下的svn. exe文件SlikSvn需要本地单独安装
+
+
+

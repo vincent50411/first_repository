@@ -1,0 +1,8 @@
+powerDesigner导出mysql表sql脚本自增长列和主键列的问题
+
+mysql中的自增长列只能是设置为key的列，key包含主键、外键和唯一性建
+
+
+powerDesigner中表设置非主键列自增长的方法
+
+双击表，选择Keys选项卡，在表格中添加一个行记录UQ_sim_class（唯一性），双击该行记录，在弹出属性窗口中，选择Cloumns选项卡界面，在功能菜单上选择 Add Cloumn图标，增加需要设置的列

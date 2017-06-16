@@ -1,0 +1,70 @@
+Criteria，包含一个Cretiron的集合,每一个Criteria对象内包含的Cretiron之间是由AND连接的,是逻辑与的关系。
+oredCriteria，Example内有一个成员叫oredCriteria,是Criteria的集合,就想其名字所预示的一样，这个集合中的Criteria是由OR连接的，是逻辑或关系。oredCriteria就是ORed Criteria。
+or()方法，会产生一个新的Criteria对象,添加到oredCriteria中,并返回这个Criteria对象，从而可以链式表达，为其添加Criterion。
+查询条件1：a=? and (b=? or c=?) 不支持
+
+查询条件2：(a=? And b=?) or (a=? And c=?) 支持
+
+写法1：
+
+复制代码
+ 1 DemoExample example=new DemoExample();  
+ 2 
+ 3 DemoExample.Criteria criteria1=example.createCriteria();  
+ 4 criteria1.andAEqualTo(?).andBEqualTo(?);  
+ 5           
+ 6 DemoExample.Criteria criteria2=example.createCriteria();  
+ 7 criteria2.andAEqualTo(?).andCEqualTo(?);  
+ 8 
+ 9 example.or(criteria2);  
+10 
+11 SqlSession sqlSession = MyBatisUtil.openSession();
+12 DemoMapper m = sqlSession.getMapper(DemoMapper.class);
+13 m.countByExample(example);  
+14 //生成的sql语句
+15 select count(*) from demo WHERE ( a = ? and b = ? ) or ( a = ? and c = ? )
+复制代码
+ 
+
+写法2：
+
+复制代码
+ 1 DemoExample example=new DemoExample();  
+ 2 
+ 3 example.or().andAEqualTo(?).andBEqualTo(?);
+ 4 example.or().andAEqualTo(?).andCEqualTo(?); 
+ 5 
+ 6 SqlSession sqlSession = MyBatisUtil.openSession();
+ 7 DemoMapper m = sqlSession.getMapper(DemoMapper.class);
+ 8 m.countByExample(example);  
+ 9 //生成的sql语句
+10 select count(*) from demo WHERE ( a = ? and b = ? ) or ( a = ? and c = ? )
+复制代码
+ 查询条件3：(a=? and (b=? or c=?)) 支持
+
+假设两个搜索项，A项搜索，可搜索b，c（bc或关系），B项搜索可搜索a，B项搜索与A项搜索是与关系。
+
+修改DemoExample.java文件，新增方法
+
+ 
+
+1 public Criteria andOrDemo(String value){
+2         addCriterion("(b = \""+value+"\" or c = \""+value+"\")");
+3         return (Criteria) this;
+4 }
+ 
+
+DemoAction.java
+
+复制代码
+1 DemoExample example=new DemoExample();  
+2 Criteria criteria = example.createCriteria();
+3 criteria.andAEqualTo(?).andOrDemo(?);
+4 
+5 SqlSession sqlSession = MyBatisUtil.openSession();
+6 DemoMapper m = sqlSession.getMapper(DemoMapper.class);
+7 m.countByExample(example);  
+8 //生成的sql语句
+9 select count(*) from demo WHERE ( a = ? and ( b = ? or c = ? ))
+复制代码
+ 

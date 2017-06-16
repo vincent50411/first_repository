@@ -1,0 +1,13 @@
+
+http://blog.csdn.net/zssureqh/article/details/25828683
+
+在浏览器中点击一个url后自动启动，并执行操作,通过自定义协议让浏览器从注册表中获取客户端安装程序的路劲，并启动，传递参数
+
+步骤
+1、在注册表中新建一个自定义协议，其中 在注册表的 [HKEY_CLASSES_ROOT] 主键下 新建立[cetsim]建。在二进制数据项中设置“默认”：cetsim Protocol
+
+2、在cetsim下一次新建项：HKEY_CLASSES_ROOT\cetsim\shell\open\command，在command项上设置二进制数据：“默认”：D:\Program Files\CETSim2.0\ExamClient\Release\CETSim.exe %1
+
+%1是传递给客户端程序的参数
+
+3、js调用location.href= 'cetsim://{"toLogin":"' + loginuser.account + '", "url":"' + globalConfig.host  + '"}'; exe程序参考修改。

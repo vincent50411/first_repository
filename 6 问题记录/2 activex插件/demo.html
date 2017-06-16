@@ -1,0 +1,51 @@
+<HTML>
+<H1> Delphi 7 ActiveX Test Page </H1><p>
+This is a ActiveX Test Page.
+<HR><center><P>
+<HEAD
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+</HEAD>
+<OBJECT
+	  id="testid"
+	  classid="clsid:39076DC9-5566-4443-814A-9E47914F351F"
+>
+</OBJECT>
+
+<SCRIPT type="text/javascript">
+	document.write("this is a html with js");
+    var isactivity = false;
+    var imformation = null;
+    function Init()
+      {
+      	//初始化，首先调用
+		alert(testid.Init('SOFTWARE\\iflytek\\cetsim'));
+
+      }
+	function GetClientVersion()
+	  {
+		
+	  	//获取客户端的当前版本（Config中配置的ExeName）
+		alert("当前版本: "+testid.GetClientVersion());
+	  }
+	function runeip()
+	  {
+	  	//启动客户端（Config中配置的ExeName），多个启动参数以";"隔开
+		testid.StartupClient(true,JSON.stringify({"toLogin":1,"url":""}));
+	  }
+</SCRIPT>
+
+<SCRIPT type="text/javascript" FOR="testid" EVENT="OnInit(res)" >
+			alert('init');
+            alert(res);
+        	
+</SCRIPT>
+
+<SCRIPT type="text/javascript" FOR="testid" EVENT="OnClientExit(res)" >
+			alert('OnClientExit');
+            alert(res);
+        	
+</SCRIPT>
+	<input type="button" value="init" onclick="Init()" name="init" id="init"/>
+	<input type="button" value="Version" onclick="GetClientVersion()" name="version" id="version"/>
+	<input type="button" value="runeip" onclick="runeip()" name="run" id="run"/>
+</HTML>

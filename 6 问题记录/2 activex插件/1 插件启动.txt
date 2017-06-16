@@ -1,0 +1,21 @@
+
+第一步 服务器端注册插件
+	在cmd命令行输入插件名称	regsvr32 iFlytekClientActiveX.ocx
+
+第二步 打开注册表，在HKEY_LOCAL_MACHINE>SOFTWARE下新建项iflytek，再新建一个项cetsim，新建字符串值：path和version
+
+第三步 在path项中输入考试端exe文件路劲，在version中输入版本号。
+
+64位系统 注册表位置需要在HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node下新建项目\iflytek\cetsim
+
+32位系统注册表位置在HKEY_LOCAL_MACHINE\SOFTWARE\iflytek\cetsim
+
+
+
+客户端程序:
+这个注册表   考试机安装包 在安装的时候就会写
+
+
+如果没有写就得改
+
+

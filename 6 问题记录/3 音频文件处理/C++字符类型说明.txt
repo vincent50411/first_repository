@@ -1,0 +1,12 @@
+在C++标准里定义了两个字符串string和wstring 
+
+wstring是宽char，Unicode编码，一般情况下一个字符占两个字节大小
+string是窄char，AscII编码，一个字符占一个字节大小
+
+
+typedef basic_string<char> string; 
+typedef basic_string<wchar_t> wstring; 
+
+
+      前者string是常用类型，可以看作char[]，其实这正是与string定义中的
+_Elem=char相一致。而wstring，使用的是wchar_t类型，这是宽字符，用于满足非ASCII字符的要求，例如Unicode编码，中文，日文，韩文什么的。对于wchar_t类型，实际上C++中都用与char函数相对应的wchar_t的函数，因为他们都是从同一个模板类似于上面的方式定义的。因此也有wcout, wcin, werr等函数。      实际上string也可以使用中文，但是它将一个汉字写在2个char中。而如果将一个汉字看作一个单位wchar_t的话，那么在wstring中就只占用一个单元，其它的非英文文字和编码也是如此。这样才真正的满足字符串操作的要求，尤其是国际化等工作。

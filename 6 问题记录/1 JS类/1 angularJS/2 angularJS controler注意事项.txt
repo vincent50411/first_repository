@@ -1,0 +1,1 @@
+如果view和app 路由里面都定义了controller，则controller里面的js会被执行2次

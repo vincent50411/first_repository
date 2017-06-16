@@ -1,0 +1,4 @@
+在使用springMVC中的Interceptor拦截器时，通过requet获取session的对象和登录controler中的session不是同一个对象时，可以使用另外一种方式创建session。
+
+
+在拦截器中，HttpSession session = request.getSession(true);

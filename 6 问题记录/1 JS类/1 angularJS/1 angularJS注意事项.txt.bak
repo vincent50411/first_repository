@@ -1,0 +1,88 @@
+
+
+一、angularJS中的依赖注入理解：
+	对象或者函数只有以下3种获取其依赖(的对象)引用的方式:
+	依赖可以被使用者自己创建,通过 new 操作符.
+	依赖可以通过全局变量(如 window)来查找并引用
+	依赖可以在需要的地方被传入
+
+
+	依赖注解 | Dependency Annotation
+	injector 怎么知道需要注入何种 service 呢?
+
+		1、推断依赖关系 | Inferring Dependencies
+		最简单的获取依赖的方式,就是让函数参数名和依赖的名字一致。
+
+		function MyController($scope, greeter) {  
+		  ...  
+		}  
+
+		给定一个 function, injector 通过检查函数声明和提取参数名称可以推断出 service 的名称 。在上面的例子中, $scope 和 greeter 是需要注入 function 的两个 services。
+		虽然简单直接, 但这种方法在 JavaScript 压缩/混淆 时会失效,因为会重命名方法的参数名。这使得这种注解方式只适用于 pretotyping, 或者 demo 程序中。
+
+		类似的应用：
+		（定义一个服务）app.service('hexafy', function() {
+		    this.myFunc = function (x) {
+			return x.toString(16);
+		    }
+		});
+		
+		(使用服务)app.controller('myCtrl', function($scope, hexafy) {
+			    $scope.hex = hexafy.myFunc(255);
+			});
+
+
+		2、$inject 注解 | $inject Annotation
+		为了可以在压缩代码后依然可以注入正确的 services, 函数需要通过 $inject 属性来注解. $inject 属性是一个数组,包含 需要注入的 service 名字.
+
+		var MyController = function(renamed$scope, renamedGreeter) {  
+		  ...  
+		}
+		
+		MyController['$inject'] = ['$scope', 'greeter'];  
+
+		在这种情况下,$inject数组中的值的顺序必须和要注入的参数的顺序一致。使用上面的代码片段作为一个例子, '$scope' 将注入到 “renamed$scope”, 
+		而“greeter” 将注入到 “renamedGreeter”。再次提醒注意 $inject 注解必须和 函数声明时的实际参数保持同步(顺序,个数...)。
+		对于 controller 声明,
+		这种注解方法是很有用的,因为它将注解信息赋给了 function。
+
+		3、内联注解 | Inline Annotation
+
+		（定义一个服务）app.service('hexafy', function() {
+		    this.myFunc = function (x) {
+			return x.toString(16);
+		    }
+		});
+		
+		(使用服务)app.controller('myCtrl', ['$scope', 'hexafy', function($scope, hexafy) {
+			    $scope.hex = hexafy.myFunc(255);
+			}]);
+
+
+
+	什么地方应该使用DI | Where can I use DI?
+	DI在 Angular 中无处不在。它通常用于 controllers 和工厂方法。
+
+	控制器中使用DI | DI in controllers
+	Controllers 类负责应用程序的行为。声明 controllers 的推荐的方法是使用数组表示法:
+	
+	
+	someModule.controller('MyController', ['$scope', 'dep1', 'dep2', function($scope, dep1, dep2) {  
+	  ...  
+	  $scope.aMethod = function() {  
+	    ...  
+	  }  
+	  ...  
+	}]);  
+
+	这避免了为 controllers 创建全局函数,并且在代码压缩时继续可用.
+
+
+
+
+
+
+
+
+
+
