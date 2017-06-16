@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.PaperMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.Paper" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="paper_type_code" property="paperTypeCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="allow_plan_useage" property="allowPlanUseage" jdbcType="BIT" />
+    <result column="allow_free_useage" property="allowFreeUseage" jdbcType="BIT" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.iflytek.cetsim.model.Paper" extends="BaseResultMap" >
+    <result column="thumb" property="thumb" jdbcType="LONGVARBINARY" />
+  </resultMap>
+
+  <resultMap id="PaperInfoDTOMap" type="com.iflytek.cetsim.dto.PaperInfoDTO">
+    <id column="code" property="code" jdbcType="VARCHAR"/>
+    <result column="id" property="id" jdbcType="INTEGER"/>
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="paper_type_code" property="paperTypeCode" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="status" property="status" jdbcType="INTEGER"/>
+    <result column="allow_plan_useage" property="allowPlanUseage" jdbcType="INTEGER"/>
+    <result column="allow_free_useage" property="allowFreeUseage" jdbcType="INTEGER"/>
+    <result column="summary" property="summary" jdbcType="VARCHAR"/>
+
+    <result column="exam_use_count" property="useCount" jdbcType="INTEGER"/>
+    <result column="train_exam_use_count" property="trainUseCount" jdbcType="INTEGER"/>
+    <result column="max_score" property="maxScore" jdbcType="DOUBLE"/>
+    <result column="min_score" property="minScore" jdbcType="DOUBLE"/>
+    <result column="average_score" property="averageScore" jdbcType="DOUBLE"/>
+    <result column="train_average_score" property="trainAverageScore" jdbcType="DOUBLE"/>
+
+  </resultMap>
+
+
+
+  <sql id="Base_Column_List" >
+    code, id, `name`, paper_type_code, `status`, allow_plan_useage, allow_free_useage, 
+    summary, create_time, reserved1, reserved2
+  </sql>
+  <sql id="Blob_Column_List" >
+    thumb
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sim_paper
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByPrimaryKeyNotBlob" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_paper
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectPaperByNameAndType" resultType="java.lang.Integer" parameterType="java.util.Map">
+    SELECT COUNT(*) FROM SIM_PAPER WHERE `code` = #{code,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sim_paper
+    where code = #{code,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.Paper" >
+    insert into sim_paper (code, id, `name`, 
+      paper_type_code, `status`, allow_plan_useage, 
+      allow_free_useage, summary, create_time, 
+      reserved1, reserved2, thumb
+      )
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{paperTypeCode,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, #{allowPlanUseage,jdbcType=BIT}, 
+      #{allowFreeUseage,jdbcType=BIT}, #{summary,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, #{thumb,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.Paper" >
+    insert into sim_paper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="paperTypeCode != null" >
+        paper_type_code,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="allowPlanUseage != null" >
+        allow_plan_useage,
+      </if>
+      <if test="allowFreeUseage != null" >
+        allow_free_useage,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTypeCode != null" >
+        #{paperTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="allowPlanUseage != null" >
+        #{allowPlanUseage,jdbcType=BIT},
+      </if>
+      <if test="allowFreeUseage != null" >
+        #{allowFreeUseage,jdbcType=BIT},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.Paper">
+    update sim_paper
+    <set>
+      <if test="name != null" >
+        `name`=#{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTypeCode != null" >
+        paper_type_code=#{paperTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        `status`=#{status,jdbcType=SMALLINT},
+      </if>
+      <if test="allowPlanUseage != null" >
+        allow_plan_useage=#{allowPlanUseage,jdbcType=BIT},
+      </if>
+      <if test="allowFreeUseage != null" >
+        allow_free_useage=#{allowFreeUseage,jdbcType=BIT},
+      </if>
+      <if test="summary != null" >
+        summary=#{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time=#{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1=#{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2=#{thumb,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="thumb != null" >
+        thumb=#{thumb,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateAllowUseage" parameterType="com.iflytek.cetsim.model.Paper">
+    update sim_paper
+    <set>
+      <if test="name != null" >
+        `name`=#{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paperTypeCode != null" >
+        paper_type_code=#{paperTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        `status`=#{status,jdbcType=SMALLINT},
+      </if>
+      <if test="allowPlanUseage != null" >
+        allow_plan_useage=#{allowPlanUseage,jdbcType=BIT},
+      </if>
+      <if test="allowFreeUseage != null" >
+        allow_free_useage=#{allowFreeUseage,jdbcType=BIT},
+      </if>
+      <if test="summary != null" >
+        summary=#{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time=#{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1=#{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2=#{thumb,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="thumb != null" >
+        thumb=#{thumb,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where code = #{code,jdbcType=VARCHAR} and `status` = 1
+  </update>
+
+
+
+
+  <select id="selectPaperByExample" parameterType="java.util.Map" resultMap="PaperInfoDTOMap">
+    select sim_paper.id, sim_paper.name, sim_paper.code, sim_paper.paper_type_code, sim_paper.status, sim_paper.allow_plan_useage,
+    sim_paper.allow_free_useage, sim_paper.summary, sim_paper.create_time,
+    if(a.average_score is null, 0, a.average_score) as average_score,
+    count(sim_exam_task.`code`) as exam_use_count,
+    if(b.train_exam_use_count is null, 0, b.train_exam_use_count) as train_exam_use_count,
+    b.train_average_score from sim_paper
+    left join sim_exam_task on sim_paper.code = sim_exam_task.paper_code
+
+    LEFT JOIN (
+    SELECT AVG(score) AS average_score, count(sim_exam_record.exam_task_code) as exam_use_count, sim_exam_task.paper_code from sim_exam_record
+    LEFT JOIN sim_exam_task on sim_exam_record.exam_task_code = sim_exam_task.`code`
+    where exam_state = 1
+    group by sim_exam_task.paper_code) a on sim_paper.code = a.paper_code
+    LEFT JOIN (
+    SELECT AVG(score) AS train_average_score, count(paper_code) as train_exam_use_count, paper_code from sim_train_record
+    where exam_state = 1 group by paper_code) b on sim_paper.code = b.paper_code
+
+    <where>
+      <if test="status != null">
+        sim_paper.`status` = #{status,jdbcType=SMALLINT}
+      </if>
+
+      <if test="allow_plan_useage != null">
+        and sim_paper.allow_plan_useage = #{allow_plan_useage,jdbcType=SMALLINT}
+      </if>
+
+      <if test="allow_free_useage != null">
+        and sim_paper.allow_free_useage = #{allow_free_useage,jdbcType=SMALLINT}
+      </if>
+
+      <if test="paperTypeCode != null">
+        and sim_paper.paper_type_code = #{paperTypeCode,jdbcType=VARCHAR}
+      </if>
+
+      <if test="name != null">
+        and sim_paper.name LIKE #{name,jdbcType=VARCHAR}
+      </if>
+    </where>
+
+    GROUP BY sim_paper.code
+
+    <if test="AVG_SCORE_DESC != null">
+      ORDER  BY a.average_score desc
+    </if>
+
+    <if test="AVG_SCORE_ASC != null">
+      ORDER  BY a.average_score asc
+    </if>
+
+    <if test="TRAIN_AVG_SCORE_DESC != null">
+      ORDER  BY b.train_average_score desc
+    </if>
+
+    <if test="TRAIN_AVG_SCORE_ASC != null">
+      ORDER  BY b.train_average_score asc
+    </if>
+
+    <if test="SIM_COUNT_DESC != null">
+      ORDER  BY exam_use_count desc
+    </if>
+
+    <if test="SIM_COUNT_ASC != null">
+      ORDER  BY exam_use_count asc
+    </if>
+
+    <if test="TRAIN_COUNT_DESC != null">
+      ORDER  BY b.train_exam_use_count desc
+    </if>
+
+    <if test="TRAIN_COUNT_ASC != null">
+      ORDER  BY b.train_exam_use_count asc
+    </if>
+
+    <if test="order_condition_default != null">
+      ORDER  BY sim_paper.id desc
+    </if>
+
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+
+  <select id="countByExample" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from sim_paper
+
+    <where>
+      <if test="status != null">
+        sim_paper.`status` = #{status,jdbcType=SMALLINT}
+      </if>
+
+      <if test="allow_plan_useage != null">
+        and sim_paper.allow_plan_useage = #{allow_plan_useage,jdbcType=SMALLINT}
+      </if>
+
+      <if test="allow_free_useage != null">
+        and sim_paper.allow_free_useage = #{allow_free_useage,jdbcType=SMALLINT}
+      </if>
+
+      <if test="name != null">
+        and sim_paper.name like #{name,jdbcType=VARCHAR}
+      </if>
+
+      <if test="paperTypeCode != null">
+        and sim_paper.paper_type_code = #{paperTypeCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="getPapersByHashMap" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.PaperInfoDTO">
+    select record.`code`, record.`name`, record.paperTypeCode, record.createTime, record.allowPlanUseage, a.useCount, record.maxScore,
+    record.averageScore from
+    (
+    select paper.`code`, paper.`name`, paper.allow_plan_useage as allowPlanUseage, paper.paper_type_code as paperTypeCode, paper.create_time as createTime,
+    if(MAX(record.score) is null, 0, MAX(record.score)) as maxScore, if(AVG(record.score) is null, 0, AVG(record.score)) as averageScore
+    from sim_paper paper
+    left join sim_exam_task task on paper.`code` = task.paper_code
+    left JOIN (select * from sim_exam_record where exam_state = 1) record on record.exam_task_code = task.`code` GROUP BY paper.`code`
+    ) record
+    left JOIN
+    (
+    select paper.id as paper_id, paper.code as paper_code, count(task.code) as useCount,
+    task.`code` as task_code from sim_paper paper left join sim_exam_task task on paper.`code` = task.paper_code
+    GROUP BY paper_code
+    ) a
+    on record.code = a.paper_code
+
+    <where>
+      <if test="allowPlanUseage != null">
+        and record.allowPlanUseage = #{allowPlanUseage,jdbcType=SMALLINT}
+      </if>
+
+      <if test="paperName != null">
+        and record.name like #{paperName,jdbcType=VARCHAR}
+      </if>
+
+      <if test="paperTypeCode != null">
+        and record.paperTypeCode = #{paperTypeCode,jdbcType=VARCHAR}
+      </if>
+
+    </where>
+
+    GROUP BY record.`code`
+    ORDER BY a.paper_id desc
+
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+
+  <select id="getPapersCountByHashMap" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) FROM
+    (select paper.`code` from sim_paper paper left join sim_exam_task task on paper.`code` = task.paper_code
+    <where>
+      <if test="allowPlanUseage != null">
+        paper.allow_plan_useage = #{allowPlanUseage,jdbcType=SMALLINT}
+      </if>
+
+      <if test="paperName != null">
+        and paper.name like #{paperName,jdbcType=VARCHAR}
+      </if>
+
+      <if test="paperTypeCode != null">
+        and paper.paper_type_code = #{paperTypeCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+    GROUP BY paper.code) a
+
+  </select>
+
+  <select id="getPapersByCodeList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.model.Paper">
+    select * from sim_paper
+    <where>
+      <if test="codeList != null">
+        sim_paper.code in
+        <foreach item="item" index="index" collection="codeList"
+                 open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+
+
+  </select>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,8 @@
+<span ng-click="sortByThisColumn(columnName)" class="cetsim-pointer">
+    {{text}}
+    <span ng-if="column != columnName" class="iconfont">&#xe796;</span>
+    <span ng-if="column == columnName">
+        <span class="iconfont" ng-if="order == 'desc'">&#xec0d;</span>
+        <span class="iconfont" ng-if="order != 'desc'">&#xec0c;</span>
+    </span>
+</span>

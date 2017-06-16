@@ -1,0 +1,67 @@
+<!--等待开始-->
+<div id="zuduikaoshi-waiting-panel" class="common-pop" style="width: 540px;display: none;">
+    <div class="pop-body">
+        <div class="team-item pop-team-item clearfix">
+            <div class="item-hd">
+                <span class="text" id="train-paper-name"></span>
+                <span class="tag-type cet4" id="train-paper-type-code"></span>
+            </div>
+            <div class="item-bd tc">
+                <div class="candidate" id="candidate-A-area">
+                    <p>Candidate A</p>
+                    <p class="mt10"><img id="train-user-a-photo" alt="" class="userface"></p>
+                    <p id="candidateA">-</p>
+                </div>
+
+                <div class="candidate" id="candidate-B-area">
+                    <p>Candidate B</p>
+                    <p class="mt10"><img id="train-user-b-photo" alt="" class="userface"></p>
+                    <p id="candidateB">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <button class="common-btn common-btn-primary" id="startExamBtn" style="display: none">开始考试</button>
+        <button class="common-btn ml10" id="removeRoomBtn">退出分组</button>
+    </div>
+</div>
+
+<style>
+    #candidate-B-area.no-user-B p{
+        color:#aaa;
+    }
+</style>
+
+
+
+
+
+<!--&lt;!&ndash;等待开始&ndash;&gt;-->
+<!--<div id="cetsim-pop-zudui-waiting" class="common-pop" style="width: 540px;display:none;" ng-controller="popWaitingZuduiCtrl">-->
+    <!--<div class="pop-body">-->
+        <!--<div class="team-item pop-team-item clearfix">-->
+            <!--<div class="item-hd">-->
+                <!--<span class="text" ng-bind="data.paperName"></span>-->
+                <!--<span class="tag-type" ng-class="data.paperTypeCode =='cet6' ? 'cet6' : 'cet4'" ng-bind="data.paperTypeCode|uppercase"></span>-->
+            <!--</div>-->
+            <!--<div class="item-bd tc">-->
+                <!--<div class="candidate">-->
+                    <!--<p>Candidate A</p>-->
+                    <!--<p class="mt10"><img ng-src="{{data.candidateAPhoto|userPhotoPathResolve}}" alt="" class="userface"></p>-->
+                    <!--<p ng-bind="data.candidateAName|EmptyText"></p>-->
+                <!--</div>-->
+
+                <!--<div class="candidate">-->
+                    <!--<p>Candidate B</p>-->
+                    <!--<p class="mt10"><img ng-src="{{data.candidateBPhoto|userPhotoPathResolve}}" alt="" class="userface"></p>-->
+                    <!--<p ng-bind="data.candidateBName|EmptyText"></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="pop-footer">-->
+        <!--<button class="common-btn common-btn-primary" ng-click="beginExam()">开始考试</button>-->
+        <!--<button class="common-btn ml10" ng-click="exitRoom()">退出分组</button>-->
+    <!--</div>-->
+<!--</div>-->

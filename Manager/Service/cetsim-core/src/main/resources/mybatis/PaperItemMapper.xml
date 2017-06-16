@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.PaperItemMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.PaperItem" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="paper_item_type_code" property="paperItemTypeCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="allow_plan_useage" property="allowPlanUseage" jdbcType="BIT" />
+    <result column="allow_free_useage" property="allowFreeUseage" jdbcType="BIT" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="difficulty" property="difficulty" jdbcType="REAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="knowledge" property="knowledge" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.iflytek.cetsim.model.PaperItem" extends="BaseResultMap" >
+    <result column="thumb" property="thumb" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    code, id, `name`, paper_item_type_code, `status`, allow_plan_useage, allow_free_useage, 
+    summary, difficulty, create_time, knowledge, reserved1, reserved2
+  </sql>
+  <sql id="Blob_Column_List" >
+    thumb
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.iflytek.cetsim.model.PaperItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sim_paper_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iflytek.cetsim.model.PaperItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sim_paper_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sim_paper_item
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectNotBlobByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_paper_item
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sim_paper_item
+    where code = #{code,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.iflytek.cetsim.model.PaperItemExample" >
+    delete from sim_paper_item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.PaperItem" >
+    insert into sim_paper_item (code, id, `name`, 
+      paper_item_type_code, `status`, allow_plan_useage, 
+      allow_free_useage, summary, difficulty, 
+      create_time, knowledge, reserved1, 
+      reserved2, thumb)
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{paperItemTypeCode,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, #{allowPlanUseage,jdbcType=BIT}, 
+      #{allowFreeUseage,jdbcType=BIT}, #{summary,jdbcType=VARCHAR}, #{difficulty,jdbcType=REAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{knowledge,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{thumb,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.PaperItem" >
+    insert into sim_paper_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="paperItemTypeCode != null" >
+        paper_item_type_code,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="allowPlanUseage != null" >
+        allow_plan_useage,
+      </if>
+      <if test="allowFreeUseage != null" >
+        allow_free_useage,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="difficulty != null" >
+        difficulty,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="knowledge != null" >
+        knowledge,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paperItemTypeCode != null" >
+        #{paperItemTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="allowPlanUseage != null" >
+        #{allowPlanUseage,jdbcType=BIT},
+      </if>
+      <if test="allowFreeUseage != null" >
+        #{allowFreeUseage,jdbcType=BIT},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="difficulty != null" >
+        #{difficulty,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="knowledge != null" >
+        #{knowledge,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sim_paper_item
+    <set >
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paperItemTypeCode != null" >
+        paper_item_type_code = #{record.paperItemTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        `status` = #{record.status,jdbcType=SMALLINT},
+      </if>
+      <if test="record.allowPlanUseage != null" >
+        allow_plan_useage = #{record.allowPlanUseage,jdbcType=BIT},
+      </if>
+      <if test="record.allowFreeUseage != null" >
+        allow_free_useage = #{record.allowFreeUseage,jdbcType=BIT},
+      </if>
+      <if test="record.summary != null" >
+        summary = #{record.summary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.difficulty != null" >
+        difficulty = #{record.difficulty,jdbcType=REAL},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.knowledge != null" >
+        knowledge = #{record.knowledge,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved1 != null" >
+        reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved2 != null" >
+        reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thumb != null" >
+        thumb = #{record.thumb,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sim_paper_item
+    set code = #{record.code,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=INTEGER},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      paper_item_type_code = #{record.paperItemTypeCode,jdbcType=VARCHAR},
+      `status` = #{record.status,jdbcType=SMALLINT},
+      allow_plan_useage = #{record.allowPlanUseage,jdbcType=BIT},
+      allow_free_useage = #{record.allowFreeUseage,jdbcType=BIT},
+      summary = #{record.summary,jdbcType=VARCHAR},
+      difficulty = #{record.difficulty,jdbcType=REAL},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      knowledge = #{record.knowledge,jdbcType=VARCHAR},
+      reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      thumb = #{record.thumb,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sim_paper_item
+    set code = #{record.code,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=INTEGER},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      paper_item_type_code = #{record.paperItemTypeCode,jdbcType=VARCHAR},
+      `status` = #{record.status,jdbcType=SMALLINT},
+      allow_plan_useage = #{record.allowPlanUseage,jdbcType=BIT},
+      allow_free_useage = #{record.allowFreeUseage,jdbcType=BIT},
+      summary = #{record.summary,jdbcType=VARCHAR},
+      difficulty = #{record.difficulty,jdbcType=REAL},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      knowledge = #{record.knowledge,jdbcType=VARCHAR},
+      reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      reserved2 = #{record.reserved2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.PaperItem" >
+    update sim_paper_item
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="paperItemTypeCode != null" >
+        paper_item_type_code = #{paperItemTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="allowPlanUseage != null" >
+        allow_plan_useage = #{allowPlanUseage,jdbcType=BIT},
+      </if>
+      <if test="allowFreeUseage != null" >
+        allow_free_useage = #{allowFreeUseage,jdbcType=BIT},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="difficulty != null" >
+        difficulty = #{difficulty,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="knowledge != null" >
+        knowledge = #{knowledge,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.iflytek.cetsim.model.PaperItem" >
+    update sim_paper_item
+    set id = #{id,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      paper_item_type_code = #{paperItemTypeCode,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=SMALLINT},
+      allow_plan_useage = #{allowPlanUseage,jdbcType=BIT},
+      allow_free_useage = #{allowFreeUseage,jdbcType=BIT},
+      summary = #{summary,jdbcType=VARCHAR},
+      difficulty = #{difficulty,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      knowledge = #{knowledge,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      thumb = #{thumb,jdbcType=LONGVARBINARY}
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iflytek.cetsim.model.PaperItem" >
+    update sim_paper_item
+    set id = #{id,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      paper_item_type_code = #{paperItemTypeCode,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=SMALLINT},
+      allow_plan_useage = #{allowPlanUseage,jdbcType=BIT},
+      allow_free_useage = #{allowFreeUseage,jdbcType=BIT},
+      summary = #{summary,jdbcType=VARCHAR},
+      difficulty = #{difficulty,jdbcType=REAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      knowledge = #{knowledge,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <select id="selectPaperItemByCode" resultType="java.lang.Integer" parameterType="java.util.Map">
+    SELECT COUNT(*) FROM sim_paper_item WHERE `code` = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectQuestionList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.PaperItemQueryDTO">
+  select paperItem.`code`, paperItem.`name`, paperItem.paper_item_type_code as paperItemTypeCode, paperItem.`status`, paperItem.allow_free_useage as allowFreeUseage,
+  paperItem.allow_plan_useage as allowPlanUseage, paperItem.summary, paperItem.difficulty, paperItem.create_time as createTime,
+  paperItem.knowledge,
+  itemType.`name` as paperItemTypeName, count(record.paper_item_code) as userCount, avg(record.score) as avgScore
+  from sim_paper_item paperItem LEFT JOIN sim_paper_item_type itemType on paperItem.paper_item_type_code = itemType.`code`
+  left join (select * from sim_special_train_record where exam_state = 1) record on record.paper_item_code = paperItem.`code`
+  <where>
+    <if test="paper_item_type_code != null">
+      paperItem.paper_item_type_code = #{paper_item_type_code, jdbcType=VARCHAR}
+    </if>
+    <if test="status != null">
+      AND paperItem.`status` = #{status, jdbcType=SMALLINT}
+    </if>
+    <if test="name != null">
+      AND paperItem.`name` LIKE #{name, jdbcType=VARCHAR}
+    </if>
+  </where>
+
+  group by paperItem.`code`
+
+    <if test="AVG_SCORE_ASC != null">
+      ORDER  BY avgScore asc
+    </if>
+    <if test="AVG_SCORE_DESC != null">
+      ORDER  BY avgScore desc
+    </if>
+
+    <if test="SPECIAL_COUNT_ASC != null">
+      ORDER  BY userCount asc
+    </if>
+    <if test="SPECIAL_COUNT_DESC != null">
+      ORDER  BY userCount desc
+    </if>
+
+    <if test="order_condition_default != null">
+      ORDER  BY paperItem.id desc
+    </if>
+
+  <if test="limit != null" >
+    <if test="offset != null" >
+      limit ${offset}, ${limit}
+    </if>
+    <if test="offset == null" >
+      limit ${limit}
+    </if>
+  </if>
+
+</select>
+
+
+
+  <select id="countQuestions" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from (
+    select paperItem.`code`, paperItem.`name`, paperItem.paper_item_type_code as paperItemTypeCode, paperItem.`status`, paperItem.allow_free_useage as allowFreeUseage,
+    paperItem.allow_plan_useage as allowPlanUseage, paperItem.summary, paperItem.difficulty, paperItem.create_time as createTime,
+    paperItem.knowledge,
+    itemType.`name` as paperItemTypeName, count(record.paper_item_code) as userCount, avg(record.score) as avgScore
+    from sim_paper_item paperItem LEFT JOIN sim_paper_item_type itemType
+    on paperItem.paper_item_type_code = itemType.`code` left join sim_special_train_record record
+    on record.paper_item_code = paperItem.`code`  group by paperItem.`code`) a
+    <where>
+      <if test="paper_item_type_code != null">
+        a.paperItemTypeCode = #{paper_item_type_code, jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND a.`status` = #{status, jdbcType=SMALLINT}
+      </if>
+      <if test="name != null">
+        AND a.`name` LIKE #{name, jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <!--  where paperItem.`status` = 1  -->
+  <select id="selectQuestionListByAccount" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.PaperItemQueryDTO">
+    select * from (
+    select paperItem.`code`, paperItem.`name`, paperItem.paper_item_type_code as paperItemTypeCode, paperItem.`status`,
+    paperItem.allow_free_useage as allowFreeUseage,
+    paperItem.allow_plan_useage as allowPlanUseage, paperItem.summary, paperItem.difficulty, paperItem.create_time as createTime,
+    paperItem.knowledge,
+    itemType.`name` as paperItemTypeName, count(record.paper_item_code) as userCount, avg(record.score) as avgScore, max(record.score) as maxScore, record.student_no
+    from sim_paper_item paperItem LEFT JOIN sim_paper_item_type itemType on paperItem.paper_item_type_code = itemType.`code`
+    left join (select * from sim_special_train_record where exam_state = 1 and student_no = #{student_account, jdbcType=VARCHAR}) record on record.paper_item_code = paperItem.`code`
+    group by paperItem.`code`
+    ) xx
+    <where>
+      <if test="paper_item_type_code != null">
+        xx.paperItemTypeCode = #{paper_item_type_code, jdbcType=VARCHAR}
+      </if>
+
+      <if test="name != null">
+        and xx.`name`  = #{name, jdbcType=VARCHAR}
+      </if>
+
+      <if test="used != null">
+        and xx.userCount > 0
+      </if>
+      <if test="noneUsed != null">
+        and xx.userCount = 0
+      </if>
+    </where>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+
+  </select>
+
+
+
+
+  <select id="getSpecialPaperItemCodeByRecordCode" parameterType="java.lang.String" resultType="java.lang.String">
+    select paper_item_code from sim_special_train_record where `code` = #{examRecordCode, jdbcType=VARCHAR}
+  </select>
+
+
+
+
+
+
+</mapper>

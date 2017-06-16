@@ -1,0 +1,2447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="0e0184a5-2a31-490e-9b28-734df04de092" name="Default" comment="查询学生任务列表">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cetsim-common/cetsim-common.iml" afterPath="$PROJECT_DIR$/cetsim-common/cetsim-common.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cetsim-common/src/main/resources/cetsim.properties" afterPath="$PROJECT_DIR$/cetsim-common/src/main/resources/cetsim.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cetsim-core/cetsim-core.iml" afterPath="$PROJECT_DIR$/cetsim-core/cetsim-core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cetsim-webservice/cetsim-webservice.iml" afterPath="$PROJECT_DIR$/cetsim-webservice/cetsim-webservice.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cetsim.iml" afterPath="$PROJECT_DIR$/cetsim.iml" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cetsim-webservice/target/" />
+    <ignored path="$PROJECT_DIR$/cetsim-core/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/cetsim-common/target/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="cetsim" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="1116" column="0" selection-start-line="1116" selection-start-column="0" selection-end-line="1116" selection-end-column="0" />
+              <folding>
+                <element signature="e#40689#40713#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/AccountMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyBatisRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/annotation/MyBatisRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="23" column="35" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spring-context.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/spring/spring-context.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spring-context-mybatis.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/spring/spring-context-mybatis.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountServiceImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/AccountServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrainTaskRoomServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TrainTaskRoomServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrainRoomMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/TrainRoomMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="26" selection-end-column="55" />
+              <folding>
+                <marker date="1497231158192" expanded="true" signature="1040:1153" ph="select from sim_train_room" />
+                <marker date="1497231158192" expanded="true" signature="1265:1392" ph="select from sim_train_room" />
+                <marker date="1497231158192" expanded="true" signature="1502:1666" ph="select from sim_train_room" />
+                <marker date="1497231158192" expanded="true" signature="1788:1937" ph="select from sim_train_room" />
+                <marker date="1497231158192" expanded="true" signature="2061:2225" ph="select from sim_train_room" />
+                <marker date="1497231158192" expanded="true" signature="2316:2384" ph="delete from " />
+                <marker date="1497231158192" expanded="true" signature="2483:2600" ph="delete from " />
+                <marker date="1497231158192" expanded="true" signature="2693:3057" ph="insert into sim_train_room... " />
+                <marker date="1497231158192" expanded="true" signature="4523:5146" ph="update sim_t... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppContext.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/utils/AppContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="531">
+              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#310#327#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
+                <element signature="e#632#633#0" expanded="true" />
+                <element signature="e#710#711#0" expanded="true" />
+                <element signature="e#770#771#0" expanded="true" />
+                <element signature="e#808#809#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>@SessionAttributes</find>
+      <find>_parameter</find>
+      <find>valid</find>
+      <find>selectStudentDetailByExample</find>
+      <find>selectPaperByExample</find>
+      <find>insertSelective</find>
+      <find>selectByExample</find>
+    </findStrings>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/SpecialTrainRecordMapper.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/QuestionsService.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ConfigurationMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/PaperItemMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/SpecialTrainRecordMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/pom.xml" />
+        <option value="$PROJECT_DIR$/cetsim-common/pom.xml" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/pom.xml" />
+        <option value="$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/context/ContextFinalizer.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/ContextFinalizer.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/XBasicDataSource.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/EmailServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/SocketServerManager.java" />
+        <option value="$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/context/ServerListener.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/listener/ServerListener.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/PaperMapper.java" />
+        <option value="$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/enums/EngineCodeEnum.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/ExamTaskReportServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/ExamTaskMapper.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TaskServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dto/StudentTaskDTO_new.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/ExamPlanMapper.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/TrainTaskService.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/StudentTaskServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/StudentTaskService.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/ExamRecordMapper.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/TrainRoomMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ExamPlanMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ExamRecordMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/context/SessionManagerListener.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/listener/SessionManagerListener.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dto/ScoreLevelUtil.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/CommonController.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/QuestionsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/model/Properties.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/PropertiesMapper.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/PropertiesMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/PropertiesServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/PaperMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/PaperServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ExamTaskMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dto/TrainTaskRecordQueryDTO.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/TrainRecordMapper.xml" />
+        <option value="$PROJECT_DIR$/cetsim-common/src/main/resources/cetsim.properties" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TrainTaskServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/utils/AppContext.java" />
+        <option value="$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java" />
+        <option value="$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TrainTaskRoomServiceImpl.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <option name="showVersions" value="true" />
+    <treeState />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Plugin DevKit</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="false" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-webservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-webservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-webservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-webservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-webservice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cetsim-common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="debugger.hotswap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="studentcon&#9;PSI&#9;JAVA://com.iflytek.cetsim.controller.StudentController&#10;studentc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;te&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;paperco&#9;PSI&#9;JAVA://com.iflytek.cetsim.controller.PaperController&#10;Teacherc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;com&#9;PSI&#9;JAVA://com.iflytek.cetsim.controller.CommonController&#10;question&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/QuestionsServiceImpl.java&#10;account&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;stu&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;paper&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/PaperController.java&#10;teache&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;studentco&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;Teach&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;Studentc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;teac&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;paperc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/PaperController.java&#10;teach&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;web&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/webapp/WEB-INF/web.xml&#10;STude&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;questionc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/QuestionsController.java&#10;comm&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/CommonController.java&#10;emai&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/EmailServiceImpl.java&#10;e&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/EmailServiceImpl.java&#10;acc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;tea&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;const&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-common/src/main/java/com/iflytek/cetsim/common/constants/Constants.java&#10;QUES&#9;PSI&#9;JAVA://com.iflytek.cetsim.controller.QuestionsController&#10;admin&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AdminController.java&#10;papercon&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/PaperController.java&#10;Teac&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;accou&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;ACC&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;accountM&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/resources/mybatis/AccountMapper.xml&#10;student&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;que&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/QuestionsController.java&#10;q&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/QuestionsController.java&#10;st&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;stude&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java&#10;Const&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-common/src/main/java/com/iflytek/cetsim/common/constants/Constants.java&#10;papers&#9;PSI&#9;JAVA://com.iflytek.cetsim.service.PaperService&#10;exam&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/resources/mybatis/ExamRecordMapper.xml&#10;train&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/java/com/iflytek/cetsim/dao/TrainRecordMapper.java&#10;Con&#9;PSI&#9;JAVA://com.iflytek.cetsim.common.constants.Constants&#10;Account&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;examc&#9;PSI&#9;JAVA://com.iflytek.cetsim.controller.ExamController&#10;Teachc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java&#10;accountc&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;accoun&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AccountController.java&#10;Adm&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AdminController.java&#10;socke&#9;FILE&#9;file://E:/10 workspace_svn/Manager/Service/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/SocketServerManager.java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.iflytek.cetsim.listener" />
+      <recent name="com.iflytek.cetsim" />
+      <recent name="com.iflytek.cetsim.service.impl" />
+      <recent name="com.iflytek.cetsim.dto" />
+      <recent name="com.iflytek.cetsim.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\10 workspace_svn\Manager\Service\cetsim-core\src\main\resources\mybatis" />
+      <recent name="E:\10 workspace_svn\Manager\Service\cetsim-webservice\src\main\java\com\iflytek\cetsim\socketIO" />
+      <recent name="E:\10 workspace_svn\Manager\Service\cetsim-core\src\main\java\com\iflytek\cetsim\service\impl" />
+      <recent name="E:\10 workspace_svn\Manager\Service\cetsim-webservice\src\main\java\com\iflytek\cetsim\controller" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.cetsim">
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="cetsim" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="false" name="cetsim" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.39" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <file path="$PROJECT_DIR$/../WebApp">
+          <settings>
+            <option name="CONTEXT_PATH" value="/cetsim" />
+          </settings>
+        </file>
+        <artifact name="cetsim-webservice:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_cetsim_5" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51120" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="cetsim-webservice:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.cetsim" />
+    </list>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\10 workspace_svn\Manager\Service" />
+          <option name="myCopyRoot" value="E:\10 workspace_svn\Manager\Service" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\10 workspace_svn\Manager\Service\cetsim-common" />
+          <option name="myCopyRoot" value="E:\10 workspace_svn\Manager\Service\cetsim-common" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\10 workspace_svn\Manager\Service\cetsim-core" />
+          <option name="myCopyRoot" value="E:\10 workspace_svn\Manager\Service\cetsim-core" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\10 workspace_svn\Manager\Service\cetsim-webservice" />
+          <option name="myCopyRoot" value="E:\10 workspace_svn\Manager\Service\cetsim-webservice" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\10 workspace_svn\Manager\Service" />
+          <option name="myCopyRoot" value="E:\10 workspace_svn\Manager\Service" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0e0184a5-2a31-490e-9b28-734df04de092" name="Default" comment="" />
+      <created>1491463669576</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1491463669576</updated>
+      <workItem from="1491463672807" duration="22000" />
+      <workItem from="1491463839737" duration="33761000" />
+      <workItem from="1491555310810" duration="3364000" />
+      <workItem from="1491626776794" duration="291000" />
+      <workItem from="1491627184421" duration="250000" />
+      <workItem from="1491627592645" duration="3394000" />
+      <workItem from="1491633850804" duration="6192000" />
+      <workItem from="1491642682331" duration="4003000" />
+      <workItem from="1491655293176" duration="3542000" />
+      <workItem from="1491785058435" duration="9391000" />
+      <workItem from="1491809814736" duration="4019000" />
+      <workItem from="1491894190295" duration="2412000" />
+      <workItem from="1491958871088" duration="3083000" />
+      <workItem from="1491962004976" duration="25000" />
+      <workItem from="1491963285400" duration="2521000" />
+      <workItem from="1491978076136" duration="1709000" />
+      <workItem from="1491995630529" duration="687000" />
+      <workItem from="1491998344982" duration="654000" />
+      <workItem from="1492047205654" duration="12534000" />
+      <workItem from="1492080796209" duration="23894000" />
+      <workItem from="1492159931344" duration="15201000" />
+      <workItem from="1492389835706" duration="48665000" />
+      <workItem from="1492649692508" duration="104003000" />
+      <workItem from="1493340719196" duration="15342000" />
+      <workItem from="1493686267733" duration="28395000" />
+      <workItem from="1493886960660" duration="5273000" />
+      <workItem from="1493951845654" duration="57961000" />
+      <workItem from="1494208334796" duration="45468000" />
+      <workItem from="1494312797280" duration="39088000" />
+      <workItem from="1494412810864" duration="58749000" />
+      <workItem from="1496371046885" duration="1209000" />
+      <workItem from="1494640693408" duration="29963000" />
+      <workItem from="1494817936933" duration="81304000" />
+      <workItem from="1495068693210" duration="69952000" />
+      <workItem from="1495255093228" duration="40760000" />
+      <workItem from="1495504000135" duration="16528000" />
+      <workItem from="1495586737032" duration="18600000" />
+      <workItem from="1495673210562" duration="59126000" />
+      <workItem from="1496191111041" duration="8857000" />
+      <workItem from="1496210591170" duration="8375000" />
+      <workItem from="1496221370992" duration="17924000" />
+      <workItem from="1496315422862" duration="15775000" />
+      <workItem from="1496623283759" duration="15376000" />
+      <workItem from="1496911207525" duration="8413000" />
+      <workItem from="1496996632927" duration="5477000" />
+      <workItem from="1497229420962" duration="22942000" />
+      <workItem from="1497333805310" duration="237000" />
+      <workItem from="1497334169305" duration="25000" />
+      <workItem from="1497334549059" duration="25956000" />
+      <workItem from="1497495688813" duration="842000" />
+      <workItem from="1497507861287" duration="16280000" />
+    </task>
+    <task id="LOCAL-00129" summary="【学生端】新增创建自主考试房间接口">
+      <created>1494491797686</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1494491797686</updated>
+    </task>
+    <task id="LOCAL-00130" summary="增加一个练习状态&#10;">
+      <created>1494494472918</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1494494472918</updated>
+    </task>
+    <task id="LOCAL-00131" summary="【学生端】查询试题列表">
+      <created>1494495239627</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1494495239627</updated>
+    </task>
+    <task id="LOCAL-00132" summary="【学生端】查询试题列表">
+      <created>1494495278635</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1494495278635</updated>
+    </task>
+    <task id="LOCAL-00133" summary="【学生端】查询试题列表">
+      <created>1494495308112</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1494495308112</updated>
+    </task>
+    <task id="LOCAL-00134" summary="【学生端】查询试题列表">
+      <created>1494495386674</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1494495386674</updated>
+    </task>
+    <task id="LOCAL-00135" summary="【学生端】查询试题列表">
+      <created>1494495507047</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1494495507047</updated>
+    </task>
+    <task id="LOCAL-00136" summary="【学生端】修改查询试题列表sql">
+      <created>1494495721285</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1494495721285</updated>
+    </task>
+    <task id="LOCAL-00137" summary="【学生端】查询专项训练记录分页显示">
+      <created>1494558227624</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1494558227624</updated>
+    </task>
+    <task id="LOCAL-00138" summary="【缺陷修复】首次登陆检查用户信息完整度">
+      <created>1494558948147</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1494558948147</updated>
+    </task>
+    <task id="LOCAL-00139" summary="登录信息验证">
+      <created>1496309847910</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1496309847910</updated>
+    </task>
+    <task id="LOCAL-00140" summary="新增一个session_id字段">
+      <created>1494642428236</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1494642428237</updated>
+    </task>
+    <task id="LOCAL-00141" summary="新增一个session_id字段">
+      <created>1494642447002</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1494642447002</updated>
+    </task>
+    <task id="LOCAL-00142" summary="新增查询试卷接口">
+      <created>1494644960275</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1494644960275</updated>
+    </task>
+    <task id="LOCAL-00143" summary="新增查询试卷接口">
+      <created>1494644977755</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1494644977755</updated>
+    </task>
+    <task id="LOCAL-00144" summary="新增查询试卷接口">
+      <created>1494644994589</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1494644994589</updated>
+    </task>
+    <task id="LOCAL-00145" summary="增加异地登录流程">
+      <created>1494650954656</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1494650954656</updated>
+    </task>
+    <task id="LOCAL-00146" summary="查询学生任务列表">
+      <created>1494851703146</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1494851703146</updated>
+    </task>
+    <task id="LOCAL-00147" summary="查询学生任务列表">
+      <created>1494851888159</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1494851888159</updated>
+    </task>
+    <task id="LOCAL-00148" summary="查询学生任务列表">
+      <created>1494919342017</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1494919342017</updated>
+    </task>
+    <task id="LOCAL-00149" summary="增加netty依赖包">
+      <created>1494920944715</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1494920944715</updated>
+    </task>
+    <task id="LOCAL-00150" summary="增加帮助接口">
+      <created>1494922202507</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1494922202508</updated>
+    </task>
+    <task id="LOCAL-00151" summary="查询学生任务列表">
+      <created>1494924403667</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1494924403667</updated>
+    </task>
+    <task id="LOCAL-00152" summary="查询试卷列表">
+      <created>1494927960669</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1494927960669</updated>
+    </task>
+    <task id="LOCAL-00153" summary="发送邮件依赖">
+      <created>1495012784572</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1495012784572</updated>
+    </task>
+    <task id="LOCAL-00154" summary="增加邮箱验证接口">
+      <created>1495013743736</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1495013743736</updated>
+    </task>
+    <task id="LOCAL-00155" summary="利用邮箱验证来修改密码">
+      <created>1495068842777</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1495068842777</updated>
+    </task>
+    <task id="LOCAL-00156" summary="【缺陷修复】管理查询学生列表模糊查询">
+      <created>1495075209783</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1495075209784</updated>
+    </task>
+    <task id="LOCAL-00157" summary="【缺陷修复】管理员查看学生测试详情界面数据不准确">
+      <created>1495078562008</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1495078562008</updated>
+    </task>
+    <task id="LOCAL-00158" summary="邮件服务">
+      <created>1495087564430</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1495087564430</updated>
+    </task>
+    <task id="LOCAL-00159" summary="验证码校验">
+      <created>1495090167673</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1495090167673</updated>
+    </task>
+    <task id="LOCAL-00160" summary="查询学习引擎返回的结果地址">
+      <created>1495179043397</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1495179043397</updated>
+    </task>
+    <task id="LOCAL-00161" summary="数据库地址">
+      <created>1495257755934</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1495257755936</updated>
+    </task>
+    <task id="LOCAL-00162" summary="学生注册时需要携带邮箱验证码进行验证">
+      <created>1495258004690</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1495258004690</updated>
+    </task>
+    <task id="LOCAL-00163" summary="学习引擎返回码，可根据不同返回码，界面显示不同提示信息">
+      <created>1495259056761</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1495259056761</updated>
+    </task>
+    <task id="LOCAL-00164" summary="学习引擎返回的是绝对地址">
+      <created>1495259218606</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1495259218607</updated>
+    </task>
+    <task id="LOCAL-00165" summary="发送验证码接口不做拦截控制">
+      <created>1495412908032</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1495412908032</updated>
+    </task>
+    <task id="LOCAL-00166" summary="教师模板增加邮箱地址列">
+      <created>1495421413824</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1495421413825</updated>
+    </task>
+    <task id="LOCAL-00167">
+      <created>1495436033470</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1495436033470</updated>
+    </task>
+    <task id="LOCAL-00168" summary="注册时不做邮箱验证码验证">
+      <created>1495440841673</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1495440841673</updated>
+    </task>
+    <task id="LOCAL-00169" summary="【缺陷修复】试卷权限提示信息优化">
+      <created>1495443162582</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1495443162582</updated>
+    </task>
+    <task id="LOCAL-00170" summary="【缺陷修复】B加入房间后，显示试卷类型名称为null的问题">
+      <created>1495450249892</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1495450249892</updated>
+    </task>
+    <task id="LOCAL-00171" summary="【缺陷修复】评分成功后没有把信息写入数据库">
+      <created>1495456601605</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1495456601605</updated>
+    </task>
+    <task id="LOCAL-00172" summary="数据库异常信息不应该直接返回给客户端">
+      <created>1495504726605</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1495504726605</updated>
+    </task>
+    <task id="LOCAL-00173" summary="【缺陷修复】邮箱接收验证码所填的邮箱地址必须和注册时的邮箱地址一致">
+      <created>1495530856531</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1495530856531</updated>
+    </task>
+    <task id="LOCAL-00174" summary="【新增】新增一个不验证邮箱一致性的接口获取验证码">
+      <created>1495587826150</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1495587826151</updated>
+    </task>
+    <task id="LOCAL-00175" summary="【缺陷修复】一个考生只能参加一次模拟考试任务">
+      <created>1495615402613</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1495615402613</updated>
+    </task>
+    <task id="LOCAL-00176" summary="【缺陷修复】上传的个人头像图片文件不能超过1M">
+      <created>1495675191470</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1495675191471</updated>
+    </task>
+    <task id="LOCAL-00177" summary="引擎码温馨提示">
+      <created>1496278463260</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1496278463260</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="997814000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22983871" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33198926" sideWeight="0.28510028" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15902579" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33198926" sideWeight="0.7148997" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292011" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32020056" sideWeight="0.48790324" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27284947" sideWeight="0.49426934" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23567335" sideWeight="0.51209676" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2795699" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33198926" sideWeight="0.28510028" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15902579" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27284947" sideWeight="0.49426934" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293011" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22983871" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33198926" sideWeight="0.7148997" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292011" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32020056" sideWeight="0.48790324" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2795699" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23567335" sideWeight="0.51209676" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="查询试卷列表" />
+    <MESSAGE value="发送邮件依赖" />
+    <MESSAGE value="增加邮箱验证接口" />
+    <MESSAGE value="利用邮箱验证来修改密码" />
+    <MESSAGE value="【缺陷修复】管理查询学生列表模糊查询" />
+    <MESSAGE value="【缺陷修复】管理员查看学生测试详情界面数据不准确" />
+    <MESSAGE value="邮件服务" />
+    <MESSAGE value="验证码校验" />
+    <MESSAGE value="查询学习引擎返回的结果地址" />
+    <MESSAGE value="数据库地址" />
+    <MESSAGE value="学生注册时需要携带邮箱验证码进行验证" />
+    <MESSAGE value="学习引擎返回码，可根据不同返回码，界面显示不同提示信息" />
+    <MESSAGE value="学习引擎返回的是绝对地址" />
+    <MESSAGE value="发送验证码接口不做拦截控制" />
+    <MESSAGE value="教师模板增加邮箱地址列" />
+    <MESSAGE value="注册时不做邮箱验证码验证" />
+    <MESSAGE value="【缺陷修复】试卷权限提示信息优化" />
+    <MESSAGE value="【缺陷修复】B加入房间后，显示试卷类型名称为null的问题" />
+    <MESSAGE value="【缺陷修复】评分成功后没有把信息写入数据库" />
+    <MESSAGE value="数据库异常信息不应该直接返回给客户端" />
+    <MESSAGE value="【缺陷修复】邮箱接收验证码所填的邮箱地址必须和注册时的邮箱地址一致" />
+    <MESSAGE value="【新增】新增一个不验证邮箱一致性的接口获取验证码" />
+    <MESSAGE value="【缺陷修复】一个考生只能参加一次模拟考试任务" />
+    <MESSAGE value="【缺陷修复】上传的个人头像图片文件不能超过1M" />
+    <MESSAGE value="引擎码温馨提示" />
+    <option name="LAST_COMMIT_MESSAGE" value="引擎码温馨提示" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/listener/AppSpecialListener.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="530" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="589" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="session" />
+        <watch expression="examAnswerDTO" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/SocketServerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1136">
+          <caret line="150" column="72" selection-start-line="150" selection-start-column="72" selection-end-line="150" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ExamRecordMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="616" column="4" selection-start-line="616" selection-start-column="4" selection-end-line="616" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/StudentTaskServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="206" column="47" selection-start-line="206" selection-start-column="47" selection-end-line="206" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/enums/PaperTypeEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dto/ScoreLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dto/ScoreLevelUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/CommonController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="158" column="40" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/model/PaperType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/PaperMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/PaperTypeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/AccountMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="72" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/model/Properties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/PropertiesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/PropertiesServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/PropertiesMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/PropertiesMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/QuestionsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="846" column="13" selection-start-line="846" selection-start-column="13" selection-end-line="846" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ExamPlanMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5450">
+          <caret line="218" column="23" selection-start-line="218" selection-start-column="11" selection-end-line="218" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/PaperController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/PaperServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="350" column="34" selection-start-line="350" selection-start-column="34" selection-end-line="350" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/PaperMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="344" column="0" selection-start-line="344" selection-start-column="0" selection-end-line="344" selection-end-column="0" />
+          <folding>
+            <marker date="1497426447189" expanded="true" signature="2839:2995" ph="select , fro... " />
+            <marker date="1497426447189" expanded="true" signature="3115:3223" ph="select from sim_paper" />
+            <marker date="1497426447189" expanded="true" signature="3343:3413" ph="SELECT COUNT... SIM_PAPER" />
+            <marker date="1497426447189" expanded="true" signature="3502:3565" ph="delete from " />
+            <marker date="1497426447189" expanded="true" signature="3653:4241" ph="insert into sim_paper... " />
+            <marker date="1497426447189" expanded="true" signature="6456:7538" ph="update sim_p... " />
+            <marker date="1497426447189" expanded="true" signature="7637:8736" ph="update sim_p... " />
+            <marker date="1497426447189" expanded="true" signature="9401:9687" ph="SELECT AVG(s... sim_exam_record" />
+            <marker date="1497426447189" expanded="true" signature="9744:9906" ph="SELECT AVG(s... sim_train_record" />
+            <marker date="1497426447189" expanded="true" signature="12686:13201" ph="select paper... sim_paper" />
+            <marker date="1497426447189" expanded="true" signature="13082:13132" ph="select * fro... sim_exam_record" />
+            <marker date="1497426447189" expanded="true" signature="13239:13460" ph="select paper... sim_paper" />
+            <marker date="1497426447189" expanded="true" signature="14251:14787" ph="select count... code" />
+            <marker date="1497426447189" expanded="true" signature="14277:14784" ph="select paper... sim_paper" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/StudentMgrServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4125">
+          <caret line="193" column="21" selection-start-line="193" selection-start-column="21" selection-end-line="193" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/ExamTaskMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="362" column="30" selection-start-line="362" selection-start-column="30" selection-end-line="362" selection-end-column="30" />
+          <folding>
+            <marker date="1497490517616" expanded="true" signature="4274:4387" ph="select from sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="4473:4540" ph="delete from " />
+            <marker date="1497490517616" expanded="true" signature="4631:5001" ph="insert into sim_exam_task... " />
+            <marker date="1497490517616" expanded="true" signature="6583:6617" ph="select count... sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="7867:8305" ph="update sim_e... " />
+            <marker date="1497490517616" expanded="true" signature="8520:9270" ph="update sim_e... " />
+            <marker date="1497490517616" expanded="true" signature="9373:9758" ph="update sim_e... " />
+            <marker date="1497490517616" expanded="true" signature="9899:10236" ph="select sim_p... sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="12522:12677" ph="select GROUP... sim_class" />
+            <marker date="1497490517616" expanded="true" signature="12594:12676" ph="select class... sim_class_student" />
+            <marker date="1497490517616" expanded="true" signature="13094:13497" ph="select task.... sim_exam_plan" />
+            <marker date="1497490517616" expanded="true" signature="13532:14600" ph="select class... code" />
+            <marker date="1497490517616" expanded="true" signature="13715:14110" ph="select code,... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="13879:13957" ph="select code sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="13989:14087" ph="select max(a... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="14146:14433" ph="select code,... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="14326:14404" ph="select code sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="15821:16224" ph="select task.... sim_exam_plan" />
+            <marker date="1497490517616" expanded="true" signature="16257:17070" ph="select z.cod... code" />
+            <marker date="1497490517616" expanded="true" signature="16376:16728" ph="select code,... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="16527:16605" ph="select code sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="16629:16727" ph="select max(b... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="16756:17031" ph="select code,... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="16928:17006" ph="select code sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="17730:18133" ph="select task.... sim_exam_plan" />
+            <marker date="1497490517616" expanded="true" signature="18166:19006" ph="select z.cod... code" />
+            <marker date="1497490517616" expanded="true" signature="18285:18664" ph="select code,... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="18441:18519" ph="select code sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="18543:18641" ph="select max(a... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="18692:18967" ph="select code,... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="18864:18942" ph="select code sim_exam_task" />
+            <marker date="1497490517616" expanded="true" signature="19713:20238" ph="select task.... sim_exam_plan" />
+            <marker date="1497490517616" expanded="true" signature="20279:20532" ph="select conca... sim_exam_record" />
+            <marker date="1497490517616" expanded="true" signature="20924:21007" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TeacherMgrServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="93" column="49" selection-start-line="93" selection-start-column="49" selection-end-line="93" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/TeacherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="790" column="65" selection-start-line="790" selection-start-column="65" selection-end-line="790" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="443" column="12" selection-start-line="443" selection-start-column="12" selection-end-line="443" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/constants/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/json/JsonResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8250">
+          <caret line="144" column="22" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3000">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="334" column="21" selection-start-line="330" selection-start-column="8" selection-end-line="334" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/ExamTaskReportServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="184" column="49" selection-start-line="184" selection-start-column="49" selection-end-line="184" selection-end-column="49" />
+          <folding>
+            <marker date="1496882029905" expanded="true" signature="11611:11656" ph="SELECT * FRO... Archive" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/SndUtilDllService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dto/TrainTaskRecordQueryDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1681">
+          <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+          <folding>
+            <element signature="e#2234#2235#0" expanded="true" />
+            <element signature="e#2284#2285#0" expanded="true" />
+            <element signature="e#2326#2327#0" expanded="true" />
+            <element signature="e#2360#2361#0" expanded="true" />
+            <element signature="e#2390#2391#0" expanded="true" />
+            <element signature="e#2436#2437#0" expanded="true" />
+            <element signature="e#2474#2475#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/utils/DateUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="220" column="32" selection-start-line="220" selection-start-column="23" selection-end-line="220" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/resources/cetsim.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/TrainRecordMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="331" column="93" selection-start-line="331" selection-start-column="93" selection-end-line="331" selection-end-column="93" />
+          <folding>
+            <element signature="e#16081#16085#0" expanded="true" />
+            <marker date="1497515344578" expanded="true" signature="2339:2455" ph="select from sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="2549:3603" ph="insert into sim_train_record... " />
+            <marker date="1497515344578" expanded="true" signature="7404:7547" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="7625:7747" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="7826:7896" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="7976:8047" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="8127:8198" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="8277:8374" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="8453:8527" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="8606:8676" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="8789:8861" ph="select group... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="8973:9044" ph="select flow_... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="9122:9194" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="9273:9394" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="9473:9576" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="9705:10130" ph="select code sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="10990:11349" ph="select u.acc... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="11428:11556" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="11714:12296" ph="select paper... sim_paper" />
+            <marker date="1497515344578" expanded="true" signature="12895:12971" ph="select * fro... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="13049:13123" ph="update sim_t... " />
+            <marker date="1497515344578" expanded="true" signature="13238:13453" ph="select count... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="13294:13356" ph="select id fr... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="13382:13452" ph="select stude... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="13926:14031" ph="select * fro... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="15030:15284" ph="select `code... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="15442:16165" ph="select recor... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="16313:16498" ph="select 'TASK... sim_paper" />
+            <marker date="1497515344578" expanded="true" signature="16313:16778" ph="select 'TASK... " />
+            <marker date="1497515344578" expanded="true" signature="16517:16637" ph="select 'EXAM... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="16656:16778" ph="select 'MAXS... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="16900:17008" ph="select data_... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="17135:17262" ph="select data_... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="17388:17516" ph="select stude... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="17666:17812" ph="select buffe... sim_paper_buffer" />
+            <marker date="1497515344578" expanded="true" signature="17722:17811" ph="select paper... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="17939:18028" ph="select paper... sim_train_record" />
+            <marker date="1497515344578" expanded="true" signature="18160:18691" ph="SELECT eval.... sim_train_record" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TrainTaskServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2675">
+          <caret line="124" column="94" selection-start-line="124" selection-start-column="94" selection-end-line="124" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/utils/AppContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#310#327#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/mybatis/TrainRoomMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="26" selection-end-column="55" />
+          <folding>
+            <marker date="1497231158192" expanded="true" signature="1040:1153" ph="select from sim_train_room" />
+            <marker date="1497231158192" expanded="true" signature="1265:1392" ph="select from sim_train_room" />
+            <marker date="1497231158192" expanded="true" signature="1502:1666" ph="select from sim_train_room" />
+            <marker date="1497231158192" expanded="true" signature="1788:1937" ph="select from sim_train_room" />
+            <marker date="1497231158192" expanded="true" signature="2061:2225" ph="select from sim_train_room" />
+            <marker date="1497231158192" expanded="true" signature="2316:2384" ph="delete from " />
+            <marker date="1497231158192" expanded="true" signature="2483:2600" ph="delete from " />
+            <marker date="1497231158192" expanded="true" signature="2693:3057" ph="insert into sim_train_room... " />
+            <marker date="1497231158192" expanded="true" signature="4523:5146" ph="update sim_t... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/TrainTaskRoomServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/java/com/iflytek/cetsim/controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="1116" column="0" selection-start-line="1116" selection-start-column="0" selection-end-line="1116" selection-end-column="0" />
+          <folding>
+            <element signature="e#40689#40713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/dao/AccountMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-common/src/main/java/com/iflytek/cetsim/common/annotation/MyBatisRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/spring/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1325">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-webservice/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="65" column="58" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/spring/spring-context-redis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-811">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/spring/spring-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/resources/spring/spring-context-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cetsim-core/src/main/java/com/iflytek/cetsim/service/impl/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>cetsim-webservice:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>cetsim</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

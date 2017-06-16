@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.StudentPieceMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.StudentPiece" >
+    <id column="student_account" property="studentAccount" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="institution" property="institution" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="natural_class" property="naturalClass" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="StudentsInfoResultMap" type="com.iflytek.cetsim.dto.StudentAccountDTO">
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="SMALLINT" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="last_login" property="lastLogin" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+
+    <result column="institution" property="institution" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="natural_class" property="naturalClass" jdbcType="VARCHAR" />
+
+    <result column="exam_task_test_count" property="examTaskTestCount" jdbcType="INTEGER" />
+
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+  <sql id="Base_Column_List" >
+    student_account, id, institution, major, grade, school, `natural_class`, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_student
+    where student_account = #{studentAccount,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.StudentPiece" >
+    insert into sim_student (student_account, id, institution, 
+      major, grade, school, 
+      `natural_class`, reserved1, reserved2
+      )
+    values (#{studentAccount,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{institution,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{naturalClass,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.StudentPiece" >
+    insert into sim_student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentAccount != null" >
+        student_account,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="institution != null" >
+        institution,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="naturalClass != null" >
+        `natural_class`,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentAccount != null" >
+        #{studentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="institution != null" >
+        #{institution,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="naturalClass != null" >
+        #{naturalClass,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectStudentByCondition" parameterType="java.util.Map" resultMap="StudentsInfoResultMap">
+
+      SELECT sim_user.*, sim_student.*, IFNULL(aa.exam_task_test_count, 0) exam_task_test_count  FROM sim_user LEFT JOIN sim_student ON sim_user.account = sim_student.student_account
+      left JOIN
+      (select student_no, count(student_no) exam_task_test_count from sim_exam_record
+        where exam_state = 1 GROUP BY student_no) aa ON aa.student_no = sim_user.account
+
+        <where>
+          <if test="role != null">
+            sim_user.`role` = #{role,jdbcType=INTEGER}
+          </if>
+
+          <if test="status != null">
+            AND sim_user.`status` = #{status,jdbcType=SMALLINT}
+          </if>
+
+          <if test="grade != null">
+            AND sim_student.grade = #{grade,jdbcType=VARCHAR}
+          </if>
+
+          <if test="institution != null">
+            AND sim_student.institution = #{institution,jdbcType=VARCHAR}
+          </if>
+
+          <if test="likeValue != null">
+            AND (sim_user.`name` like #{likeValue,jdbcType=VARCHAR} or sim_user.account like #{likeValue,jdbcType=VARCHAR})
+          </if>
+        </where>
+    ORDER BY sim_user.account asc
+        <if test="limit != null" >
+          <if test="offset != null" >
+            limit ${offset}, ${limit}
+          </if>
+          <if test="offset == null" >
+            limit ${limit}
+          </if>
+        </if>
+
+  </select>
+
+  <select id="selectStudentAcountByCondition" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+    SELECT count(*)  FROM sim_user LEFT JOIN sim_student ON sim_user.account = sim_student.student_account
+    left JOIN
+    (select student_no, count(student_no) exam_task_test_count from sim_exam_record
+    where exam_state = 1 GROUP BY student_no) aa ON aa.student_no = sim_user.account
+
+    <where>
+      <if test="role != null">
+        sim_user.`role` = #{role,jdbcType=INTEGER}
+      </if>
+
+      <if test="status != null">
+        AND sim_user.`status` = #{status,jdbcType=SMALLINT}
+      </if>
+
+      <if test="grade != null">
+        AND sim_student.grade = #{grade,jdbcType=VARCHAR}
+      </if>
+
+      <if test="institution != null">
+        AND sim_student.institution = #{institution,jdbcType=VARCHAR}
+      </if>
+
+      <if test="likeValue != null">
+        AND (sim_user.`name` like #{likeValue,jdbcType=VARCHAR} or sim_user.account like #{likeValue,jdbcType=VARCHAR})
+      </if>
+    </where>
+
+  </select>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.StudentPiece" >
+    update sim_student
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="institution != null" >
+        institution = #{institution,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="naturalClass != null" >
+        natural_class = #{naturalClass,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where student_account = #{studentAccount,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+
+</mapper>

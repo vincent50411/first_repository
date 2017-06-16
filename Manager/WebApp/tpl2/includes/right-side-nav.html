@@ -1,0 +1,152 @@
+<div class="report-side">
+    <div style="display: block;">
+        <div id="sideToolbar" style="position: fixed; bottom: 100px">
+
+            <div id="sideCatalog" class="sideCatalogBg" style="visibility: visible;">
+                <div id="sideCatalog-sidebar">
+                    <div class="sideCatalog-sidebar-top"></div>
+                    <div class="sideCatalog-sidebar-bottom"></div>
+                </div>
+                <div id="sideCatalog-catalog">
+                    <script>
+                        $(function () {
+//                            $(document.body).on("click", ".sideCatalog-item1", function () {
+//                                $(".sideCatalog-item1").removeClass("highlight");
+//                                $(this).addClass("highlight");
+//                            });
+//                            $(document.body).on("click", ".sideCatalog-item2", function () {
+//                                $(".sideCatalog-item1").removeClass("highlight");
+//                                $(this).siblings(".sideCatalog-item1").addClass("highlight");
+//                            });
+
+                            var modelToggle = $("#sideToolbar .mode-toggle");
+                            var s = {
+                                toopen: "切换到展开模式",
+                                toclose: "切换到折叠模式"
+                            };
+                            modelToggle.on("click", function () {
+                                var sideToolbar = $("#sideToolbar");
+                                if (!modelToggle.hasClass("close")) {
+                                    sideToolbar.addClass("zhedie");
+                                    modelToggle.addClass("close");
+                                } else {
+                                    sideToolbar.removeClass("zhedie");
+                                    modelToggle.removeClass("close");
+                                }
+                                toggleTitle();
+                            });
+                            toggleTitle();
+                            function toggleTitle() {
+                                if (modelToggle.hasClass("close")) {
+                                    modelToggle.attr("title", s.toopen);
+                                } else {
+                                    modelToggle.attr("title", s.toclose);
+                                }
+                            }
+
+                            var idList = ["cetsim-Self-introductions", "cetsim-task1", "cetsim-task2", "cetsim-task3", "cetsim-task4"];
+                            var jDomList = [];
+                            idList.forEach(function (item) {
+                                jDomList.push($("#" + item))
+                            });
+
+                            $(window).on("scroll", function () {
+
+                                var jDom = getWhichFocused();
+                                stampTo(jDom);
+
+                            });
+
+                            function getWhichFocused() {
+                                var scrollTop  = $(window).scrollTop(),
+                                        offset,
+                                        bottom,
+                                        top,
+                                        i;
+
+                                for (i = 0; i < jDomList.length; i++) {
+                                    offset = jDomList[i].offset();
+                                    top = offset.top - 20;
+                                    bottom = offset.top + jDomList[i].height();
+
+                                    if (scrollTop + 250 >= top && scrollTop + 50 < offset.top) {
+                                        return jDomList[i];
+                                    }
+                                }
+                                for (i = 0; i < jDomList.length; i++) {
+                                    offset = jDomList[i].offset();
+                                    top = offset.top - 20;
+                                    bottom = offset.top + jDomList[i].height();
+
+                                    if ((scrollTop + 280 >= top) && (scrollTop + 250 <= bottom)) {
+                                        return jDomList[i];
+                                    }
+                                }
+                            }
+                            function stampTo(jDom) {
+                                if (!jDom) return;
+                                $(".sideCatalog-item1").removeClass("highlight");
+                                $("." + jDom.attr("id") + "-stamp").addClass("highlight");
+                            }
+                        });
+                    </script>
+                    <dl style="top: 0px;">
+                        <ul class="status-ul">
+                            <li>
+                                <dd class="sideCatalog-item1 cetsim-Self-introductions-stamp" click-scroll-to="cetsim-Self-introductions">
+                                    <a class="nslog:1026"  title="part1" href="javascript:;">Self-introductions</a>
+                                    <span class="sideCatalog-dot" ></span>
+                                </dd>
+                            </li>
+                            <li>
+                                <dd class="sideCatalog-item1 cetsim-task1-stamp" click-scroll-to="cetsim-task1">
+                                    <a class="nslog:1026"  title="part2" href="javascript:;">Task 1</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+
+                                <dd class="sideCatalog-item2" click-scroll-to="cetsim-task1">
+                                    <a class="nslog:1026" title="part2-1" href="javascript:;">Read Aloud</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                            </li>
+                            <li>
+                                <dd class="sideCatalog-item1 cetsim-task2-stamp" click-scroll-to="cetsim-task2">
+                                    <a class="nslog:1026"  title="part3" href="javascript:;">Task 2</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                                <dd class="sideCatalog-item2" click-scroll-to="cetsim-task2">
+                                    <a class="nslog:1026" title="part2-1" href="javascript:;">Question and Answer</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                            </li>
+                            <li>
+                                <dd class="sideCatalog-item1 cetsim-task3-stamp" click-scroll-to="cetsim-task3">
+                                    <a class="nslog:1026"  title="part4" href="javascript:;">Task 3</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                                <dd class="sideCatalog-item2" click-scroll-to="cetsim-task3">
+                                    <a class="nslog:1026" title="part2-1" href="javascript:;">Individual Presentation</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                            </li>
+                            <li>
+                                <dd class="sideCatalog-item1 cetsim-task4-stamp" click-scroll-to="cetsim-task4">
+                                    <a class="nslog:1026" title="part4" href="javascript:;">Task 4</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                                <dd class="sideCatalog-item2" click-scroll-to="cetsim-task4">
+                                    <a class="nslog:1026"  title="part2-1" href="javascript:;">Pair Work</a>
+                                    <span class="sideCatalog-dot"></span>
+                                </dd>
+                            </li>
+                        </ul>
+
+
+                    </dl>
+                </div>
+            </div>
+            <a class="click-toggle mode-toggle" style="visibility: visible;" title="" href="javascript:void(0)"></a>
+            <a id="sideToolbar-up" go-top style="visibility: visible;" title="" href="javascript:void(0)"></a>
+        </div>
+    </div>
+</div>

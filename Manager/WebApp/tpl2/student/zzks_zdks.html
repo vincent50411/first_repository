@@ -1,0 +1,137 @@
+<div ng-controller="zdksCtrl">
+
+    <div class="searchbar clearfix mt20">
+
+        <div class="fr">
+            <a href="javascript:;"
+               ui-sref="student.zjks" style="float: right"
+               class="common-btn common-btn-success">
+
+                <i class="icon icon-other-add"></i>
+                组建考试</a>
+        </div>
+        <div class="fl">
+            <span class="inline-block">
+                试卷类别：
+                <!--<select class="eui-select" name="a1" ng-model="_selectPaperType" ng-options="item.key for item in paperTypeOptions" ng-change="refresh(1)"></select>-->
+
+                <span select-paper-type="" data-model="_selectPaperType" data-onchange="refreshToPage1" data-width="140"></span>
+            </span>
+
+            <span class="ml20"></span>
+            <!--[if lte IE 9]>
+            试卷名称：
+            <![endif]-->
+
+            <span class="inline-block combination">
+						<input class="cominput" type="text" placeholder="请输入试卷名称" style="width: 200px;" ng-model="paperName" ng-enter="refresh(1)">
+						<button class="combuttton" ng-click="refresh(1)"><i class="icon icon-other-search"></i></button>
+					</span>
+        </div>
+
+    </div>
+
+
+    <div class="team-box mt15 zdks-list">
+        <div class="team-list clearfix row">
+
+            <div class="col2-1 fangjian-one" ng-repeat="item in items" ng-class="{disabled : item.disabled, deleted : item.deleted}">
+                <div class="team-item clearfix">
+                    <div class="item-hd">
+                        <span class="deleted-info" style="display: none">该房间已被删除,请刷新页面</span>
+                        <span class="tag-type cet4" ng-bind="item.paperTypeCode|uppercase"></span>
+                    </div>
+                    <div class="item-bd tc">
+                        <p ng-bind="item.paperName|EmptyText" max-char-over-show-title="15" class="h3-title paper-title"></p>
+                        <div class="candidate">
+                            <p>Candidate A</p>
+                            <p class="mt10"><img ng-src="{{item.candidateAPhoto|userPhotoPathResolve}}" alt="" class="userface"></p>
+                            <p style="max-width: 120px;overflow:hidden;"><span class="text" ng-bind="item.candidateAName|EmptyText" max-char-over-show-title="5"></span></p>
+                        </div>
+
+                        <div class="candidate unjoin">
+                            <p>Candidate B</p>
+                            <p id="{{item.roomCode + '_candidateBName'}}" class="mt10">
+                                <a href="javascript:;" class="btn-join">+</a>
+                            </p>
+                            <p class="mt10">
+                                <a href="javascript:;"
+                                               ng-click="joinTrainTaskRoom(item.roomCode, item.candidateACode)" class="common-btn common-btn-success join-train-btn">加入</a>
+                                <a href="javascript:;" class="common-btn common-btn-cancel fangjian-yiman" style="display: none">房间已满或不可用</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="common-page clearfix mt20" ng-hide="maxPage === 0">
+        <div class="pages" ng-show="maxPage > 1" ng-cloak>
+            <a href="javascript:;" ng-click="goPage(1)">首页</a>
+            <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+            <a ng-repeat="n in [] | midRange:maxPage:curPage" href="javascript:;" go-page2="goPage(n)" ng-class="{'current' : curPage === n}">
+                {{n}}
+            </a>
+            <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+            <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+        </div>
+    </div>
+
+    <div ng-show="items.length === 0" class="nodata-box mt25">
+        <div class="img"><img src="static/images/no-records.png" alt="无可用房间"></div>
+        <div class="txt">无可用房间</div>
+    </div>
+
+
+    <!--<a id="sideToolbar-up" go-top class="go-top-fixed" style="visibility: visible;" title="" href="javascript:void(0)"></a>-->
+    <span go-top-block=""></span>
+
+    <iframe id="trainTaskStartClientFrame_B" style="width: 0px; height: 0px;display: none;"></iframe>
+
+    <!-- 提示考试机成功启动弹出框内容 -->
+    <div id="flushTrainInfoListLayerHtml_B" style="display: none;">
+        <div class="common-pop" style="margin: 20px; float: left;">
+            <div class="pop-header">
+                提示
+            </div>
+            <div class="pop-body pop-padding">
+                <div class="pop-prompt">
+                    <p>
+                    <h5 style="text-align: left;">考试机已经启动,如果您已经完成考试，请点击查看报告按钮查看报告</h5>
+                    </p>
+                </div>
+            </div>
+            <div class="pop-footer">
+                <a href="javascript:;"
+                   ui-sref="student.zzks.taskReport({studentAccount:studentAccount, recordCode : candidateBRecordCode, paperType : paperTypeCode})"
+                   class="common-btn  common-btn-primary">查看报告</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下载提示-->
+    <div id="downloadExamClientInfoHtml_B" style="display: none;">
+        <div class="common-pop" style="margin: 20px; float: left;">
+            <div class="pop-header">
+                未检测到考试机启动，可能存在以下情况
+            </div>
+            <div class="pop-body pop-padding">
+                <div class="pop-prompt">
+                    <p>
+                    <h5 style="text-align: left;">1、未下载安装考试机程序或者程序被损坏 <a href="/upgrade/clientsetup.exe" style="color: red; font-size: 16px; text-decoration: underline;">请点击下载</a></h5>
+                    <h5 style="text-align: left;">2、已经安装考试机，但被浏览器阻止弹出启动提示信息框或者用户未点击允许运行启动命令</h5>
+                    </p>
+                </div>
+            </div>
+            <div class="pop-footer">
+                <a href="javascript:;" class="common-btn common-btn-primary">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div ng-include="'tpl2/student/popWaitingZudui.html'"></div>

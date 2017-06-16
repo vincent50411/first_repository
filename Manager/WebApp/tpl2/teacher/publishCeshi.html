@@ -1,0 +1,91 @@
+<div ng-controller="publishCeshiCtrl">
+    <!---------------------------------------->
+    <!--发布测试-->
+    <div id="publish-ceshi-panel" class="common-pop" style="width:100%;min-width: 500px; margin: 0 auto;display: none" >
+        <!--<div class="pop-header">-->
+        <!--发布测试-->
+        <!--<a href="javascript:;" class="pop-btn-close"></a>-->
+        <!--</div>-->
+        <div class="pop-body pop-padding">
+            <div class="pop-form">
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        测试名称：
+                    </div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 250px;" placeholder="" ng-model="editedTask._plan.name">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        测试要求：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 250px;" placeholder="" ng-model="editedTask._plan.requirement">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        开始时间：</div>
+                    <div class="procontent">
+                        <input id="publishCeshiBeginTime" type="text" class="webinput wdate" style="width: 250px;" ng-model="editedTask._plan.startTime" readonly disable-backspace="">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        结束时间：</div>
+                    <div class="procontent">
+                        <input id="publishCeshiEndTime" type="text" class="webinput wdate" style="width: 250px;" ng-model="editedTask._plan.endTime" readonly disable-backspace="">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        试卷：
+                    </div>
+                    <div class="procontent">
+                            <span ng-show="selectPaper.code" ng-cloak>
+                                <a  href="javascript:;" class="common-btn common-btn-special">
+                                    <span ng-bind="selectPaper.name"></span>
+                                    <em class="delete"><i class="icon icon-other-delete" ng-click="deleteSelectedPaper()"></i></em>
+                                </a>
+                            </span>
+                        <a href="javascript:;" style="cursor:default" class="common-btn" show-pop="#selectPaperPanel" pop-width="700" pop-title="选择试卷">选择</a>
+                    </div>
+                </div>
+                <div class="inputbox clearfix" style="min-height: 140px;">
+                    <div class="proname" style="margin-top:-8px;">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        发布班级：</div>
+                    <!--[if lte IE 8]>
+                    <div class="procontent class-list-wrap-max-height">
+                        <label class="class-label-fixed-forie8" ng-repeat="class in classOwned" ng-attr-title="{{class.name}}">
+                            <input type="checkbox"
+                                   ng-attr-value="{{class.code}}"
+                                   ng-checked="editedTask._rooms.indexOf(class.code) > -1"
+                                   ng-click="toggleClassSelection(class.code, class.name)">
+                            <span class="eui-caption" ng-bind="class.name"></span>
+                        </label>
+                    </div>
+                    <![endif]-->
+                    <div class="procontent hide-on-ie8orless publish-ceshi-class-list class-list-wrap-max-height">
+                        <label class="eui-checkbox mr10 class-label-fixed" ng-repeat="class in classOwned" title="{{class.name}}">
+                            <input type="checkbox" name="test-checkbox"
+                                   ng-attr-value="{{class.code}}"
+                                   ng-checked="editedTask._rooms.indexOf(class.code) > -1"
+                                   ng-click="toggleClassSelection(class.code, class.name)">
+                            <span class="eui-check"></span>
+                            <span class="eui-caption" ng-bind="class.name"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pop-footer">
+            <button class="common-btn common-btn-primary" ng-click="publishTask()">确认</button>
+            <a href="javascript:;" class="common-btn ml10" hide-pop="#publish-ceshi-panel" ng-click="whenClickCancelOnPublishTaskPanel()">取消</a>
+        </div>
+    </div>
+</div>

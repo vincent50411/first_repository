@@ -1,0 +1,108 @@
+<div  ng-controller="zxxlListCtrl">
+
+    <div class="searchbar clearfix mt20">
+        <div class="fl">
+                <span class="inline-block">
+                    筛选：
+                    <select class="eui-select" name="a2" ng-options="item.name for item in usageStatus" ng-model="selectUsageStatus" ng-change="refresh(1)"></select>
+                </span>
+            <span class="inline-block ml20" mouse-wheel-event-not-propagation-and-prevent-default="">
+                    题型：
+                <span select-paper-item-type data-model="_selectPaperItemType" data-onchange="refreshToPage1"></span>
+                </span>
+        </div>
+    </div>
+
+    <div class="topic-box mt15">
+        <div class="topic-list clearfix row zxxl-list">
+
+            <div class="col2-1" ng-repeat="item in items">
+                <div class="topic-item clearfix">
+                    <div class="btn-box">
+                        <a href="javascript:;" ng-click="startSpecialTrainExam(item.status, item.code)" class="common-btn">练习</a>
+                    </div>
+                    <div class="icon-box">
+                        <p class="mt15"><i class="icon" ng-class="item._paperItemTypeObj.cssClass"></i></p>
+                        <p class="paper-item-type-name" title="{{item._paperItemTypeObj.name|EmptyText}}" ng-bind="item._paperItemTypeObj.name|EmptyText"></p>
+                    </div>
+                    <div class="text-box">
+                        <h2 class="ellipsis" ng-attr-title="item.name"
+                            ng-bind="item.name|EmptyText"></h2>
+                        <p>
+                            <span><i class="icon icon-other-highest"></i> 最高分数：<strong class="color-orange" ng-bind="item.maxScore|scoreValueFormater|EmptyText"></strong></span>
+                            <span class="ml20"><i class="icon icon-other-practice"></i> 已练习：<strong class="color-green" ng-bind="item.useCount|EmptyText"></strong> 次</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="common-page clearfix mt20" ng-hide="maxPage === 0">
+        <div class="pages" ng-show="maxPage > 1" ng-cloak>
+            <a href="javascript:;" ng-click="goPage(1)">首页</a>
+            <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+            <a ng-repeat="n in [] | midRange:maxPage:curPage" href="javascript:;" go-page2="goPage(n)" ng-class="{'current' : curPage === n}">
+                {{n}}
+            </a>
+            <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+            <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+        </div>
+    </div>
+
+    <div ng-show="maxPage === 0" class="nodata-box mt25">
+        <div class="img"><img src="static/images/no-papers.png" alt="暂无记录！"></div>
+        <div class="txt">暂无记录！</div>
+    </div>
+
+
+    <!-- 提示考试机成功启动弹出框内容 -->
+    <div id="flushSpecialTrainInfoListLayerHtml" style="display: none;">
+        <div class="common-pop" style="margin: 20px; float: left;">
+            <div class="pop-header">
+                提示
+            </div>
+            <div class="pop-body pop-padding">
+                <div class="pop-prompt">
+                    <p>
+                    <h5 style="text-align: left;">考试机已经启动,如果您已经完成考试，请点击查看报告按钮查看报告</h5>
+                    </p>
+                </div>
+            </div>
+            <div class="pop-footer">
+                <a href="javascript:;"
+                   ui-sref="student.zxxl.ckbg({code : specialRecordCode, paperItemTypeCode : paperItemTypeCode})"
+                   class="common-btn  common-btn-primary">查看报告</a>
+            </div>
+        </div>
+    </div>
+
+
+    <iframe id="specialTrainTaskStartClientFrame" style="width: 0px; height: 0px;display: none;"></iframe>
+
+    <!-- 下载提示-->
+    <div id="downloadspecialTrainTaskClientInfoHtml" style="display: none;">
+        <div class="common-pop" style="margin: 20px; float: left;">
+            <div class="pop-header">
+                未检测到考试机启动，可能存在以下情况
+            </div>
+            <div class="pop-body pop-padding">
+                <div class="pop-prompt">
+                    <p>
+                    <h5 style="text-align: left;">1、未下载安装考试机程序或者程序被损坏 <a href="/upgrade/clientsetup.exe" style="color: red; font-size: 16px; text-decoration: underline;">请点击下载</a></h5>
+                    <h5 style="text-align: left;">2、已经安装考试机，但被浏览器阻止弹出启动提示信息框或者用户未点击允许运行启动命令</h5>
+                    </p>
+                </div>
+            </div>
+            <div class="pop-footer">
+                <!--<a href="javascript:;" ui-sref="student.zxxl.ckbg({code : specialRecordCode, paperItemTypeCode : paperItemTypeCode})"
+                   class="common-btn  common-btn-primary">确定</a>-->
+                <a href="javascript:;" class="common-btn  common-btn-primary">确定</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

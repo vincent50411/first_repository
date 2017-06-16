@@ -1,0 +1,30 @@
+<div class="commonwidth" ng-controller="attributeMangeCtrl">
+    <div class="commonbox">
+
+
+        <div class="common-title clearfix">
+            <div class="fr">
+                <a href="javascript:;" class="common-btn common-btn-success ml5"><i class="icon icon-other-add"></i> 添加学院</a>
+                <a href="javascript:;" class="text-decoration color-red fs14 ml5">批量删除</a>
+            </div>
+            <i class="line"></i><span class="txt ml10">学院与专业</span>
+            <span class="fs14 ml5">( <b class="color-orange">122</b> 条标签 )</span>
+
+            <span class="inline-block combination ml20">
+					<input class="cominput" type="text" placeholder="标签搜索" style="width: 200px;">
+					<button class="combuttton"><i class="icon icon-other-search"></i></button>
+				</span>
+        </div>
+
+        <div class="row clearfix mt10">
+            <div class="col2-1">
+                <span list-maintain="" data-model="leftList" data-getchildrenfn="getMajorsOfInstitute"></span>
+            </div>
+            <div class="col2-1">
+                <span list-maintain="" data-model="rightList"></span>
+            </div>
+        </div>
+
+
+    </div>
+</div>

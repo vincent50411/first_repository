@@ -1,0 +1,85 @@
+<div ng-controller="classListCtrl">
+    <div class="commonwidth">
+        <div class="commonbox">
+            <div class="searchbar clearfix">
+                <div class="fl">
+                    <h3 class="h3-title">班级管理</h3>
+                </div>
+                <div class="fr">
+                    <a href="javascript:;" class="common-btn common-btn-success"  show-pop="#createClassPanel" pop-title="创建班级" pop-width="500">
+                        <i class="icon icon-other-add"></i> 创建班级</a>
+                </div>
+            </div>
+            <div class="stumanage-box mt25">
+                <div class="common-table common-table-tc">
+                    <table ng-hide="classListMaxPage === 0" ng-cloak>
+                        <thead>
+                        <tr>
+                            <td>班级编号</td>
+                            <td>名称</td>
+                            <td>学生数</td>
+                            <td>创建时间</td>
+                            <td>管理班级</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-class="{'even': $index % 2===0}" ng-repeat="item in classList">
+                                <td ng-bind="item.code" max-char-over-show-title="15"></td>
+                                <td ng-bind="item.name" max-char-over-show-title="10"></td>
+                                <td ng-bind="item.student_count"></td>
+                                <td ng-bind="item.create_time|date:'yyyy/MM/dd HH:mm'|EmptyText"></td>
+                                <td><a href="#/teacher/teacherClassManage/{{item.code}}" class="hover">管理</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div ng-show="classListMaxPage === 0" ng-cloak class="nodata-box mt25">
+                        <div class="img"><img src="static/images/no-records.png" alt="暂无记录！"></div>
+                        <div class="txt">暂无记录！</div>
+                    </div>
+                </div>
+
+                <div class="common-page clearfix mt20" ng-show="classListMaxPage > 1">
+                    <div class="pages">
+                        <a href="javascript:;" ng-click="goClassListPage(1)">首页</a>
+                        <a href="javascript:;" ng-click="goClassListPage(curClassListPage - 1)">上一页</a>
+                        <a href="javascript:;" ng-repeat="n in []|midRange:classListMaxPage:curClassListPage"
+                           go-page2="goClassListPage(n)"
+                           ng-class="{'current' : n == curClassListPage}">{{n}}</a>
+                        <a href="javascript:;" ng-click="goClassListPage(curClassListPage + 1)">下一页</a>
+                        <a href="javascript:;" ng-click="goClassListPage(classListMaxPage)">尾页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="createClassPanel" style="display: none;" ng-controller="createClassCtrl">
+    <!--创建班级-->
+    <div class="common-pop" style="width:100%;min-width: 440px;">
+        <!--<div class="pop-header">-->
+            <!--创建班级-->
+            <!--<a href="javascript:;" class="pop-btn-close" hide-pop="#createClassPanel"></a>-->
+        <!--</div>-->
+        <div class="pop-body pop-padding">
+            <div class="pop-form mt35 mb35">
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        班级名称：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 250px;" placeholder="请输入班级名称" ng-model="createdClass.name" ng-enter="submitClass()">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pop-footer">
+            <button class="common-btn common-btn-primary" ng-click="submitClass()">确认</button>
+            <a href="javascript:;" class="common-btn ml10" hide-pop="#createClassPanel" ng-click="removeClassName()">取消</a>
+        </div>
+    </div>
+</div>
+
+

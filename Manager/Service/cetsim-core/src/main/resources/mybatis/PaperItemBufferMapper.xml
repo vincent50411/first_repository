@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.PaperItemBufferMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.PaperItemBuffer" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="paper_item_code" property="paperItemCode" jdbcType="VARCHAR" />
+    <result column="md5" property="md5" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.iflytek.cetsim.model.PaperItemBuffer" extends="BaseResultMap" >
+    <result column="buffer" property="buffer" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <resultMap id="paperBuffData" type="com.iflytek.cetsim.model.PaperItemBuffer">
+    <result property="buffer" column="buffer" jdbcType="BLOB"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    code, id, paper_item_code, md5
+  </sql>
+  <sql id="Blob_Column_List" >
+    buffer
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sim_paper_item_buffer
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.PaperItemBuffer" >
+    insert into sim_paper_item_buffer (code, id, paper_item_code, 
+      md5, buffer)
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{paperItemCode,jdbcType=VARCHAR}, 
+      #{md5,jdbcType=VARCHAR}, #{buffer,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.PaperItemBuffer" >
+    insert into sim_paper_item_buffer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="paperItemCode != null" >
+        paper_item_code,
+      </if>
+      <if test="md5 != null" >
+        md5,
+      </if>
+      <if test="buffer != null" >
+        buffer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="paperItemCode != null" >
+        #{paperItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="md5 != null" >
+        #{md5,jdbcType=VARCHAR},
+      </if>
+      <if test="buffer != null" >
+        #{buffer,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="getPaperItemBuffData" parameterType="java.lang.String" resultMap="paperBuffData">
+      select buffer from sim_paper_item_buffer where paper_item_code = (select paper_item_code from sim_special_train_record where code = #{examRecordCode,jdbcType=VARCHAR})
+  </select>
+</mapper>

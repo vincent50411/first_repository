@@ -1,0 +1,142 @@
+<div ng-controller="zdksGuijiCtrl">
+    <!--<p class="text-center" ng-bind="title" ng-if="title" style="text-align: center;margin:10px;font-size:14px;" ></p>-->
+
+    <div class="common-title mt20"><i class="line"></i><span class="txt ml10">成绩轨迹</span></div>
+
+    <div class="result-track mt20">
+        <div class="hd clearfix">
+            <!--<ul class="tab clearfix fl">-->
+                <!--<li><a href="javascript:;" class="current">CET4</a></li>-->
+                <!--<li><a href="javascript:;">CET6</a></li>-->
+            <!--</ul>-->
+            <div class="combination-selection fr">
+                <a href="javascript:;" ng-class="{current : timeLimitType == 1}" ng-click="chooseTimeLimit(1)">近一月</a>
+                <a href="javascript:;" ng-class="{current : timeLimitType == 3}" ng-click="chooseTimeLimit(3)">近三月</a>
+                <a href="javascript:;" ng-class="{current : timeLimitType == 6}" ng-click="chooseTimeLimit(6)">近半年</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="score-guiji-container"></div>
+
+    <div ng-show="isShowNoDataImage">
+        <div class="nodata-box nosubmit mt60">
+            <div class="img"><img src="static/images/no-results.png" alt="暂无记录！"></div>
+            <div class="txt">该学生没有相关考试的成绩记录！</div>
+        </div>
+    </div>
+
+    <div ng-if="title" style="height: 30px;"></div>
+</div>
+
+
+<div ng-controller="zdksRecordCtrl">
+
+    <div class="common-title mt20"><i class="line"></i><span class="txt ml10">考试详情</span></div>
+    <div class="searchbar clearfix mt20">
+
+        <div class="fl">
+            <span class="inline-block">
+                试卷类别：
+                <!--<select class="eui-select" name="a1"-->
+                        <!--ng-model="_selectPaperType" ng-options="item.key for item in []|paperTypeOptions track by item.key" ng-change="refresh(1)"></select>-->
+
+                <span select-paper-type data-model="_selectPaperType" data-onchange="refreshToPage1"></span>
+            </span>
+
+            <span class="ml20"></span>
+            <!--[if lte IE 9]>
+            试卷名称：
+            <![endif]-->
+
+            <span class="inline-block combination">
+                <input class="cominput" type="text" placeholder="请输入试卷名称" style="width: 200px;" ng-model="paperName" ng-enter="refresh(1)">
+                <button class="combuttton" ng-click="refresh(1)"><i class="icon icon-other-search"></i></button>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="stumanage-box mt25" id="zxxl-ckbg-table">
+        <div class="common-table common-table-tc">
+            <table ng-hide="maxPage === 0" ng-cloak>
+                <thead>
+                <tr>
+                    <td>试卷名称</td>
+                    <td>类别</td>
+                    <td>考试次数
+                    </td>
+                    <td>
+                        <div cetsim-sort-column data-text="'平均得分'"
+                                            data-column="order.column"
+                                            data-order="order.code"
+                                            data-column-name="'AVG_SCORE'"
+                                            data-refresh-method="refresh(1)"></div></td></td>
+                    <td>
+                        <div cetsim-sort-column data-text="'历史最高成绩'"
+                                            data-column="order.column"
+                                            data-order="order.code"
+                                            data-column-name="'MAX_SCORE'"
+                                            data-refresh-method="refresh(1)"></div></td>
+                    </td>
+                    <td>考试时间</td>
+                    <td>成绩</td>
+                    <td>查看报告</td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in items" ng-init="$index1 = $index">
+
+                    <tr class="cetsim-table-border-bottom" ng-class="{'even': $index % 2===0}" ng-if="item.recordInfoList.length == 0">
+                        <td ng-bind="item.paperName|EmptyText"></td>
+                        <td ng-bind="item.paperTypeCode|uppercase|EmptyText"></td>
+                        <td ng-bind="item.examCount|EmptyText"></td>
+                        <td ng-bind="item.avgScore|scoreValueFormater:item.examCount|EmptyText"></td>
+                        <td class="border-right"
+                                ng-bind="item.maxScore|scoreValueFormater:item.examCount|EmptyText"></td>
+                        <td ng-bind="item.startTime| date:'yyyy/MM/dd HH:mm'|EmptyText"></td>
+                        <td ng-bind="item.score|scoreValueFormater:item.examCount|EmptyText"></td>
+                        <td>
+                            <a href="javascript:;">-</a>
+                        </td>
+                    </tr>
+
+                    <tr ng-repeat="one in item.recordInfoList" ng-if="item.recordInfoList.length > 0"
+                        ng-class="{'cetsim-table-border-bottom':$last,'even': ($index1 % 2===0)}">
+                        <td ng-bind="item.paperName|EmptyText" ng-attr-rowspan="{{item.recordInfoList.length}}" ng-if="$first"></td>
+                        <td ng-bind="item.paperTypeCode|uppercase|EmptyText" ng-attr-rowspan="{{item.recordInfoList.length}}" ng-if="$first"></td>
+                        <td ng-bind="item.examCount|EmptyText" ng-attr-rowspan="{{item.recordInfoList.length}}" ng-if="$first"></td>
+                        <td ng-bind="item.avgScore|scoreValueFormater:item.examCount|EmptyText" ng-attr-rowspan="{{item.recordInfoList.length}}" ng-if="$first"></td>
+                        <td ng-bind="item.maxScore|scoreValueFormater:item.examCount|EmptyText"
+                            ng-attr-rowspan="{{item.recordInfoList.length}}"
+                            class="border-right"
+                            ng-if="$first"></td>
+                        <td ng-bind="one.startTime| date:'yyyy/MM/dd HH:mm'|EmptyText"></td>
+                        <td ng-bind="one.score|scoreValueFormater:item.examCount|EmptyText"></td>
+                        <td>
+                            <a href="javascript:;" data-code="{{one.recordCode}}" ui-sref="student.zzks.taskReport({studentAccount:one.studentAccount, recordCode : one.recordCode, paperType : item.paperTypeCode})" class="hover">查看</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div ng-show="maxPage === 0" ng-cloak class="nodata-box mt25">
+                <div class="img"><img src="static/images/no-records.png" alt="暂无记录！"></div>
+                <div class="txt">暂无记录！</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="common-page clearfix mt20" ng-hide="maxPage === 0">
+        <div class="pages" ng-show="maxPage > 1" ng-cloak>
+            <a href="javascript:;" ng-click="goPage(1)">首页</a>
+            <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+            <a ng-repeat="n in [] | midRange:maxPage:curPage" href="javascript:;" go-page2="goPage(n)" ng-class="{'current' : curPage === n}">
+                {{n}}
+            </a>
+            <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+            <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="common-table common-table-tc">
+    <table>
+        <thead>
+        <tr>
+            <td width="15%">
+                <span cetsim-checkbox="" data-model="isSelectAll" data-onchange="toggleSelectAll"></span>
+            </td>
+            <td width="55%">标签名称</td>
+            <td width="30%">操作</td>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div class="common-table common-table-scroll common-table-tc" style="max-height: 660px;">
+    <table>
+        <tbody ng-repeat="item in items">
+            <tr>
+                <td width="15%" class="pos-r">
+                    <span cetsim-checkbox="" data-model="item._checked"></span>
+                    <a href="javascript:;" class="pos-a ml20" ng-if="isShowToggleButton" ng-click="getChildren(item)"><i class="icon" ng-class="item._isOpen ? 'icon-other-close' : 'icon-other-open'"></i></a>
+                </td>
+                <td width="55%">{{item.value}}</td>
+                <td width="30%">
+                    <a href="javascript:;" class="hover">添加</a>
+                    <a href="javascript:;" class="hover ml20" ng-click="edit(item)" show-pop="#list-maintain-edit-panel-{{uuid}}" pop-width="480px" pop-title="编辑">编辑</a>
+                    <a href="javascript:;" class="color-red ml20" ng-click="remove(item)">删除</a>
+                </td>
+            </tr>
+            <tr class="tr-unfolded" ng-if="item._isOpen">
+                <td colspan="3">
+                    <table>
+                        <tbody>
+                        <tr ng-repeat="one in item.children">
+                            <td width="25%" class="tr">
+                                <span cetsim-checkbox="" data-model="one._checked"></span>
+                            </td>
+                            <td width="50%" class="tl">{{one.value}}</td>
+                            <td width="25%">
+                                <a href="javascript:;" class="hover ml20">编辑</a>
+                                <a href="javascript:;" class="color-red ml20">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div id="list-maintain-edit-panel-{{uuid}}" class="common-pop" style="width: 100%;display: none;">
+    <div class="pop-body">
+        <div class="pop-form pop-addlabel">
+            <div class="inputbox clearfix">
+                <div class="procontent">
+                    <input type="text" class="webinput" ng-model="curEditItem.value" style="width: 200px;">
+                    <!--<span class="tipsbox" style="top:6px;"><i class="icon icon-other-passed"></i></span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <button class="common-btn common-btn-primary" ng-click="editUpdate()">确认</button>
+        <button class="common-btn ml10" hide-pop="#list-maintain-edit-panel-{{uuid}}">取消</button>
+    </div>
+</div>
+
+<div id="list-maintain-add-panel-{{uuid}}" class="common-pop" style="width: 100%;display: none;">
+    <div class="pop-body">
+        <div class="pop-form pop-addlabel">
+            <!--<div class="inputbox clearfix">-->
+                <!--<div class="procontent">-->
+                    <!--<input type="text" class="webinput error" value="外国语学院" style="width: 200px;">-->
+                    <!--<span class="tipsbox"><i class="icon icon-other-warningred"></i> 已存在标签</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="inputbox clearfix">
+                <div class="procontent">
+                    <input type="text" class="webinput" style="width: 200px;" placeholder="+ 新增标签">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <button class="common-btn common-btn-primary">确认</button>
+        <button class="common-btn ml10" hide-pop="#list-maintain-edit-{{uuid}}">取消</button>
+    </div>
+</div>
+
+<button ng-click="ceshi()">output ceshi</button>

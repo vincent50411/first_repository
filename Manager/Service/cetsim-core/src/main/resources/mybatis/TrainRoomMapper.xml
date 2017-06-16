@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.TrainRoomMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.TrainRoom" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="paper_code" property="paperCode" jdbcType="VARCHAR" />
+    <result column="candidate_a_code" property="candidateACode" jdbcType="VARCHAR" />
+    <result column="candidate_b_code" property="candidateBCode" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="room_password" property="roomPassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    code, id, paper_code, candidate_a_code, candidate_b_code, `state`, room_password
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_train_room
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectUnGroupRoom" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_train_room
+    where code = #{code,jdbcType=VARCHAR} and state = 0
+  </select>
+
+  <select id="selectByAccount" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_train_room
+    where candidate_a_code = #{candidateACode,jdbcType=VARCHAR} and (state = 0 or state = 1)
+  </select>
+
+  <select id="selectExitJoinRoomByAccount" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_train_room
+    where candidate_b_code = #{candidateBCode,jdbcType=VARCHAR} and state = 1
+  </select>
+
+  <select id="selectExitCreateRoomByAccount" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sim_train_room
+    where candidate_a_code = #{candidateACode,jdbcType=VARCHAR} and (state = 0 or state = 1)
+  </select>
+
+  <delete id="deleteExitTrainTaskRoom" parameterType="java.lang.String">
+    delete from sim_train_room
+    where code = #{code,jdbcType=VARCHAR}
+  </delete>
+
+  <delete id="deleteExitTrainTaskRoomByState" parameterType="java.util.Map">
+        delete from sim_train_room
+        where state = #{unGroup,jdbcType=SMALLINT} or state = #{grouped,jdbcType=SMALLINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.TrainRoom" >
+    insert into sim_train_room (code, id, paper_code, 
+      candidate_a_code, candidate_b_code, `state`, 
+      room_password)
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{paperCode,jdbcType=VARCHAR}, 
+      #{candidateACode,jdbcType=VARCHAR}, #{candidateBCode,jdbcType=VARCHAR}, #{state,jdbcType=SMALLINT}, 
+      #{roomPassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.TrainRoom" >
+    insert into sim_train_room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="paperCode != null" >
+        paper_code,
+      </if>
+      <if test="candidateACode != null" >
+        candidate_a_code,
+      </if>
+      <if test="candidateBCode != null" >
+        candidate_b_code,
+      </if>
+      <if test="state != null" >
+        `state`,
+      </if>
+      <if test="roomPassword != null" >
+        room_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="paperCode != null" >
+        #{paperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="candidateACode != null" >
+        #{candidateACode,jdbcType=VARCHAR},
+      </if>
+      <if test="candidateBCode != null" >
+        #{candidateBCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="roomPassword != null" >
+        #{roomPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByExampleSelective" parameterType="com.iflytek.cetsim.model.TrainRoom" >
+    update sim_train_room
+    <set >
+      <if test="paperCode != null" >
+        paper_code = #{paperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="candidateACode != null" >
+        candidate_a_code = #{candidateACode,jdbcType=VARCHAR},
+      </if>
+      <if test="candidateBCode != null" >
+        candidate_b_code = #{candidateBCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        `state` = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="roomPassword != null" >
+        room_password = #{roomPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+      where code = #{code,jdbcType=VARCHAR}
+
+  </update>
+
+
+  <select id="queryTrainTaskRoomList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.model.TrainTaskRoomInfoDTO">
+      select room.`code` as roomCode, room.candidate_a_code as candidateACode, sim_user.`name` as candidateAName, sim_user.reserved1 as candidateAPhoto,
+      paper.`name` as paperName, paper.paper_type_code as paperTypeCode
+      from sim_train_room room LEFT JOIN sim_user on room.candidate_a_code = sim_user.account
+      left join sim_paper paper on paper.`code` = room.paper_code
+      where room.state = 0 and room.candidate_a_code != #{student_account, jdbcType=VARCHAR} and paper.allow_free_useage = 1
+
+      <if test="paper_type_code != null">
+        and paper.paper_type_code = #{paper_type_code, jdbcType=VARCHAR}
+      </if>
+      <if test="paper_name != null">
+        and paper.`name` LIKE #{paper_name, jdbcType=VARCHAR}
+      </if>
+
+      <!--
+      <if test="limit != null" >
+        <if test="offset != null" >
+          limit ${offset}, ${limit}
+        </if>
+        <if test="offset == null" >
+          limit ${limit}
+        </if>
+      </if>
+      -->
+  </select>
+
+
+
+</mapper>

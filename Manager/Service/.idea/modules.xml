@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cetsim.iml" filepath="$PROJECT_DIR$/cetsim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cetsim-common/cetsim-common.iml" filepath="$PROJECT_DIR$/cetsim-common/cetsim-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cetsim-core/cetsim-core.iml" filepath="$PROJECT_DIR$/cetsim-core/cetsim-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cetsim-webservice/cetsim-webservice.iml" filepath="$PROJECT_DIR$/cetsim-webservice/cetsim-webservice.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paper>
+    <section id="me.wav" title="自我介绍" category="" score="5"/>
+    <section id="read.wav" title="短文朗读" category="" score="5"/>
+    <section id="ans1.wav" title="情景问答" category="" score="5"/>
+    <section id="ans2.wav" title="情景问答" category="" score="5"/>
+    <section id="pres.wav" title="看图说话" category="" score="5"/>
+    <section id="pair.wav" title="小组讨论" category="" score="5"/>
+</paper>

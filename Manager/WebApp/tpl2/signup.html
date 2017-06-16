@@ -1,0 +1,173 @@
+<style>
+    .commonbox{
+        min-height: 600px;
+    }
+</style>
+<div>
+    <div class="header-fixed">
+        <div class="header">
+            <div class="commonwidth clearfix">
+                <div class="logo"><img src="static/images/logo.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="commonwidth" ng-controller="signupCtrl">
+        <div class="commonbox">
+
+
+
+            <div class="userinfov2-edit cetsim-signup">
+                <div class="edit-form">
+
+                    <div style="margin:0 0 10px;">
+                        <span class="inline-block h3-title" style="margin-right: 50px;">
+                            注册
+                        </span>
+                    </div>
+
+                    <div class="inputbox clearfix">
+                        <div class="proname">    <span required-star></span> 账号（学号）：</div>
+                        <div class="procontent">
+                            <input type="text" class="webinput" style="width: 230px;" placeholder="请输入账号" ng-model="user.account">
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">    <span required-star></span>  姓名：</div>
+                        <div class="procontent">
+                            <input type="text" class="webinput" ng-model="user.name" style="width: 230px;" placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">    <span required-star></span>  性别：</div>
+                        <div class="procontent">
+                            <!--[if lte IE 8]>
+                            <div class="">
+                                <input type="radio" ng-model="user.gender" ng-attr-value="{{_userGender.boy}}">
+                                <span class="eui-caption">男</span>
+                                <input type="radio" ng-model="user.gender" ng-attr-value="{{_userGender.girl}}">
+                                <span class="eui-caption">女</span>
+                            </div>
+                            <![endif]-->
+
+                            <div class="hide-on-ie8orless">
+                                <label class="eui-radio">
+                                    <input type="radio" name="test-radio" ng-model="user.gender" ng-value="_userGender.boy">
+                                    <span class="eui-check"></span>
+                                    <span class="eui-caption">男</span>
+                                </label>
+                                <label class="eui-radio ml20">
+                                    <input type="radio" name="test-radio" ng-model="user.gender" ng-value="_userGender.girl">
+                                    <span class="eui-check"></span>
+                                    <span class="eui-caption">女</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">学院：</div>
+                        <div class="procontent">
+                            <!--<input type="text" class="webinput" ng-model="user.institution" style="width: 230px;" placeholder="请输入学院">-->
+
+                            <span select-institute data-model="user.institution"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputbox clearfix">
+                        <div class="proname">年级：</div>
+                        <div class="procontent">
+                            <!--<input type="text" class="webinput"  ng-model="user.grade" style="width: 230px;" placeholder="请输入年级">-->
+
+                            <span select-grade data-model="user.grade"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputbox clearfix">
+                        <div class="proname">专业：</div>
+                        <div class="procontent">
+                            <!--<input type="text" ng-model="user.major" class="webinput" style="width: 230px;" placeholder="请输入专业">-->
+
+                            <span select-major data-model="user.major"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputbox clearfix">
+                        <div class="proname">行政班级：</div>
+                        <div class="procontent">
+                            <input type="text" ng-model="user.naturalClass" class="webinput" style="width: 230px;" placeholder="请输入班级">
+                        </div>
+                    </div>
+
+                    <div class="inputbox clearfix">
+                        <div class="proname">    <span required-star></span>  手机号：</div>
+                        <div class="procontent">
+                            <input type="text" class="webinput" ng-model="user.telephone" style="width: 230px;" placeholder="请输入手机号码">
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix" ng-if="isRequireEmail">
+                        <div class="proname">    <span required-star></span>  邮箱：</div>
+                        <div class="procontent">
+                            <input type="text" id="cetsim-input-of-email-of-signup" class="webinput" ng-model="user.email" style="width: 230px;" placeholder="请输入邮箱">
+                            <span email-auto-complete="" data-inputid="cetsim-input-of-email-of-signup" data-model="user.email"></span>
+                            <span get-code-by-email-button data-email="user.email" data-isneedaccount="false"></span>
+                        </div>
+                    </div>
+
+                    <div class="inputbox clearfix" ng-if="isRequireEmail">
+                        <div class="proname"><em>*</em> 验证码：</div>
+                        <div class="procontent">
+                            <input type="text" id="validator-code" class="webinput" style="width: 230px;" placeholder="请输入验证码" ng-model="user.emailCode" autocomplete="off">
+                            <span verify-code-tip data-inputid="validator-code" data-status="isValidEmailCode"></span>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="inputbox clearfix">
+                        <div class="proname">    <span required-star></span>  密码：</div>
+                        <div class="procontent">
+                            <input type="password" id="cetsim-signup-password" class="webinput" ng-model="user.password" style="width: 230px;" placeholder="请输入密码">
+
+                            <span password-strength data-id="cetsim-signup-password"></span>
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">    <span required-star></span>  确认密码：</div>
+                        <div class="procontent">
+                            <input type="password" id="cetsim-signup-confirm-password" ng-model="user.password2" class="webinput" style="width: 230px;" placeholder="确认密码">
+
+                            <span password-strength data-id="cetsim-signup-confirm-password"></span>
+                        </div>
+                    </div>
+
+                    <input type="hidden"  value="cetset">
+                    <input type="hidden" ng-model="user.password2" value="cetset">
+
+
+
+                    <div class="separated mt35"></div>
+
+                    <div class="btnsbox tc">
+                        <button class="common-btn common-btn-primary"  ng-click="signup()">注册</button>
+                        <button class="common-btn ml20" ui-sref="signin">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--成功带按钮提示-->
+<div id="user-signup-info-panel" class="common-pop" style="width: 100%;display:none;">
+    <div class="pop-body pop-padding">
+        <div class="pop-prompt">
+            <i class="icon icon-other-success"></i>
+            <p class="mt15">注册成功,请登录</p>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <button class="common-btn common-btn-primary" ui-sref="signin({_clearLayer: true})" hide-pop="#user-signup-info-panel">去登录</button>
+    </div>
+</div>

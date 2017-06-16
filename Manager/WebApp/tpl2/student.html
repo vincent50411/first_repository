@@ -1,0 +1,39 @@
+<div class="header-fixed">
+    <div class="header">
+        <div class="commonwidth clearfix">
+            <div class="logo"><i class="icon icon-logo mr5"></i>大学英语四六级口语智能考试系统</div>
+
+            <div class="header-nav">
+                <ul class="clearfix">
+                    <li><a href="javascript:;" ui-sref-active="current" ui-sref=".mytask">我的任务</a></li>
+                </ul>
+            </div>
+
+            <div class="header-right">
+                <div class="userinfo">
+                    <a href="">
+                        <span class="inline-block"><img ng-src="{{curUser.photo|userPhotoPathResolve}}" alt="" class="userface"></span>
+                        <span class="inline-block" ng-bind="curUser.name"></span>
+                        <i class="arrow inline-block"></i>
+                    </a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="javascript:;" ui-sref=".personalInfoEdit">个人信息设置</a></li>
+                            <li><a href="javascript:;" ng-click="signout()">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .commonbox{
+        border:none;
+    }
+</style>
+<div ui-view="" class="container" style="width:1000px;padding-bottom:30px;margin:0 auto;min-height: 600px;background-color: white;border:1px solid #C5D5E4;">
+    <!-- 路由目的地 -->
+
+</div>

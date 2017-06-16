@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.ClassStudentMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.ClassStudent" >
+    <id column="class_code" property="classCode" jdbcType="VARCHAR" />
+    <id column="student_account" property="studentAccount" jdbcType="VARCHAR" />
+    <id column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+
+    <result column="id" property="id" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    class_code, student_account, create_time, id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iflytek.cetsim.model.ClassStudentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sim_class_student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectClassStudents" resultType="com.iflytek.cetsim.model.Account"
+          parameterType="com.iflytek.cetsim.model.ClassStudentExample">
+    select  DISTINCT sim_class_student.student_account as account, sim_user.* from sim_class_student left join sim_user on
+    sim_class_student.student_account=sim_user.account
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+
+  <select id="selectClassStudentsDetailInfo" resultType="com.iflytek.cetsim.dto.StudentDTO" parameterType="java.util.Map">
+    select  DISTINCT sim_class_student.student_account as account, sim_user.*,
+    sim_student.grade,  sim_student.natural_class as className, sim_student.institution, sim_student.major, sim_student.school
+    from sim_class_student
+    left join sim_user on sim_class_student.student_account = sim_user.account
+    left join sim_student on sim_student.student_account = sim_user.account
+    <where>
+      <if test="class_code != null">
+        class_code = #{class_code, jdbcType=VARCHAR}
+      </if>
+
+      <if test="like_value != null">
+        AND (sim_class_student.student_account like #{like_value,jdbcType=VARCHAR} or sim_user.name like #{like_value,jdbcType=VARCHAR} or sim_student.natural_class like #{like_value,jdbcType=VARCHAR})
+      </if>
+
+    </where>
+
+
+    order by sim_class_student.id asc
+
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="com.iflytek.cetsim.model.ClassStudentKey" >
+    delete from sim_class_student
+    where class_code = #{classCode,jdbcType=VARCHAR}
+      and student_account = #{studentAccount,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.iflytek.cetsim.model.ClassStudentExample" >
+    delete from sim_class_student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.ClassStudent" >
+    insert into sim_class_student (class_code, student_account, create_time, id
+      )
+    values (#{classCode,jdbcType=VARCHAR}, #{studentAccount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{id,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.ClassStudent" >
+    insert into sim_class_student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classCode != null" >
+        class_code,
+      </if>
+      <if test="studentAccount != null" >
+        student_account,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+
+      <if test="id != null" >
+        id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classCode != null" >
+        #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAccount != null" >
+        #{studentAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime, jdbcType=TIMESTAMP},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iflytek.cetsim.model.ClassStudentExample" resultType="java.lang.Integer" >
+    select count(*) from sim_class_student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <select id="countByCondition" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select  count(*) from sim_class_student
+    left join sim_user on sim_class_student.student_account = sim_user.account
+    left join sim_student on sim_student.student_account = sim_user.account
+    <where>
+      <if test="class_code != null">
+        class_code = #{class_code, jdbcType=VARCHAR}
+      </if>
+
+      <if test="like_value != null">
+        AND (sim_class_student.student_account like #{like_value,jdbcType=VARCHAR} or sim_user.name like #{like_value,jdbcType=VARCHAR} or sim_student.natural_class like #{like_value,jdbcType=VARCHAR})
+      </if>
+
+    </where>
+  </select>
+
+
+  <select id="queryMyAllTestClassList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.StudentClassDTO">
+      select student.student_account as studentAccount, class.name as className, class.code as classCode,
+      sim_user.account as teacherCode, sim_user.`name` as teacherName, sim_user.telephone as teacherTelephone, sim_user.email as teacherEmail
+      from sim_student student RIGHT JOIN sim_class_student class_student on student.student_account = class_student.student_account
+      LEFT JOIN sim_class class on class.`code` = class_student.class_code
+      LEFT JOIN sim_user on sim_user.account = class.creater
+      where student.student_account = #{studentAccount,jdbcType=VARCHAR}  ORDER BY class_student.create_time desc
+
+  </select>
+
+
+
+
+
+</mapper>

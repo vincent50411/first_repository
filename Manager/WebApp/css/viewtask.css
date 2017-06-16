@@ -1,0 +1,103 @@
+.rectangle-box {
+    left: 0px;
+    top: 0px;
+    width: 87px;
+    height: 50px;
+    box-sizing: border-box;
+    box-shadow: none;
+    background: inherit;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-radius: 0px;
+}
+
+
+.page-header-none-border-bottom {
+    padding-bottom: 9px;
+    margin: 10px 0 0px;
+    border-bottom: 0px solid #eee;
+}
+
+.btn-white {
+    background-color: #FFFFFF !important;
+    border-color: #ccc;
+    border-radius: 0px;
+    width: 84px;
+    height: 34px;
+}
+
+.title-font-20 {
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.title-font-18 {
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.title-font-16 {
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.title-font-14-bold {
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-size: 14px;
+    font-weight: 400;
+}
+.title-font-14 {
+    font-family: '微软雅黑';
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.title-font-13 {
+    font-family: '微软雅黑';
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.title-font-12 {
+    font-family: '微软雅黑';
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.p-margin-0 {
+    margin: 0 0 0px;
+}
+
+.p-text-center-margin-15 {
+    text-align: center;
+    margin: 15px 0 2px;
+}
+
+.p-text-center-margin-5 {
+    text-align: center;
+    margin: 5px 0 0px;
+}
+
+.p-text-center-margin-2 {
+    text-align: center;
+    margin: -2px 0 0px;
+}
+
+.p-text-center-margin-0 {
+    margin: 0 0 0px;
+    padding-right: 30px;
+}
+
+.span-vertical-align-top {
+    vertical-align: top;
+}
+
+.row-padding-top-30 {
+    padding-top: 30px;
+
+}
+

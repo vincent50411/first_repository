@@ -1,0 +1,164 @@
+<div ng-controller="paperItemManage">
+    <div>
+        <div style="height: 20px;"></div>
+        <div class="searchbar clearfix">
+            <div class="fr">
+                <!--[if lte IE 7]>
+                <a href="javascript:;" class="common-btn common-btn-success" ui-sref="admin.importPaperItemForIE">
+                    <i class="icon icon-other-add"></i> 导入试题</a>
+                <![endif]-->
+                <a href="javascript:;" class="common-btn common-btn-success hide-on-ie7orless" view-in="#importPaperPanel" pop-width="480" pop-title="导入试题">
+                    <i class="icon icon-other-add"></i> 导入试题</a>
+            </div>
+
+            <div class="fl">
+                <span class="inline-block">
+                    题型筛选：
+                    <span select-paper-item-type="" data-model="_selectPaperItemType" data-onchange="refreshToPage1"></span>
+                </span>
+                <span class="inline-block ml20">
+                    权限状态：
+                    <select class="eui-select" name="a2" ng-options="item.name for item in paperItemStatusOptions" ng-model="_selectStatus" ng-change="refresh(1)"></select>
+                </span>
+
+                <span class="ml20"></span>
+                <!--[if lte IE 9]>
+                试题名称：
+                <![endif]-->
+                <span class="inline-block combination">
+                    <input class="cominput" type="text" placeholder="请输入试题名称" ng-model="paperItemName" ng-enter="refresh()" style="width: 200px;">
+                    <button class="combuttton" ng-click="refresh()"><i class="icon icon-other-search"></i></button>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="stumanage-box mt25">
+            <div class="common-table common-table-tc">
+                <table ng-hide="maxPage === 0">
+                    <thead>
+                        <tr>
+                            <td>题型</td>
+                            <td>试题名称</td>
+                            <td>创建时间</td>
+                            <td>
+                                <div cetsim-sort-column data-text="'使用次数'"
+                                                    data-column="order.column"
+                                                    data-order="order.code"
+                                                    data-column-name="'SPECIAL_COUNT'"
+                                                    data-refresh-method="refresh(1)"></div>
+                            </td>
+                            <td>
+                                <div cetsim-sort-column data-text="'平均得分'"
+                                                    data-column="order.column"
+                                                    data-order="order.code"
+                                                    data-column-name="'AVG_SCORE'"
+                                                    data-refresh-method="refresh(1)"></div>
+                            </td>
+                            <td>专项训练权限</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-class="{'even': $index % 2===0}"
+                                ng-repeat="item in items">
+                            <td ng-bind="item.paperItemTypeCode|paperItemTypeCodeNameFormatter|EmptyText"></td>
+                            <td ng-bind="item.name|EmptyText"></td>
+                            <td ng-bind="item.createTime|date:'yyyy/MM/dd HH:mm'|EmptyText"></td>
+                            <td ng-bind="item.useCount|EmptyText"></td>
+                            <td ng-bind="item.avgScore|scoreValue0To5Formatter:item.useCount|EmptyText"></td>
+
+                            <!--[if !IE]><!-->
+                                <td>
+                                    <label  ng-click="toggleStatusOfPaperType(item)" class="eui-switch" ng-class="(item.status == 1) ? 'open': 'close'">
+                                        <span></span>
+                                    </label>
+
+                                </td>
+                            <!--<![endif]-->
+
+                            <!--[if lte IE 7]>
+                                <td>
+                                    <a href="javascript:" ng-click="toggleStatusOfPaperType(item)" ng-bind="(item.status == 1) ? '已启用': '已禁用'"></a>
+                                </td>
+                            <![endif]-->
+
+                            <!--[if gte IE 8]>
+                                <td>
+                                    <label  ng-click="toggleStatusOfPaperType(item)" class="eui-switch" ng-class="(item.status == 1) ? 'open': 'close'">
+                                        <span></span>
+                                    </label>
+                                </td>
+                            <![endif]-->
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-show="maxPage === 0" class="nodata-box mt25">
+                    <div class="img"><img src="static/images/no-papers.png" alt="暂无试题！"></div>
+                    <div class="txt">暂无试题！</div>
+                </div>
+            </div>
+
+
+            <div class="common-page clearfix mt20" ng-hide="maxPage <= 1">
+                <div class="pages">
+                    <a href="javascript:;" ng-click="goPage(1)">首页</a>
+                    <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+                    <a ng-class="{'current' : n === curPage}"
+                       ng-repeat="n in [] | midRange:maxPage:curPage" href="javascript:;"
+                       go-page2="goPage(n)">
+                        {{n}}
+                    </a>
+                    <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+                    <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!---------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------->
+
+<div id="importPaperPanel" class="common-pop out-of-view cetsim-file-import-panel" ng-controller="importPaperCtrl">
+    <input type="hidden" class="_uploadUrl" value="/api/question/importQuestion.action">
+    <div class="pop-header">
+        导入试题
+        <a href="javascript:;" class="pop-btn-close" view-out="#importPaperPanel"></a>
+    </div>
+    <div class="pop-body pop-padding" style="padding: 40px 10px;width:440px;">
+        <div class="pop-form">
+            <div class="inputbox clearfix">
+                <!--<div class="proname">选择文件：</div>-->
+                <div class="procontent file-import-procontent">
+                    <!--<input type="file" class="webinput" name="file" file-model="file" accept=".zip">-->
+
+                    <!--<input type="file"-->
+                           <!--class="webinput file-input-component"-->
+                           <!--name="file"-->
+                           <!--ngf-select="_uploadFiles($file)"-->
+                           <!--ngf-max-size="10MB"-->
+                           <!--style="width:80%"/>-->
+
+                    选择文件：
+                    <span ng-show="__file" ng-cloak>
+                        <a  href="javascript:;" class="common-btn common-btn-special">
+                            <span ng-bind="__file.name"></span>
+                            <em class="delete"><i class="icon icon-other-delete" ng-click="_clearFileComponent()"></i></em>
+                        </a>
+                    </span>
+                    <a href="javascript:;"
+                       type="file"
+                       name="file"
+                       ngf-select="_uploadFiles($file)"
+                       class="common-btn">选择</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <button class="common-btn common-btn-primary" ng-click="uploadFiles()">确认</button>
+        <a href="javascript:;" class="common-btn ml10" view-out="#importPaperPanel" ng-click="onClickCancel()">取消</a>
+    </div>
+</div>
+

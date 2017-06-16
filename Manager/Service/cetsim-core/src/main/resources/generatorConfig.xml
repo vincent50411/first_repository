@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <properties resource="mybatis-gen.properties"/>
+    <!--指定特定数据库的jdbc驱动jar包的classpath -->
+    <classPathEntry location="${jdbc.mysql.driverLocation}"/>
+    <context id="default" targetRuntime="MyBatis3">
+
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="com.xxg.mybatis.plugins.MySQLLimitPlugin"/>
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/><!-- 是否取消日期 -->
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+        </commentGenerator>
+
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection driverClass="${jdbc.mysql.driver}" connectionURL="${jdbc.mysql.url}" userId="${jdbc.mysql.user}"
+                        password="${jdbc.mysql.password}">
+        </jdbcConnection>
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 下面是重点! javaModelGenerator配置生成的ORM对象, targetProject填写目标项目的相对路径 -->
+        <javaModelGenerator targetPackage="com.iflytek.cetsim.model" targetProject="src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator  targetPackage="com.iflytek.cetsim.dao" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+            <!--<property name="rootInterface" value="com.iflytek.cetsim.base.dao.BaseDao"/>-->
+        </javaClientGenerator>
+        <!-- 具体每张表的ORM配置, 选择性的配置需要的数据接口 -->
+        <table tableName="sim_user" domainObjectName="Account"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableCountByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true"
+               enableInsert="true" enableDeleteByExample="true" enableDeleteByPrimaryKey="true" >
+        </table>
+
+        <table tableName="sim_student" domainObjectName="StudentPiece"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_teacher" domainObjectName="TeacherPiece"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_class" domainObjectName="CourseClass"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableCountByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="true" >
+        </table>
+
+        <table tableName="sim_class_student" domainObjectName="ClassStudent"
+               enableSelectByPrimaryKey="false" enableSelectByExample="true"
+               enableCountByExample="true" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="true" enableDeleteByPrimaryKey="true" >
+        </table>
+
+        <table tableName="sim_exam_plan" domainObjectName="ExamPlan"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableCountByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_exam_task" domainObjectName="ExamTask"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableCountByExample="true" enableUpdateByPrimaryKey="true" enableUpdateByExample="true"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="true" >
+        </table>
+
+        <table tableName="sim_paper" domainObjectName="Paper"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="true" >
+        </table>
+
+        <table tableName="sim_paper_item" domainObjectName="PaperItem"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableCountByExample="false" enableUpdateByPrimaryKey="true" enableUpdateByExample="true"
+               enableInsert="true" enableDeleteByExample="true" enableDeleteByPrimaryKey="true" >
+        </table>
+
+        <table tableName="sim_paper_type" domainObjectName="PaperType"
+               enableSelectByPrimaryKey="true" enableSelectByExample="true"
+               enableCountByExample="false" enableUpdateByPrimaryKey="true" enableUpdateByExample="true"
+               enableInsert="false" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_paper_item_type" domainObjectName="PaperItemType"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="false" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_paper_buffer" domainObjectName="PaperBuffer"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_paper_item_buffer" domainObjectName="PaperItemBuffer"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_exam_record" domainObjectName="ExamRecord"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_train_record" domainObjectName="TrainRecord"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_special_train_record" domainObjectName="SpecialTrainRecord"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_eval_record" domainObjectName="ScoreDetail"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_train_room" domainObjectName="TrainRoom"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_role" domainObjectName="Role"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="false" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+
+        <table tableName="sim_configuration" domainObjectName="Configuration"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableCountByExample="false" enableUpdateByPrimaryKey="false" enableUpdateByExample="false"
+               enableInsert="true" enableDeleteByExample="false" enableDeleteByPrimaryKey="false" >
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cetsim-webservice:war">
+    <output-path>$PROJECT_DIR$/cetsim-webservice/target</output-path>
+    <root id="archive" name="cetsim.war">
+      <element id="artifact" artifact-name="cetsim-webservice:war exploded" />
+    </root>
+  </artifact>
+</component>

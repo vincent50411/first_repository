@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.ExamRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.ExamRecord" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="student_no" property="studentNo" jdbcType="VARCHAR" />
+    <result column="exam_task_code" property="examTaskCode" jdbcType="VARCHAR" />
+    <result column="client_mac" property="clientMac" jdbcType="VARCHAR" />
+    <result column="client_ip" property="clientIp" jdbcType="VARCHAR" />
+    <result column="exam_state" property="examState" jdbcType="SMALLINT" />
+    <result column="flow_state" property="flowState" jdbcType="SMALLINT" />
+    <result column="group_state" property="groupState" jdbcType="SMALLINT" />
+    <result column="paper_state" property="paperState" jdbcType="SMALLINT" />
+    <result column="eval_state" property="evalState" jdbcType="SMALLINT" />
+    <result column="data_state" property="dataState" jdbcType="SMALLINT" />
+    <result column="data_path" property="dataPath" jdbcType="VARCHAR" />
+    <result column="error_code" property="errorCode" jdbcType="SMALLINT" />
+    <result column="exam_role" property="examRole" jdbcType="SMALLINT" />
+    <result column="partner_exam_record_code" property="partnerExamRecordCode" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="REAL" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+  <resultMap id="ExamRecordDTOMap" type="com.iflytek.cetsim.dto.ExamRecordDTO_new" >
+    <id column="record_code" property="examRecordCode" jdbcType="VARCHAR" />
+    <result column="student_no" property="studentAccount" jdbcType="VARCHAR" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+    <result column="exam_task_code" property="examTaskCode" jdbcType="VARCHAR" />
+    <result column="partner_exam_record_code" property="partnerExamRecordCode" jdbcType="VARCHAR" />
+    <result column="partner_record" property="partnerRecord" jdbcType="VARCHAR" />
+    <result column="client_mac" property="clientMac" jdbcType="VARCHAR" />
+    <result column="client_ip" property="clientIp" jdbcType="VARCHAR" />
+    <result column="exam_state" property="examState" jdbcType="SMALLINT" />
+    <result column="flow_state" property="flowState" jdbcType="SMALLINT" />
+    <result column="eval_state" property="evalState" jdbcType="SMALLINT" />
+
+    <result column="group_state" property="groupState" jdbcType="SMALLINT" />
+    <result column="paper_state" property="paperState" jdbcType="SMALLINT" />
+    <result column="data_state" property="dataState" jdbcType="SMALLINT" />
+
+    <result column="data_path" property="dataPath" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="paper_name" property="paperName" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="exam_role" property="examRole" jdbcType="VARCHAR" />
+    <result column="paper_type_code" property="paperTypeCode" jdbcType="VARCHAR" />
+    <result column="exam_paper_code" property="examPaperCode" jdbcType="VARCHAR" />
+    <result column="exam_plan_code" property="examPlanCode" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+  <sql id="Base_Column_List" >
+    code, id, student_no, exam_task_code, client_mac, client_ip, exam_state, flow_state, group_state,
+    paper_state, eval_state, data_state, data_path, error_code, exam_role, partner_exam_record_code, 
+    token, score, start_time, end_time, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_exam_record
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.ExamRecord" >
+    insert into sim_exam_record (code, id, student_no, exam_task_code,
+      client_mac, client_ip, exam_state, 
+      flow_state, group_state, paper_state, 
+      eval_state, data_state, data_path, 
+      error_code, exam_role, partner_exam_record_code, 
+      token, score, start_time, end_time,reserved1,
+      reserved2)
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{studentNo,jdbcType=VARCHAR}, #{examTaskCode,jdbcType=VARCHAR},
+      #{clientMac,jdbcType=VARCHAR}, #{clientIp,jdbcType=VARCHAR}, #{examState,jdbcType=SMALLINT}, 
+      #{flowState,jdbcType=SMALLINT}, #{groupState,jdbcType=SMALLINT}, #{paperState,jdbcType=SMALLINT}, 
+      #{evalState,jdbcType=SMALLINT}, #{dataState,jdbcType=SMALLINT}, #{dataPath,jdbcType=VARCHAR}, 
+      #{errorCode,jdbcType=SMALLINT}, #{examRole,jdbcType=SMALLINT}, #{partnerExamRecordCode,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{score,jdbcType=REAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{reserved1,jdbcType=VARCHAR},
+      #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.ExamRecord" >
+    insert into sim_exam_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="studentNo != null" >
+        student_no,
+      </if>
+
+      <if test="examTaskCode != null" >
+        exam_task_code,
+      </if>
+      <if test="clientMac != null" >
+        client_mac,
+      </if>
+      <if test="clientIp != null" >
+        client_ip,
+      </if>
+      <if test="examState != null" >
+        exam_state,
+      </if>
+      <if test="flowState != null" >
+        flow_state,
+      </if>
+      <if test="groupState != null" >
+        group_state,
+      </if>
+      <if test="paperState != null" >
+        paper_state,
+      </if>
+      <if test="evalState != null" >
+        eval_state,
+      </if>
+      <if test="dataState != null" >
+        data_state,
+      </if>
+      <if test="dataPath != null" >
+        data_path,
+      </if>
+      <if test="errorCode != null" >
+        error_code,
+      </if>
+      <if test="examRole != null" >
+        exam_role,
+      </if>
+      <if test="partnerExamRecordCode != null" >
+        partner_exam_record_code,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="studentNo != null" >
+        #{studentNo,jdbcType=VARCHAR},
+      </if>
+
+      <if test="examTaskCode != null" >
+        #{examTaskCode,jdbcType=VARCHAR},
+      </if>
+
+      <if test="clientMac != null" >
+        #{clientMac,jdbcType=VARCHAR},
+      </if>
+      <if test="clientIp != null" >
+        #{clientIp,jdbcType=VARCHAR},
+      </if>
+      <if test="examState != null" >
+        #{examState,jdbcType=SMALLINT},
+      </if>
+      <if test="flowState != null" >
+        #{flowState,jdbcType=SMALLINT},
+      </if>
+      <if test="groupState != null" >
+        #{groupState,jdbcType=SMALLINT},
+      </if>
+      <if test="paperState != null" >
+        #{paperState,jdbcType=SMALLINT},
+      </if>
+      <if test="evalState != null" >
+        #{evalState,jdbcType=SMALLINT},
+      </if>
+      <if test="dataState != null" >
+        #{dataState,jdbcType=SMALLINT},
+      </if>
+      <if test="dataPath != null" >
+        #{dataPath,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null" >
+        #{errorCode,jdbcType=SMALLINT},
+      </if>
+      <if test="examRole != null" >
+        #{examRole,jdbcType=SMALLINT},
+      </if>
+      <if test="partnerExamRecordCode != null" >
+        #{partnerExamRecordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=REAL},
+      </if>
+
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+
+
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <select id="getAnswerPath" parameterType="java.lang.String" resultType="java.lang.String">
+      select data_path from sim_exam_record where data_state = 1 and code = #{code,jdbcType=VARCHAR} order by start_time desc limit 1
+  </select>
+
+  <select id="getPartnerAnswerPath" parameterType="java.lang.String" resultType="java.lang.String">
+      select data_path from sim_exam_record where code =
+      (select partner_exam_record_code from sim_exam_record where data_state = 1 and code = #{code,jdbcType=VARCHAR})
+      and exam_task_code = (select exam_task_code from sim_exam_record where data_state = 1 and code = #{code,jdbcType=VARCHAR} )
+      and data_state = 1
+  </select>
+
+  <select id="getPartnerAccount" parameterType="java.lang.String" resultType="java.lang.String">
+      select student_no from sim_exam_record where code = (
+      select partner_exam_record_code from sim_exam_record where data_state = 1 and code =  #{code,jdbcType=VARCHAR})
+  </select>
+
+
+  <select id="selectStudentTaskList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.StudentTaskDTO_new">
+    select class_student.student_account as studentAccount,  class.`name` as taskClassName, class_student.class_code as taskClassCode, plan.publisher, plan.id, plan.`code` as planCode, plan.`name` as planName, plan.start_time as planStartTime,
+    plan.end_time as planEndTime, plan.requirement, task.`code` as taskCode, task.`name` as taskName,
+    paper.`name` as paperName, paper.paper_type_code as paperType, paper.status as paperState,
+    paper.allow_plan_useage as paperAllowPlanUseage, paper.allow_free_useage as paperAllowFreeUseage,
+    record.recordCode as recordCode, record.score as maxScore,
+    case record.exam_state when 0 then 0 when 1 then 1 when 2 then 0 else 0 end as examCount,
+    record.exam_state as examState from sim_exam_plan as plan
+    LEFT JOIN sim_exam_task as task on plan.`code` = task.plan_code
+    left JOIN sim_paper paper on paper.code = task.paper_code
+    left join sim_class_student class_student on task.class_code = class_student.class_code
+    left join sim_class class on class.`code` = class_student.class_code
+    LEFT JOIN (
+    select code as recordCode, exam_task_code, exam_state, score
+    from sim_exam_record where exam_state = 1 and student_no=#{studentAccount, jdbcType=VARCHAR}) record on record.exam_task_code = task.`code`
+    <where>
+        <if test="studentAccount != null">
+          class_student.student_account = #{studentAccount, jdbcType=VARCHAR}
+        </if>
+        <if test="unStart != null">
+            and plan.start_time > #{unStart.currentTime, jdbcType=TIMESTAMP}
+        </if>
+
+        <if test="examing != null">
+            and plan.start_time &lt; #{examing.currentTime, jdbcType=TIMESTAMP}
+            and plan.end_time > #{examing.currentTime, jdbcType=TIMESTAMP}
+          and (record.exam_state is null  or record.exam_state &lt;> 1)
+        </if>
+
+        <if test="examed != null">
+          and record.exam_state = 1
+        </if>
+
+        <if test="examOver != null">
+          and plan.end_time &lt;= #{examOver.currentTime, jdbcType=TIMESTAMP}
+          and (record.exam_state is null  or record.exam_state &lt;> 1)
+        </if>
+
+        GROUP BY task.code
+
+        <if test="SCORE_ASC != null">
+          ORDER  BY maxScore asc
+        </if>
+        <if test="SCORE_DESC != null">
+          ORDER  BY maxScore desc
+        </if>
+
+
+        <if test="order_condition_default != null">
+          ORDER  BY plan.id desc
+        </if>
+
+        <if test="limit != null" >
+          <if test="offset != null" >
+            limit ${offset}, ${limit}
+          </if>
+          <if test="offset == null" >
+            limit ${limit}
+          </if>
+        </if>
+
+      </where>
+  </select>
+
+  <select id="selectStudentTaskListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*)
+    from sim_exam_plan as plan LEFT JOIN sim_exam_task as task on plan.`code` = task.plan_code
+    left JOIN sim_paper paper on paper.code = task.paper_code
+    left join sim_class_student class_student on task.class_code = class_student.class_code
+    LEFT JOIN
+    (select code as recordCode, exam_task_code, exam_state, score from sim_exam_record where exam_state = 1 and student_no=#{studentAccount, jdbcType=VARCHAR})
+    record on record.exam_task_code = task.`code`
+    <where>
+      <if test="studentAccount != null">
+        class_student.student_account = #{studentAccount, jdbcType=VARCHAR}
+      </if>
+      <if test="examing != null">
+        and plan.end_time > #{examing.currentTime, jdbcType=TIMESTAMP}
+        and (record.exam_state is null  or record.exam_state &lt;> 1)
+      </if>
+
+      <if test="examed != null">
+        and record.exam_state = 1
+      </if>
+
+      <if test="examOver != null">
+        and plan.end_time &lt;= #{examOver.currentTime, jdbcType=TIMESTAMP}
+        and (record.exam_state is null  or record.exam_state &lt;> 1)
+      </if>
+    </where>
+  </select>
+
+  <select id="selectRank" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.RankDTO">
+    SELECT rank,total from(
+    select yy.record_code, yy.exam_task_code, yy.score , @rownum :=@rownum + 1 rank, zz.total from
+    (select record_code, exam_task_code, score from
+    (select code as record_code, exam_task_code, score from sim_exam_record where exam_task_code = #{task_code,jdbcType=VARCHAR} and exam_state = 1
+        ORDER BY score desc) xx, (select @rownum:=0) r
+    ) yy
+    left join (
+      select task.`code` as exam_task_code, count(*) as total from sim_exam_task task LEFT JOIN sim_class_student class on task.class_code = class.class_code
+      where task.`code` = #{task_code,jdbcType=VARCHAR}
+    ) zz on yy.exam_task_code = zz.exam_task_code
+    ORDER BY score desc) gg where record_code = #{record_code,jdbcType=VARCHAR}
+
+  </select>
+    
+  <select id="examineeLogin" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.ExamLoginDTO">
+      select u.account as accountId,er.code as examineeId, u.name studentName, u.gender,
+          client_ip as ip,client_mac as mac, u.reserved1 as photo, er.exam_role as examRole,
+          er.exam_task_code as stuTaskId, er.code as recordId, er.token, t.paper_code as paperCode
+      from sim_exam_record er join sim_user u on er.student_no=u.account
+          join sim_exam_task t on er.exam_task_code = t.code
+      where er.code = #{recordId}
+      order by er.id DESC
+  </select>
+
+  <select id="getCurrentRecord" parameterType="java.lang.String" resultType="com.iflytek.cetsim.dto.RecordDTO">
+      select code as recordId, student_no as studentNo, exam_state as examState, flow_state as flowState, client_ip as ip,
+          paper_state as paperState, eval_state as evalState, group_state as groupState, error_code as errorCode, exam_task_code as taskId,
+          exam_role as examRole, partner_exam_record_code as partnerRecordId, score, start_time as startTime, end_time as endTime
+      from sim_exam_record where code = #{recordId}
+  </select>
+
+  <update id="updateIpMac" parameterType="java.util.Map">
+      update sim_exam_record set client_ip = #{ip}, client_mac = #{mac}, start_time = #{startTime}
+      where code = #{recordId}
+  </update>
+
+  <select id="selectPartner" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.ExamLoginDTO">
+      select u.account as accountId,er.code as examineeId, u.name studentName, u.gender,
+      client_ip as ip,client_mac as mac, u.reserved1 as photo, er.exam_role as examRole,
+      er.exam_task_code as stuTaskId, er.code as recordId, er.token
+      from sim_exam_record er join sim_user u on er.student_no=u.account
+      where flow_state = 1 and (group_state = 1 or group_state = 2) and er.exam_state = 0
+      and er.exam_task_code = #{taskCode}
+      and er.student_no != #{studentNo}
+      and er.client_ip != #{currentIp}
+      and er.code != #{exceptSelf}
+      <if test="recordId != null">
+          and code = #{recordId}
+      </if>
+  </select>
+
+  <update id="updateGroupInfo" parameterType="java.util.Map">
+      update sim_exam_record set exam_role = #{examRole}, partner_exam_record_code = #{partnerRecordId}
+      where code = #{recordId}
+  </update>
+
+  <update id="updateFlowState" parameterType="java.util.Map">
+    update sim_exam_record set flow_state = #{state} where code = #{code}
+  </update>
+  <update id="updateGroupState" parameterType="java.util.Map">
+    update sim_exam_record set group_state = #{state} where code = #{code}
+  </update>
+  <update id="updatePaperState" parameterType="java.util.Map">
+    update sim_exam_record set paper_state = #{state} where code = #{code}
+  </update>
+  <update id="updateDataState" parameterType="java.util.Map">
+    update sim_exam_record set data_state = #{state}, start_time = #{startTime} where code = #{code}
+  </update>
+  <update id="updateExamState" parameterType="java.util.Map">
+    update sim_exam_record set exam_state = #{examState} where code = #{code}
+  </update>
+  <update id="updateErrorCode" parameterType="java.util.Map">
+    update sim_exam_record set error_code = #{error}, exam_state = 2 where code = #{code}
+  </update>
+  <select id="getPartnerGroupState" parameterType="java.util.Map" resultType="java.lang.Short">
+    select group_state from sim_exam_record where code = #{partnerRecordId}
+  </select>
+  <select id="getPartnerFlowState" parameterType="java.util.Map" resultType="java.lang.Short">
+    select flow_state from sim_exam_record where code = #{partnerRecordId}
+  </select>
+  <update id="updateDataPath" parameterType="java.util.Map">
+    update sim_exam_record set data_path = #{dataPath} where code = #{code}
+  </update>
+  <select id="getEngineCode" parameterType="java.util.Map" resultType="java.lang.String">
+    select engine_code from sim_eval_record where paper_item_type_code = #{itemCode}
+  </select>
+
+  <update id="cancelGroup" parameterType="java.lang.String">
+    update sim_exam_record set partner_exam_record_code = NULL, exam_role = NULL, group_state = 4 where code = #{recordId}
+  </update>
+
+  <update id="cleanPartner" parameterType="java.lang.String">
+    update sim_exam_record set partner_exam_record_code = NULL, exam_role = NULL where code = #{recordId}
+  </update>
+
+  <select id="queryStudentExamResult" resultType="com.iflytek.cetsim.dto.KVStringDTO" parameterType="java.lang.String">
+    select 'TASK_NAME' k, paper.`name` v from sim_exam_record record LEFT JOIN sim_exam_task task on record.exam_task_code = task.`code`
+    LEFT JOIN sim_paper paper on paper.`code` = task.paper_code where record.code = #{examRecordCode,jdbcType=VARCHAR}
+     union all
+    select 'PLAN_NAME' k, plan.name v from sim_exam_record record left join sim_exam_task task on record.exam_task_code = task.`code`
+    LEFT JOIN sim_exam_plan plan on plan.code = task.plan_code where record.code =  #{examRecordCode,jdbcType=VARCHAR}
+     union all
+    select 'EXAMTIME' k, start_time v from sim_exam_record record where code =  #{examRecordCode,jdbcType=VARCHAR}
+     union all
+    select 'TOTAL' k, count(*) as v from sim_exam_task task LEFT JOIN sim_class_student class on task.class_code = class.class_code
+    where task.`code` = (select exam_task_code from sim_exam_record  where code =  #{examRecordCode,jdbcType=VARCHAR})
+     union all
+    select 'SUBMIT' k, count(exam_task_code) v from sim_exam_record record where record.exam_state = 1 and record.exam_task_code = (select exam_task_code from sim_exam_record  where code =  #{examRecordCode,jdbcType=VARCHAR})
+     union all
+    select 'MAXSCORE' k, record.score v from sim_exam_record record where record.code = #{examRecordCode,jdbcType=VARCHAR}
+     union all
+    select 'RANK' k, rank v from (
+        select record_code, exam_task_code, rank, score from(
+            select record_code, exam_task_code, score, @rownum:=@rownum + 1 rank from(
+                select record_code, exam_task_code, score from (
+                    select code as record_code, exam_task_code, score from sim_exam_record
+                    where exam_state = 1 and exam_task_code = (select exam_task_code from sim_exam_record where code =  #{examRecordCode,jdbcType=VARCHAR})
+                ) xx, (select @rownum:=0) r
+            ) yy order by score desc
+        ) zz where record_code =  #{examRecordCode,jdbcType=VARCHAR}
+    ) tt
+  </select>
+  
+  
+  <select id="selectAllStudentRecords" parameterType="java.util.Map" resultMap="ExamRecordDTOMap">
+      SELECT record.start_time, record.score, record.`code` as record_code, paper.`name` as paper_name
+      from sim_exam_record record
+      LEFT JOIN sim_exam_task task on record.exam_task_code = task.`code`
+      LEFT JOIN sim_paper paper on paper.`code` = task.paper_code
+      where exam_state = 1 and record.student_no = #{studentAccount,jdbcType=VARCHAR}
+
+      <if test="limit != null" >
+        <if test="offset != null" >
+          limit ${offset}, ${limit}
+        </if>
+        <if test="offset == null" >
+          limit ${limit}
+        </if>
+      </if>
+  </select>
+
+  <select id="selectAllStudentRecordsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    SELECT count(*)
+    from sim_exam_record record
+    LEFT JOIN sim_exam_task task on record.exam_task_code = task.`code`
+    LEFT JOIN sim_paper paper on paper.`code` = task.paper_code
+    where exam_state = 1 and record.student_no = #{studentAccount,jdbcType=VARCHAR}
+
+  </select>
+
+
+  <select id="selectStudentExamTaskRecordRanks" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.RankDTO">
+    SELECT student_no as account, rank, total, score as max_score, sim_user.name from(
+    select yy.student_no, yy.record_code, yy.exam_task_code, yy.score , @rownum :=@rownum + 1 rank, zz.total from
+    (select student_no, record_code, exam_task_code, score from
+    (select student_no, code as record_code, exam_task_code, score from sim_exam_record where exam_task_code = #{task_code,jdbcType=VARCHAR} ORDER BY score desc) xx, (select @rownum:=0) r
+    ) yy
+    left join (select exam_task_code, count(*) total from sim_exam_record group by exam_task_code) zz on yy.exam_task_code = zz.exam_task_code
+    ORDER BY score desc) gg
+LEFT JOIN sim_user on sim_user.account = student_no
+  </select>
+
+  <select id="selectPagedStudentRecords" resultType="com.iflytek.cetsim.dto.ExamRecordDTO_new" parameterType="java.util.Map">
+      select sim_user.account, sim_user.`name`, sim_user.address, sim_user.create_time as createTime, sim_user.gender, sim_user.last_login as lastLogin,
+      record.client_ip as clientIp, record.client_mac as clientMac, record.exam_state as examState,
+      record.data_path as dataPath, record.score, record.start_time as startTime, record.end_time as endTime
+      from sim_exam_record record
+      LEFT JOIN sim_user on sim_user.account = record.student_no
+      <where>
+        <if test="exam_task_code != null">
+          record.exam_task_code = #{exam_task_code, jdbcType=VARCHAR}
+        </if>
+        <if test="student_account != null">
+          record.student_no = #{student_account, jdbcType=VARCHAR}
+        </if>
+      </where>
+  </select>
+
+
+
+
+  <select id="listExamTaskInfo" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.KVStringDTO">
+      select 'PLANNAME' k, `name` as v from sim_exam_plan where `code` = #{planCode,jdbcType=VARCHAR}
+      union all
+      select 'TASKNAME' k, `name` as v from sim_exam_plan where `code` = #{planCode,jdbcType=VARCHAR}
+      union all
+      select 'TOTAL' k, count(class_student.student_account) v
+      from sim_exam_plan plan
+      LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_class_student class_student  on task.class_code = class_student.class_code
+      where plan.`code` = #{planCode, jdbcType=VARCHAR}
+      union all
+      select 'SUCCESS' k, count(*) v
+      from sim_exam_plan plan LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_exam_record record on task.`code` = record.exam_task_code
+      where exam_state = 1 and plan.`code` = #{planCode, jdbcType=VARCHAR}
+      union all
+      select 'FAIL' k, count(*) v
+      from sim_exam_plan plan LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_exam_record record on task.`code` = record.exam_task_code
+      where exam_state = 2 and plan.`code` = #{planCode, jdbcType=VARCHAR}
+      union all
+      select 'MAXSCORE' k, max(record.score) v
+      from sim_exam_plan plan LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_exam_record record on task.`code` = record.exam_task_code
+      where exam_state = 1 and plan.`code` = #{planCode, jdbcType=VARCHAR}
+      union all
+        SELECT 'AVGSCORE' k, A.total_score/count(cs.student_account) as v
+        from sim_exam_plan plan
+        LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+        LEFT JOIN sim_class_student cs on task.class_code = cs.class_code
+        LEFT JOIN (
+          select b.plan_code, a.exam_task_code, sum(a.score) total_score
+          from sim_exam_record a LEFT JOIN sim_exam_task b on a.exam_task_code = b.`code`
+          WHERE a.exam_state= 1 group by b.plan_code
+        ) A on a.plan_code = task.plan_code
+        where a.plan_code  = #{planCode, jdbcType=VARCHAR}
+      union all
+      select 'MINSCORE' k, min(record.score) v
+      from sim_exam_plan plan LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_exam_record record on task.`code` = record.exam_task_code
+      where exam_state = 1 and plan.`code` = #{planCode, jdbcType=VARCHAR}
+      union all
+      select 'UNLOGIN' k, count(*) v
+      from sim_exam_plan plan LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_exam_record record on task.`code` = record.exam_task_code
+      where flow_state = 0 and plan.`code` = #{planCode, jdbcType=VARCHAR}
+      UNION ALL
+      SELECT 'PAPERNAME' k, paper.`name` as v
+      FROM sim_exam_task task RIGHT JOIN sim_paper paper on paper.`code` = task.paper_code
+      WHERE task.`code` = #{taskCode, jdbcType=VARCHAR}
+  </select>
+
+  <select id="verifyToken" parameterType="java.util.Map" resultType="java.lang.String">
+      select * from sim_exam_record where token = #{token} and code = #{recordId}
+  </select>
+
+  <update id="updateToken" parameterType="java.util.Map">
+      update sim_exam_record set token = #{token} where student_no = #{account}
+  </update>
+
+  <select id="checkHasNewRecord" parameterType="java.util.Map" resultType="java.lang.Integer">
+      select count(*) from sim_exam_record
+      where id > (select id from sim_exam_record where code= #{partnerRecordId}) and
+          student_no = (select student_no from sim_exam_record where code= #{partnerRecordId})
+  </select>
+
+  <select id="queryExamStudyResultByRecordCode" parameterType="java.util.Map" resultType="java.lang.String">
+    SELECT eval.detail
+    from sim_exam_record record
+    LEFT JOIN sim_eval_record eval on record.`code` = eval.record_code
+    where record.exam_state = 1
+    <if test="student_account != null">
+      and record.student_no = #{student_account, jdbcType=VARCHAR}
+    </if>
+
+    <if test="paper_item_type_code != null">
+      and eval.paper_item_type_code = #{paper_item_type_code, jdbcType=VARCHAR}
+    </if>
+
+    <if test="record_code != null">
+      and eval.record_code = #{record_code, jdbcType=VARCHAR}
+    </if>
+    LIMIT 0, 1
+
+  </select>
+
+
+    <select id="listEvalListByRecordCode" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.EvalRecordResultDTO">
+        select record_code as recordCode, paper_item_type_code as paperItemTypeCode,
+        engine_code as engineCode,eval_status as evalStatus, detail, socre
+         from sim_eval_record where record_code = #{recordCode, jdbcType=VARCHAR}
+    </select>
+
+
+
+</mapper>

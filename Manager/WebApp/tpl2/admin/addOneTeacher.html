@@ -1,0 +1,82 @@
+<div id="addOneTeacherCtrlPanel" class="common-pop" style="width: 480px;display: none;" ng-controller="addOneTeacherCtrl">
+    <form>
+        <div class="pop-body pop-padding">
+            <div class="pop-form">
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        账号：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 160px;" placeholder="" ng-model="teacherModel.account">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span class="input-field-require-star" title="必填项">*</span>
+                        姓名：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 160px;" placeholder="" ng-model="teacherModel.name" >
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">状态：</div>
+                    <div class="procontent">
+                        <select ng-model="teacherModel.status" class="eui-select" name="eui-select-add-teacher-status" style="width:142px;">
+                            <option value="0">禁用</option>
+                            <option value="1">启用</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inputbox clearfix">
+                    <div class="proname">性别：</div>
+                    <div class="procontent">
+                        <select ng-model="teacherModel.gender" class="eui-select" name="eui-select-add-teacher-sex" style="width:142px;">
+                            <option value="0">男</option>
+                            <option value="1">女</option>
+                        </select>
+                    </div>
+                </div>
+                <!--<div class="inputbox clearfix">
+                    <div class="proname">学校：</div>
+                    <div class="procontent">
+                        <input type="text"  ng-model="teacherModel.school" class="webinput" style="width: 160px;">
+                        <span class="color-gray">(可不填)</span>
+                    </div>
+                </div>-->
+
+                <!--<div class="inputbox clearfix">-->
+                    <!--<div class="proname">地址：</div>-->
+                    <!--<div class="procontent">-->
+                        <!--<input type="text" class="webinput" style="width: 160px;" placeholder="" ng-model="teacherModel.address">-->
+                        <!--<span class="color-gray">(可不填)</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span required-star></span>
+                        邮箱：</div>
+                    <div class="procontent">
+                        <input type="text" id="cetsim-addoneteacher-email" class="webinput" style="width: 160px;" placeholder="" ng-model="teacherModel.email">
+
+                        <span email-auto-complete data-inputid="cetsim-addoneteacher-email" data-model="teacherModel.email"></span>
+                    </div>
+                </div>
+
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        <span required-star></span>
+                        联系方式：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 160px;" placeholder="" ng-model="teacherModel.telephone">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="pop-footer">
+            <button class="common-btn common-btn-primary" ng-click="submitTeacher()">确认</button>
+            <a href="javascript:;" class="common-btn ml10" hide-pop="#addOneTeacherCtrlPanel" ng-click="onClickCancenl()">取消</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,171 @@
+<div ng-controller="zxxlCkbgCtrl">
+
+    <div style="height: 20px;"></div>
+    <div class="breadcrumbs">
+        <a ui-sref="student.zxxl.record" href="javascript:;" class="hover">专项训练</a> > 查看报告
+    </div>
+
+
+    <div class="report-details clearfix mt10">
+        <div class="details-hd clearfix">
+
+            <div class="grade gold"><!--AB-->
+                <i class="icon icon-other-gold"></i>
+                <span ng-bind="data.score|scoreValue0To5Formatter|EmptyText"></span>
+                <!--<p>等级</p>-->
+            </div>
+            <div class="grade silver" style="display: none"><!--CD-->
+                <i class="icon icon-other-silver"></i>
+                <span>25</span>
+                <!--<p>等级</p>-->
+            </div>
+            <div class="title">专项训练 - <span ng-bind="(paperItemTypeCode || data.paperItemTypeName)|paperItemTypeCodeNameFormatter|EmptyText"></span></div>
+        </div>
+
+        <div class="subject-hd">
+            <h2 ng-bind="data.paperItemName|EmptyText"></h2>
+            <div class="info">提交时间： <span ng-bind='data.startTime|date:"yyyy/MM/dd HH:mm"|EmptyText'></span></div>
+
+            <div class="evaluate-box mt25">
+						<span class="inline-block">
+							<i class="icon icon-other-fluency"></i>
+							<span class="text">流畅度：</span>
+
+                            <span icon-star data-score="{{data2.fluencyScore}}"></span>
+
+						</span>
+                <span class="separate">|</span>
+                <span class="inline-block">
+							<i class="icon icon-other-integrity"></i>
+							<span class="text">完整度：</span>
+
+                            <span icon-star data-score="{{data2.integrityScore}}"></span>
+
+						</span>
+                <span class="separate">|</span>
+                <span class="inline-block">
+							<i class="icon icon-other-accuracy"></i>
+							<span class="text">发音准确度：</span>
+
+                            <span icon-star data-score="{{data2.accuracyScore}}"></span>
+						</span>
+                <!--<span class="separate">|</span>-->
+                <!--<span class="inline-block">-->
+							<!--<i class="icon icon-other-speed"></i>-->
+							<!--<span class="text">语速：</span>-->
+							<!--<span class="content"><strong>120</strong> 词/分钟</span>-->
+						<!--</span>-->
+                <!--<span class="separate">|</span>-->
+                <!--<span class="inline-block">-->
+							<!--<i class="icon icon-other-imstop"></i>-->
+							<!--<span class="text">非正常停顿：</span>-->
+							<!--<span class="content"><strong>3</strong> 词/分钟</span>-->
+						<!--</span>-->
+            </div>
+
+        </div>
+
+
+        <div class="subject-list">
+
+            <div class="subject-item">
+                <div class="item-hd clearfix">
+                    <div class="fr">
+                        <a href="javascript:;" class="common-btn common-btn-play" play-sound="data2.standardMp3Path"><i class="icon icon-other-sound"></i> 全文示范</a>
+                        <a href="javascript:;" class="common-btn common-btn-play ml5" play-sound="data.answerPath"><i class="icon icon-other-sound"></i> 我的录音</a>
+                    </div>
+                    <span class="text inline-block">答题情况</span>
+                    <span class="tagbox inline-block ml20">
+								<span class="inline-block ml20"><i class="icon icon-tag-bad"></i>单词发音不标准</span>
+								<span class="inline-block ml20"><i class="icon icon-tag-error"></i>整句读的不好</span>
+							</span>
+                </div>
+
+
+                <div class="description">
+                    <ul class="description-list">
+                        <!--读的不好的单词-->
+                        <!--<span class="color-bad">magazines</span>-->
+
+                        <!--读的不好的句子-->
+                        <!--<li class="color-error">...</li>-->
+
+
+                        <li ng-repeat="item in data2.studyReportSentenceInfoDTOs" class="cetsim-word-break-all">
+                            <span combine-to-line="{{item.studyReportWordInfoDTOs}}" data-line="item.sentenceContent" data-score="item.totalScore"></span>
+                            <a href="javascript:;" class="playbtn" play-sound="item.sentenceMp3Path"><i class="icon icon-other-play"></i></a>
+                            <span class="line"></span>
+                        </li>
+
+                        <!--单词读法框-->
+                        <!--<div class="pronunciation-tips jttop" style="display: block; left: 180px; top:80px;">-->
+                            <!--<i class="arrowr"><i></i></i>-->
+                            <!--<h2>magazines </h2>-->
+                            <!--<p>英 ['mæɡəzi:nz] <a href="javascript:;"><i class="icon icon-other-sound"></i></a></p>-->
+                            <!--<p>美 ['mæɡəzinz] <a href="javascript:;"><i class="icon icon-other-sound"></i></a></p>-->
+                        <!--</div>-->
+                        <!--/单词读法框-->
+                    </ul>
+                </div>
+
+            </div>
+
+            <p style="text-align: center;margin: 20px 0 10px">
+                <a href="javascript:;" class="common-btn common-btn-success" go-back="">返回</a>
+            </p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- 答题包mp3录音文件播放器 -->
+<div id="answerMP3PlayerHtml" style="display:none;">
+    <div id="jp_container_mp3_r" style="overflow-x: hidden; border-radius: 4px;" class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-type-playlist" style="margin-top: -5px;">
+            <div id="jquery_jplayer_mp3_r" class="jp-jplayer"></div>
+            <div class="jp-gui jp-interface">
+                <div class="jp-controls">
+                    <button class="jp-play" role="button" tabindex="0">play</button>
+                </div>
+
+                <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                        <div class="jp-play-bar">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div style="float: left; margin-top: -18px; margin-left: 185px;">
+                    <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                    <div style="float: left; width: 12px; margin-top: -4px;">
+                        <label style="margin-left: 5px;">/</label>
+                    </div>
+                    <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                </div>
+
+                <div class="jp-volume-controls">
+                    <button class="jp-mute" role="button" tabindex="0">mute</button>
+                    <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                    <div class="jp-volume-bar">
+                        <div class="jp-volume-bar-value">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="jp-playlist" style="display: none;">
+                <ul>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

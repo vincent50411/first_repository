@@ -1,0 +1,134 @@
+<div class="commonwidth" ng-controller="teacherManageCtrl">
+    <div class="commonbox">
+
+        <div class="searchbar clearfix">
+            <div class="fr">
+                <a href="javascript:;" class="common-btn common-btn-success" show-pop="#addOneTeacherCtrlPanel" pop-title="添加教师" pop-width="480"><i class="icon icon-other-add"></i> 添加</a>
+
+                <!--[if lte IE 7]>
+                <a href="javascript:;" ui-sref="admin.importTeachers" class="common-btn common-btn-success ml5"><i class="icon icon-other-add"></i> 批量添加</a>
+                <![endif]-->
+                <a href="javascript:;" class="common-btn common-btn-success ml5 hide-on-ie7orless" view-in="#addManyTeachersPanel" pop-width="480" pop-title="导入教师"><i class="icon icon-other-add"></i> 批量添加</a>
+            </div>
+
+            <!--<div class="fr">-->
+                <!--<a href="javascript:;" class="common-btn" >添加教师</a>-->
+                <!--<a href="javascript:;" class="common-btn ml5">批量导入</a>-->
+                <!--<a  target="_blank" class="hover text-decoration ml10" >下载模版</a>-->
+            <!--</div>-->
+            <div class="fl">
+                <span class="inline-block h3-title" style="margin-right: 50px;">
+                    教师管理
+                </span>
+                <span class="inline-block">教师状态：
+                    <select  class="eui-select" ng-model="queryConditions.status" ng-change="refreshTable(1)">
+                        <option  value="-1">全部</option>
+                        <option  value="1">启用</option>
+                        <option  value="0">禁用</option>
+                    </select>
+                </span>
+
+                <span class="ml20"></span>
+                <!--[if lte IE 9]>
+                姓名或账号：
+                <![endif]-->
+                <span class="inline-block combination">
+                    <input class="cominput" type="text" placeholder="请输入姓名或账号" ng-model="queryConditions.name" ng-enter="refreshTable(1)" style="width: 200px;">
+                    <button class="combuttton" ng-click="refreshTable(1)"><i class="icon icon-other-search"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="stumanage-box mt25">
+            <div class="common-table common-table-tc">
+                <table ng-hide="maxPage === 0" ng-cloak>
+                    <thead>
+                        <tr>
+                            <td>账号</td>
+                            <td>姓名</td>
+                            <td>性别</td>
+                            <td>联系方式</td>
+                            <td>邮箱</td>
+                            <td>最近一次登录时间</td>
+                            <td>
+                                账号状态
+                            </td>
+                            <td>重置密码</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  ng-class="{'even': $index % 2===0}" data-user-id="{{user.id}}"
+                                ng-repeat="user in teachers" repeat-done="repeatDone">
+                            <td ng-bind="user.account" max-char-over-show-title="10"></td>
+                            <td ng-bind="user.name"  max-char-over-show-title="5"></td>
+                            <td ng-bind="(user.gender === userGender.boy) ? '男' : '女'"></td>
+                            <td ng-bind="user.telephone|EmptyText" max-char-over-show-title="12"></td>
+                            <td ng-bind="user.email|EmptyText" max-char-over-show-title="20"></td>
+                            <td ng-bind="user._lastLogin|date:'yyyy/MM/dd HH:mm'|EmptyText"></td>
+
+                            <!--[if !IE]><!-->
+                            <td data-user-status="{{user.status}}">
+                                <label ng-click="toggleStatus($index)" class="eui-switch"
+                                       ng-class="(user.status === userStatus.disabled) ? 'close': 'open'"
+                                       title="{{(user.status === userStatus.disabled) ? '点击启用用户': '点击禁用用户'}}">
+                                        <span></span>
+                                </label>
+                            </td>
+                            <!--<![endif]-->
+
+                            <!--[if lte IE 7]>
+                            <td>
+                                <a href="javascript:;" ng-click="toggleStatus($index)" ng-bind="(user.status === userStatus.disabled) ? '已禁用': '已启用'"></a>
+                            </td>
+                            <![endif]-->
+
+                            <!--[if gte IE 8]>
+                            <td data-user-status="{{user.status}}">
+                                <span class="hide-on-ie7orless">
+                                    <label ng-click="toggleStatus($index)" class="eui-switch"
+                                           ng-class="(user.status === userStatus.disabled) ? 'close': 'open'"
+                                           title="{{(user.status === userStatus.disabled) ? '点击启用用户': '点击禁用用户'}}">
+                                            <span></span>
+                                    </label>
+                                </span>
+                            </td>
+                            <![endif]-->
+
+                            <td>
+                                <a href="javascript:;" class="hover" ng-click="resetPassword(user.account, user)" title="重置后，密码为{{defaultPassword}}">重置密码</a>
+                                &nbsp;
+                                <!--<a href="javascript:;" class="hover" ng-click="deleteTeacher(user.id)" title="删除教师">删除</a>-->
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div ng-show="maxPage === 0" ng-cloak class="nodata-box mt25">
+                    <div class="img"><img src="static/images/no-records.png" alt="暂无记录！"></div>
+                    <div class="txt">暂无记录！</div>
+                </div>
+
+            </div>
+            <div class="common-page clearfix mt20" ng-hide="maxPage <= 1">
+                <div class="pages">
+                    <a href="javascript:;" ng-click="goPage(1)">首页</a>
+                    <a href="javascript:;" ng-click="goPage(queryConditions.pageIndex - 1)">上一页</a>
+                    <a  href="javascript:;"
+                        ng-repeat="n in [] | midRange:maxPage:queryConditions.pageIndex"  ng-class="{'current' : n === queryConditions.pageIndex}"
+                        go-page2="goPage(n)">
+                        {{n}}
+                    </a>
+                    <a href="javascript:;" ng-click="goPage(queryConditions.pageIndex + 1)">下一页</a>
+                    <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div ng-include="'tpl2/admin/addManyTeachers.html'"></div>
+<div ng-include="'tpl2/admin/addOneTeacher.html'"></div>
+
+

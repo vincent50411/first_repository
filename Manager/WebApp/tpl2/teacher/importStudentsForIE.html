@@ -1,0 +1,48 @@
+<div class="commonwidth">
+    <form id="fileUpload" enctype="multipart/form-data" method="post">
+        <div class="commonbox">
+            <div class="common-pop" style="width: 440px; margin: 80px auto 0;">
+                <div class="pop-body pop-padding">
+                    <div class="pop-form">
+                        <div class="inputbox clearfix">
+                            <div class="proname">选择文件：</div>
+                            <div class="procontent">
+                                <input type="file" name="file">
+                                <a href="javascript:;" target="_blank" id="templateLink"  class="hover text-decoration ml10" download>下载模板</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="classId" id="classId">
+                <div class="pop-footer">
+                    <button class="common-btn common-btn-primary" onclick="uploadForIE7()">上传</button>
+                    <a href="javascript:;" class="common-btn ml10" go-back="">返回</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    function uploadForIE7() {
+        var form = $("#fileUpload");
+        var commonService = angular.element(document.body).injector().get("commonService");
+        var url = commonService.config.host + "/api/teacher/addStudents.action";
+        form.attr("action", url);
+        form.submit();
+    }
+
+    $(function () {
+        var commonService = angular.element(document.body).injector().get("commonService");
+        var url = commonService.config.host + "/api/teacher/downloadStuTemplate.action";
+        $("#templateLink").attr("href", url);
+
+        var arr = /\/\d+$/.exec(location.href);
+        var classId = arr[0].replace("/", "");
+        $("#classId").val(classId);
+    })
+
+</script>
+
+

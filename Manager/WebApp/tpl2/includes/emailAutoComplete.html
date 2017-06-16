@@ -1,0 +1,9 @@
+<div class="emailAutoCompletePanel">
+    <ul class="ul">
+        <li class="li" ng-repeat="item in emailSuffixList"
+            ng-class="{hover : hoverIndex === $index}"
+            ng-click="selectThis($index)">
+            {{val + item}}
+        </li>
+    </ul>
+</div>

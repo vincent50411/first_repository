@@ -1,0 +1,7 @@
+<!--[if lte IE 9]>
+<input type="checkbox" ng-model="model" ng-change="dochange()">
+<![endif]-->
+<label class="eui-checkbox hide-on-ie9orless">
+    <input type="checkbox" ng-change="dochange()" ng-model="model">
+    <span class="eui-check"></span>
+</label>

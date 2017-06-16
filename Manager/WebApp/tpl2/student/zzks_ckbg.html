@@ -1,0 +1,387 @@
+<!-- 自主考试查看报告详情界面 -->
+<div ng-controller="studentTrainTaskViewTaskCtrl">
+    <div>
+
+        <div style="height: 20px;"></div>
+        <div class="breadcrumbs">
+            <a ui-sref="student.zzks.record" href="javascript:;" class="hover">考试记录</a> > 查看报告
+        </div>
+
+        <div class="report-details clearfix mt10">
+            <div class="details-hd clearfix">
+                <div class="title">
+                    {{examResultInfoData.TASK_NAME | defaultTaskLabelSet : "TASK_NAME"}}
+                </div>
+
+                <div class="info"><span>{{examResultInfoData.EXAMTIME | defaultTaskLabelSet : "EXAM_TIME"}}</span></div>
+            </div>
+
+
+            <div ng-include="'tpl2/includes/right-side-nav.html'"></div>
+
+            <div class="report-main">
+
+                <div class="comment mt15">
+                    <strong>评语：</strong>
+                    {{examResultInfoData.description}}
+                </div>
+
+                <div class="subject-list">
+
+                    <div class="subject-item mt20" id="cetsim-Self-introductions">
+                        <div class="item-hd">
+                            <span class="tagstart" style="display: none;"><i class="icon icon-other-stargood"></i></span>
+                            <span class="text">Self-introductions</span>
+                        </div>
+                        <div class="intro">
+                            <a ng-click="openVideoPlayer('item01')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a>
+                            <!-- 题干信息从试卷包中txt文本中读取 -->
+                            <span>{{taskExamInfo.item01["F1-T0-L1_txt"]}}</span>
+                        </div>
+                        <div class="btnsbox">
+                            <a ng-click="openSoundPlayer('mePath')" href="javascript:;" class="common-btn common-btn-play"><i class="icon icon-other-sound"></i> 我的录音</a>
+                            <a ng-click="openSoundPlayer('partnerMePath')" href="javascript:;" class="common-btn common-btn-play ml5"><i class="icon icon-other-sound"></i> 队友录音</a>
+                        </div>
+                    </div>
+
+                    <div class="subject-item mt20" id="cetsim-task1">
+                        <div class="item-hd">
+                            <span class="tagstart" style="display: none;"><i class="icon icon-other-starbad"></i></span>
+                            <span class="text">Task 1   Read Aloud</span>
+                        </div>
+
+
+                        <div class="evaluate-box mt25">
+                            <span class="inline-block">
+                                <i class="icon icon-other-fluency"></i>
+                                <span class="text">流畅度：</span>
+
+                                <span icon-star data-score="{{data2.fluencyScore}}"></span>
+
+                            </span>
+                            <span class="separate">|</span>
+                            <span class="inline-block">
+                                <i class="icon icon-other-integrity"></i>
+                                <span class="text">完整度：</span>
+
+                                <span icon-star data-score="{{data2.integrityScore}}"></span>
+
+                            </span>
+                            <span class="separate">|</span>
+                            <span class="inline-block">
+                                <i class="icon icon-other-accuracy"></i>
+                                <span class="text">发音准确度：</span>
+
+                                <span icon-star data-score="{{data2.accuracyScore}}"></span>
+                            </span>
+                        </div>
+
+
+                        <div class="intro">
+                            <a ng-click="openVideoPlayer('item02')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a>
+                            <span>{{taskExamInfo.item02["F1-T1-L1_txt"]}}</span>
+                        </div>
+                        <div class="description">
+                            <!--<p>短文内容：</p>-->
+                            <!--<img ng-src="{{serverHost + taskExamInfo.item02.F1_read}}"/>-->
+                            <div class="subject-list">
+
+                                <div class="subject-item">
+                                    <div class="item-hd clearfix">
+                                        <div class="fr">
+                                            <a href="javascript:;" class="common-btn common-btn-play" play-sound="data2.standardMp3Path"><i class="icon icon-other-sound"></i> 全文示范</a>
+                                            <a href="javascript:;" class="common-btn common-btn-play ml5" ng-click="openSoundPlayer('readPath')"><i class="icon icon-other-sound"></i> 我的录音</a>
+                                        </div>
+                                        <span class="text inline-block">答题情况</span>
+                                        <span class="tagbox inline-block ml20">
+                                            <span class="inline-block ml20"><i class="icon icon-tag-bad"></i>单词发音不标准</span>
+                                            <span class="inline-block ml20"><i class="icon icon-tag-error"></i>整句读的不好</span>
+                                        </span>
+                                    </div>
+
+
+                                    <div class="description">
+                                        <ul class="description-list">
+                                            <!--读的不好的单词-->
+                                            <!--<span class="color-bad">magazines</span>-->
+
+                                            <!--读的不好的句子-->
+                                            <!--<li class="color-error">...</li>-->
+
+
+                                            <li ng-repeat="item in data2.studyReportSentenceInfoDTOs" class="cetsim-word-break-all">
+                                                <span combine-to-line="{{item.studyReportWordInfoDTOs}}" data-line="item.sentenceContent" data-score="item.totalScore"></span>
+                                                <a href="javascript:;" class="playbtn" play-sound="item.sentenceMp3Path"><i class="icon icon-other-play"></i></a>
+                                                <span class="line"></span>
+                                            </li>
+
+                                            <!--单词读法框-->
+                                            <!--<div class="pronunciation-tips jttop" style="display: block; left: 180px; top:80px;">-->
+                                            <!--<i class="arrowr"><i></i></i>-->
+                                            <!--<h2>magazines </h2>-->
+                                            <!--<p>英 ['mæɡəzi:nz] <a href="javascript:;"><i class="icon icon-other-sound"></i></a></p>-->
+                                            <!--<p>美 ['mæɡəzinz] <a href="javascript:;"><i class="icon icon-other-sound"></i></a></p>-->
+                                            <!--</div>-->
+                                            <!--/单词读法框-->
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="btnsbox">-->
+                        <!--<a ng-click="openSoundPlayer('readPath')" href="javascript:;" class="common-btn common-btn-play"><i class="icon icon-other-sound"></i> 我的录音</a>-->
+                        <!--</div>-->
+
+                        <p ng-if="taskAnswerInfo.readTipMesage">
+                            温馨提示：<span ng-bind="taskAnswerInfo.readTipMesage"></span>
+                        </p>
+                    </div>
+
+                    <div class="subject-item mt20" id="cetsim-task2">
+                        <div class="item-hd">
+                            <span class="tagstart" style="display: none;"><i class="icon icon-other-stargood"></i></span>
+                            <span class="text">Task 2   Question and Answer</span>
+                        </div>
+                        <div class="intro">
+                            <a ng-click="openVideoPlayer('item03_1')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a> <span>{{taskExamInfo.item03["F1-T2-L1_txt"]}}</span>
+                        </div>
+                        <div class="intro mt10">
+                            <a ng-click="openVideoPlayer('item03_2')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a> <span>{{taskExamInfo.item03["F1-T2-L2_txt"]}}</span>
+                        </div>
+                        <div class="btnsbox">
+                            <a ng-click="openSoundPlayer('_ans1|_ans2', 1)" href="javascript:;" class="common-btn common-btn-play"><i class="icon icon-other-sound"></i> 我的录音</a>
+                            <a ng-click="openSoundPlayer('partnerAnswerOnePath')" href="javascript:;" class="common-btn common-btn-play ml5"><i class="icon icon-other-sound"></i> 队友录音</a>
+                        </div>
+
+                        <p ng-if="taskAnswerInfo.answerOneTipMesage">
+                            温馨提示：<span ng-bind="taskAnswerInfo.answerOneTipMesage"></span>
+                        </p>
+
+
+                        <div class="intro">
+                            <a ng-click="openVideoPlayer('item03_3')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a> <span>{{taskExamInfo.item03["F1-T2-L3_txt"]}}</span>
+                        </div>
+                        <div class="btnsbox">
+                            <a ng-click="openSoundPlayer('_ans1|_ans2', 2)" href="javascript:;" class="common-btn common-btn-play"><i class="icon icon-other-sound"></i> 我的录音</a>
+                            <a ng-click="openSoundPlayer('partnerAnswerTwoPath')" href="javascript:;" class="common-btn common-btn-play ml5"><i class="icon icon-other-sound"></i> 队友录音</a>
+                        </div>
+
+
+                        <p ng-if="taskAnswerInfo.answerTwoTipMesage">
+                            温馨提示：<span ng-bind="taskAnswerInfo.answerTwoTipMesage"></span>
+                        </p>
+
+                    </div>
+
+                    <div class="subject-item mt20" id="cetsim-task3">
+                        <div class="item-hd">
+                            <span class="tagstart" style="display: none;"><i class="icon icon-other-starbad"></i></span>
+                            <span class="text">Task 3   Individual Presentation</span>
+                        </div>
+                        <div class="evaluate-box" style="display: none;">
+							<span class="inline-block">
+								<i class="icon icon-other-meaning"></i>
+								<span class="text">表意准确度：</span>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+							</span>
+                            <span class="separate">|</span>
+                            <span class="inline-block">
+								<i class="icon icon-other-accuracy"></i>
+								<span class="text">发音准确度：</span>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+							</span>
+                            <span class="separate">|</span>
+                            <span class="inline-block">
+								<i class="icon icon-other-speed"></i>
+								<span class="text">语速：</span>
+								<span class="content"><strong>120</strong> 词/分钟</span>
+							</span>
+                        </div>
+                        <div class="intro">
+                            <a ng-click="openVideoPlayer('item04')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a>
+                            <span>{{taskExamInfo.item04["F1-T3-L1_txt"]}}</span>
+                        </div>
+                        <div class="btnsbox">
+                            <a ng-click="openSoundPlayer('presPath')" href="javascript:;" class="common-btn common-btn-play"><i class="icon icon-other-sound"></i> 我的录音</a>
+                            <a ng-click="openSoundPlayer('partnerPresPath')" href="javascript:;" class="common-btn common-btn-play ml5"><i class="icon icon-other-sound"></i> 队友录音</a>
+                        </div>
+
+
+                        <p ng-if="taskAnswerInfo.presTipMesage">
+                            温馨提示：<span ng-bind="taskAnswerInfo.presTipMesage"></span>
+                        </p>
+                    </div>
+
+                    <div class="subject-item mt20" id="cetsim-task4">
+                        <div class="item-hd">
+                            <span class="tagstart" style="display: none;"><i class="icon icon-other-starbad"></i></span>
+                            <span class="text">Task 4   Pair Work</span>
+                        </div>
+                        <div class="evaluate-box" style="display:none;">
+							<span class="inline-block">
+								<i class="icon icon-other-meaning"></i>
+								<span class="text">表意准确度：</span>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+							</span>
+                            <span class="separate">|</span>
+                            <span class="inline-block">
+								<i class="icon icon-other-accuracy"></i>
+								<span class="text">发音准确度：</span>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+								<i class="icon icon-other-star"></i>
+							</span>
+                            <span class="separate">|</span>
+                            <span class="inline-block">
+								<i class="icon icon-other-speed"></i>
+								<span class="text">语速：</span>
+								<span class="content"><strong>120</strong> 词/分钟</span>
+							</span>
+
+                        </div>
+                        <div class="intro">
+                            <a ng-click="openVideoPlayer('item05')" href="javascript:;" class="playbtn"><i class="icon icon-other-play"></i></a>
+                            <span>{{taskExamInfo.item05["F1-T4-L1_txt"]}}</span>
+                            <img ng-src="{{serverHost + taskExamInfo.item05.F1_pres}}"/>
+
+                            <p><span>You will have 1 minute to prepare and three minutes to talk. Remember, this is a pair activity and you need to interact with each other. So don’t keep talking without giving your partner a chance. Now please start to prepare.</span></p>
+                        </div>
+                        <div class="btnsbox">
+                            <a ng-click="openSoundPlayer('togetherPairPath')" href="javascript:;" class="common-btn common-btn-play"><i class="icon icon-other-sound"></i> 我的录音</a>
+                        </div>
+
+                        <p ng-if="taskAnswerInfo.pairTipMesage">
+                            温馨提示：<span ng-bind="taskAnswerInfo.pairTipMesage"></span>
+                        </p>
+                    </div>
+
+
+                    <p style="text-align: center;margin: 20px 0 10px">
+                        <a href="javascript:;" class="common-btn common-btn-success" go-back="">返回</a>
+                    </p>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+<!-- 视频播放窗口HTML界面 jp_container_video jquery_jplayer_video-->
+<div id="videoHtml" style="display: none">
+
+    <div style="overflow-x: hidden; overflow-y: hidden; border-radius: 4px;">
+        <div id="jp_container_video_r" class="jp-video jp-video-270p" role="application" aria-label="media player">
+            <div class="jp-type-playlist" style="margin-top: -5px;">
+                <div id="jquery_jplayer_video_r" class="jp-jplayer"></div>
+                <div class="jp-gui"><div class="jp-video-play">
+                    <button class="jp-video-play-icon" role="button" tabindex="0">play</button>
+                </div>
+                    <div class="jp-interface">
+                        <div class="jp-progress" style="width: 75%;">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="jp-controls-holder" style="height:28px; ">
+                            <div class="jp-controls">
+                                <button class="jp-play" role="button" tabindex="0">play</button>
+
+                                <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+
+                                <div style="float: left; width: 12px; margin-top: -4px;">
+                                    <label style="margin-left: 5px;">/</label>
+                                </div>
+
+                                <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+
+                            </div>
+
+                            <div class="jp-volume-controls">
+                                <button class="jp-mute" role="button" tabindex="0">mute</button>
+                                <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                                <div class="jp-volume-bar">
+                                    <div class="jp-volume-bar-value"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="jp-playlist" style="display: none;">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 答题包mp3录音文件播放器 -->
+<div id="answerMP3PlayerHtml" style="display:none;">
+    <div id="jp_container_mp3_r" style="overflow-x: hidden; border-radius: 4px;" class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-type-playlist" style="margin-top: -5px;">
+            <div id="jquery_jplayer_mp3_r" class="jp-jplayer"></div>
+            <div class="jp-gui jp-interface">
+                <div class="jp-controls">
+                    <button class="jp-play" role="button" tabindex="0">play</button>
+                </div>
+
+                <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                        <div class="jp-play-bar">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div style="float: left; margin-top: -18px; margin-left: 185px;">
+                    <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                    <div style="float: left; width: 12px; margin-top: -4px;">
+                        <label style="margin-left: 5px;">/</label>
+                    </div>
+                    <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                </div>
+
+                <div class="jp-volume-controls">
+                    <button class="jp-mute" role="button" tabindex="0">mute</button>
+                    <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                    <div class="jp-volume-bar">
+                        <div class="jp-volume-bar-value">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="jp-playlist" style="display: none;">
+                <ul>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

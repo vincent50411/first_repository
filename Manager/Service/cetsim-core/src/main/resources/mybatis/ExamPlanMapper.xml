@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.ExamPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.ExamPlan" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="requirement" property="requirement" jdbcType="VARCHAR" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    code, id, `name`, create_time, `status`, start_time, end_time, requirement, publisher, 
+    reserved1, reserved2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iflytek.cetsim.model.ExamPlanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sim_exam_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_exam_plan
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.ExamPlan" >
+    insert into sim_exam_plan (code, id, `name`, 
+      create_time, `status`, start_time, 
+      end_time, requirement, publisher, 
+      reserved1, reserved2)
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{requirement,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.ExamPlan" >
+    insert into sim_exam_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="requirement != null" >
+        requirement,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requirement != null" >
+        #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iflytek.cetsim.model.ExamPlanExample" resultType="java.lang.Integer" >
+    select count(*) from sim_exam_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.ExamPlan" >
+    update sim_exam_plan
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requirement != null" >
+        requirement = #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iflytek.cetsim.model.ExamPlan" >
+    update sim_exam_plan
+    set id = #{id,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      `status` = #{status,jdbcType=SMALLINT},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      requirement = #{requirement,jdbcType=VARCHAR},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+
+  <select id="countDetailByExample" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(count) from (
+      SELECT COUNT(plan.`code`) count
+      from sim_exam_plan plan
+      LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+      LEFT JOIN sim_class_student cs on task.class_code = cs.class_code
+      LEFT JOIN sim_paper sp on sp.`code` = task.paper_code
+      LEFT JOIN sim_paper_type spt on sp.paper_type_code = spt.`code`
+      LEFT JOIN (
+      select b.plan_code, a.exam_task_code, sum(if(a.exam_state = 1, 1, 0)) finish_count, MAX(a.score) max_score, AVG(a.score) average_score
+      from sim_exam_record a LEFT JOIN sim_exam_task b on a.exam_task_code = b.`code`
+      WHERE a.exam_state= 1 group by b.plan_code
+      ) A on a.plan_code = task.plan_code
+
+      <where>
+        <if test="publisher != null">
+          publisher = #{publisher, jdbcType=VARCHAR}
+        </if>
+        <if test="unStart != null">
+          and plan.start_time > #{unStart.currentTime, jdbcType=TIMESTAMP}
+        </if>
+        <if test="examing != null">
+          and plan.start_time &lt; #{examing.currentTime, jdbcType=TIMESTAMP}
+          and plan.end_time > #{examing.currentTime, jdbcType=TIMESTAMP}
+        </if>
+        <if test="examEnd != null">
+          and plan.end_time &lt;= #{examEnd.currentTime, jdbcType=TIMESTAMP}
+        </if>
+
+        <if test="paperType != null">
+          and sp.paper_type_code = #{paperType, jdbcType=VARCHAR}
+        </if>
+
+        <if test="name != null">
+          and plan.name like #{name, jdbcType=VARCHAR}
+        </if>
+
+        <if test="beginTime != null">
+          and plan.start_time > #{beginTime, jdbcType=TIMESTAMP}
+        </if>
+
+        <if test="endTime != null">
+          and plan.end_time &lt; #{endTime, jdbcType=TIMESTAMP}
+        </if>
+
+        <if test="beginTime != null and endTime != null">
+          and plan.start_time > #{beginTime, jdbcType=TIMESTAMP}
+          and plan.end_time &lt; #{endTime, jdbcType=TIMESTAMP}
+        </if>
+      </where>
+      GROUP BY plan.code
+    ) a
+  </select>
+
+  <select id="queryPlanDetail" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.TeacherTaskDTO">
+    SELECT plan.name plan_name, plan.code plan_code, plan.id plan_id, plan.start_time start_time, plan.end_time end_time,
+    plan.`name`, plan.requirement requirement, plan.`status` `status`,
+    task.id task_id, task.`code` task_code, task.class_code class_code, task.`name` task_name, task.paper_code,
+    sp.`name` paper_name, sp.paper_type_code paper_type, count(cs.student_account) student_count,
+    A.finish_count, concat(round(A.finish_count * 100 / count(cs.student_account), 0),'%')  finish_percent,
+    A.max_score, A.total_score/count(cs.student_account) as average_score
+    from sim_exam_plan plan
+    LEFT JOIN sim_exam_task task on plan.`code` = task.plan_code
+    LEFT JOIN sim_class_student cs on task.class_code = cs.class_code
+    LEFT JOIN sim_paper sp on sp.`code` = task.paper_code
+    LEFT JOIN sim_paper_type spt on sp.paper_type_code = spt.`code`
+    LEFT JOIN (
+    select b.plan_code, a.exam_task_code, sum(if(a.exam_state = 1, 1, 0)) finish_count, MAX(a.score) max_score, sum(a.score) total_score
+    from sim_exam_record a LEFT JOIN sim_exam_task b on a.exam_task_code = b.`code`
+    WHERE a.exam_state= 1 group by b.plan_code
+    ) A on a.plan_code = task.plan_code
+
+    <where>
+      <if test="publisher != null">
+        publisher = #{publisher, jdbcType=VARCHAR}
+      </if>
+      <if test="unStart != null">
+        and plan.start_time > #{unStart.currentTime, jdbcType=TIMESTAMP}
+      </if>
+      <if test="examing != null">
+        and plan.start_time &lt; #{examing.currentTime, jdbcType=TIMESTAMP}
+        and plan.end_time > #{examing.currentTime, jdbcType=TIMESTAMP}
+      </if>
+      <if test="examEnd != null">
+        and plan.end_time &lt;= #{examEnd.currentTime, jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="paperType != null">
+        and sp.paper_type_code = #{paperType, jdbcType=VARCHAR}
+      </if>
+
+      <if test="name != null">
+        and plan.name like #{name, jdbcType=VARCHAR}
+      </if>
+
+      <if test="beginTime != null">
+        and plan.start_time > #{beginTime, jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="endTime != null">
+        and plan.end_time &lt; #{endTime, jdbcType=TIMESTAMP}
+      </if>
+
+      <if test="beginTime != null and endTime != null">
+        and plan.start_time > #{beginTime, jdbcType=TIMESTAMP}
+        and plan.end_time &lt; #{endTime, jdbcType=TIMESTAMP}
+      </if>
+
+    </where>
+
+    GROUP BY plan.code
+
+    <if test="MAX_SCORE_DESC != null" >
+      order by A.max_score desc
+    </if>
+
+    <if test="MAX_SCORE_ASC != null" >
+      order by A.max_score asc
+    </if>
+
+    <if test="AVG_SCORE_DESC != null" >
+      order by A.average_score desc
+    </if>
+
+    <if test="AVG_SCORE_ASC != null" >
+      order by A.average_score asc
+    </if>
+    <if test="order_condition_default != null" >
+      order by plan.id desc
+    </if>
+
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+
+  <select id="getPlanClassList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.model.CourseClass">
+    SELECT sim_class.* from sim_exam_plan
+    LEFT JOIN sim_exam_task on sim_exam_task.plan_code = sim_exam_plan.code
+    LEFT JOIN sim_class on sim_class.code = sim_exam_task.class_code
+    WHERE sim_exam_plan.code = #{plan_code,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPlanCode" parameterType="java.lang.String">
+  DELETE FROM sim_exam_plan WHERE code = #{plan_code, jdbcType=VARCHAR} LIMIT 1
+</delete>
+
+</mapper>

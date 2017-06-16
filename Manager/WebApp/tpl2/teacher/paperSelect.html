@@ -1,0 +1,82 @@
+<!--选择试卷-->
+<div id="selectPaperPanel" style="display: none;" ng-controller="selectPaperCtrl">
+    <!--选择试卷-->
+    <div class="common-pop" style="width: 100%">
+        <div class="pop-body pop-padding">
+            <div class="fs14">
+                试卷类别：
+                <select class="webselect" style="width: 175px;" ng-model="paperType" ng-change="_queryPapersList(1)">
+                    <option value="-1">全部</option>
+                    <option value="CET4">CET4</option>
+                    <option value="CET6">CET6</option>
+                </select>
+
+                <span class="inline-block combination ml20">
+                    <input class="cominput" type="text" placeholder="请输入试卷名称" ng-model="paperName" ng-enter="_queryPapersList(1)" style="width: 200px;">
+                    <button class="combuttton" ng-click="_queryPapersList(1)"><i class="icon icon-other-search"></i></button>
+                </span>
+            </div>
+
+            <div class="common-table common-table-tc common-table-sm mt15">
+                <table ng-hide="maxPaperPage === 0" ng-cloak>
+                    <thead>
+                    <tr>
+                        <td>选择</td>
+                        <td>名称</td>
+                        <td>类别</td>
+                        <td>上线时间</td>
+                        <td>使用次数</td>
+                        <td>最高分</td>
+                        <td>平均分</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-class="{'even': $index % 2===0}"
+                        ng-repeat="paper in allPapers">
+                        <td>
+                            <!-- ng-model="paper._checked" ng-checked="editedTask._papers.indexOf(paper.id) > -1" ng-click="togglePaperSelect(paper.id, paper.name)"  -->
+                            <input type="radio" name="paperRadio" ng-model="_selectPaper.code" ng-attr-value="{{paper.code}}" ng-click="selectThisPapaer(paper)">
+                        </td>
+                        <td ng-bind="paper.name"></td>
+                        <td ng-bind="paper.paperTypeCode"></td>
+                        <!--<td ng-bind="paper.type|cetTypeName"></td>-->
+                        <td ng-bind="paper.createTime|date:'yyyy-MM-dd HH:mm:ss'|EmptyText"></td>
+                        <td ng-bind="paper.useCount|EmptyText"></td>
+
+
+                        <td>
+                            <span  ng-bind="paper.maxScore|scoreValueFormater:paper['useCount']"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="paper.averageScore|scoreValueFormater:paper['useCount']"></span>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="nodata-box mt25" ng-show="maxPaperPage === 0" ng-cloak style="padding: 0;">
+                    <div class="img"><img src="static/images/no-papers.png" alt="暂无试卷！"></div>
+                    <div class="txt">暂无试卷！</div>
+                </div>
+            </div>
+
+            <div class="common-page clearfix mt10" ng-hide="maxPaperPage <= 1" ng-cloak>
+                <div class="pages">
+                    <a href="javascript:;" ng-click="goPage(1)">首页</a>
+                    <a href="javascript:;" ng-click="goPage(curPaperPage - 1)">上一页</a>
+                    <a href="javascript:;"
+                       ng-class="{'current' : n === curPaperPage}"
+                       ng-repeat="n in [] | midRange:maxPaperPage:curPaperPage"
+                       go-page="{{n}}">{{n}}</a>
+                    <a href="javascript:;" ng-click="goPage(curPaperPage + 1)">下一页</a>
+                    <a href="javascript:;" ng-click="goPage(maxPaperPage)">尾页</a>
+                </div>
+            </div>
+        </div>
+        <div class="pop-footer">
+            <button class="common-btn common-btn-primary" hide-pop="#selectPaperPanel">确认</button>
+            <a href="javascript:;" class="common-btn ml10" hide-pop="#selectPaperPanel">取消</a>
+        </div>
+    </div>
+</div>

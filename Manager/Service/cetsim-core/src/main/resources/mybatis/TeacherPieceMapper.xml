@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.TeacherPieceMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.TeacherPiece" >
+    <id column="employee_account" property="employeeAccount" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="job_title" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    employee_account, id, job_title, reserved1, reserved2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_teacher
+    where employee_account = #{employeeAccount,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.TeacherPiece" >
+    insert into sim_teacher (employee_account, id, job_title, 
+      reserved1, reserved2)
+    values (#{employeeAccount,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{jobTitle,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.TeacherPiece" >
+    insert into sim_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employeeAccount != null" >
+        employee_account,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="jobTitle != null" >
+        job_title,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employeeAccount != null" >
+        #{employeeAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobTitle != null" >
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.TeacherPiece" >
+    update sim_teacher
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="jobTitle != null" >
+        job_title = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeAccount != null">
+        employee_account = #{employeeAccount,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where employee_account = #{employeeAccount,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+
+
+</mapper>

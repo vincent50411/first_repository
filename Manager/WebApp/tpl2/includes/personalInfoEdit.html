@@ -1,0 +1,183 @@
+<div class="commonwidth" ng-controller="personalInfoEditCtrl">
+    <div class="commonbox">
+
+        <div class="tab-box">
+            <ul class="clearfix">
+                <li ui-sref-active="current" ui-sref="userHome.personalInfoEdit"><a href="javascript:;">个人信息</a></li>
+                <li ui-sref-active="current" ui-sref="userHome.changePassword.byOldPassword"><a href="javascript:;">修改密码</a></li>
+            </ul>
+        </div>
+
+
+
+        <div class="userinfov2-edit">
+
+
+            <div class="edit-form mt50">
+                <div class="inputbox clearfix">
+                    <div class="proname">头像：</div>
+                    <div class="procontent">
+							<span class="userface" style="border-radius: 50%;overflow: hidden">
+								<img ng-src="{{(userPhoto|userPhotoPathResolve)}}" error-image="" alt="" class="avatar">
+							</span>
+
+                        <a class="common-btn ml10"
+                                type="file"
+                                ngf-select="uploadFiles($file, $invalidFiles)"
+                                ngf-max-size="5MB"><i class="icon icon-other-upload"></i> 上传照片</a>
+
+
+                        <p>支持jpg,png,gif,bmp,jpeg格式，大小不超过1M.</p>
+                    </div>
+                </div>
+
+                <div class="inputbox clearfix">
+                    <div class="proname">账号：</div>
+                    <div class="procontent" ng-bind="userModel.account">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname"><em>*</em> 姓名：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 230px;" placeholder="请输入姓名" ng-model="userModel.name">
+                    </div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname"><em>*</em> 性别：</div>
+
+                    <!--[if lte IE 8]>
+                    <div class="procontent">
+                        <input type="radio"  ng-model="userModel.gender" ng-attr-value="0">
+                        <span class="eui-caption">男</span>
+
+                        <input type="radio"  ng-model="userModel.gender" ng-attr-value="1">
+                        <span class="eui-caption">女</span>
+                    </div>
+                    <![endif]-->
+                    <div class="procontent hide-on-ie8orless">
+                        <label class="eui-radio">
+                            <input type="radio" name="test-radio" ng-model="userModel.gender" value="0">
+                            <span class="eui-check"></span>
+                            <span class="eui-caption">男</span>
+                        </label>
+                        <label class="eui-radio ml20">
+                            <input type="radio" name="test-radio" ng-model="userModel.gender" value="1">
+                            <span class="eui-check"></span>
+                            <span class="eui-caption">女</span>
+                        </label>
+                    </div>
+
+                </div>
+                <!--<div class="inputbox clearfix">-->
+                    <!--<div class="proname"><em>*</em> 学号：</div>-->
+                    <!--<div class="procontent">-->
+                        <!--<input type="text" class="webinput" style="width: 230px;" placeholder="请输入学号">-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <span ng-if="isStudent === true">
+                    <div class="inputbox clearfix">
+                        <div class="proname">学院：</div>
+                        <div class="procontent">
+                            <span select-institute data-model="userModel.institution"></span>
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">年级：</div>
+                        <div class="procontent">
+                            <span select-grade data-model="userModel.grade"></span>
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">专业：</div>
+                        <div class="procontent">
+                             <span select-major data-model="userModel.major"></span>
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix">
+                        <div class="proname">行政班级：</div>
+                        <div class="procontent">
+                             <input type="text" class="webinput" style="width: 230px;" placeholder="请输入班级" ng-model="userModel.naturalClass">
+                        </div>
+                    </div>
+                </span>
+
+
+
+                <div class="inputbox clearfix" ng-if="myClassList.length > 0">
+                    <div class="proname">所处班级：</div>
+                    <div class="procontent">
+                        <div class="foucs-class-box">
+                            <div class="bd" style="margin:0;padding:0;">
+                                <ul class="clearfix imgsRoll" id="cetsim-slick-roll" style="padding:0 25px;">
+                                    <li ng-repeat="class in myClassList">
+                                        <h2 ng-bind="class.className|maxCharOverFlowHidden:10" title="{{class.className}}" style="white-space: nowrap;overflow: hidden;"></h2>
+                                        <p>老师：<span ng-bind="class.teacherName|maxCharOverFlowHidden:8"></span></p>
+                                        <p style="overflow: hidden;white-space:nowrap;">
+                                            <span style="white-space: nowrap">邮箱：</span>
+                                            <span title="{{class.teacherEmail}}" ng-bind="class.teacherEmail|maxCharOverFlowHidden:16|EmptyText"></span></p>
+                                        <p>手机：<span ng-bind="class.teacherTelephone|EmptyText"></span></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inputbox clearfix">
+                    <div class="proname"><em>*</em> 手机号：</div>
+                    <div class="procontent">
+                        <input type="text" class="webinput" style="width: 230px;" placeholder="请输入手机号码" ng-model="userModel.telephone">
+                    </div>
+                </div>
+
+                <div class="inputbox clearfix">
+                    <div class="proname"><em>*</em> 邮箱：</div>
+                    <div class="procontent">
+                        <input type="text" id="cetsim-personalinfoedit-email" class="webinput" style="width: 230px;" placeholder="请输入邮箱"
+                               ng-model="userModel.email">
+
+                        <span email-auto-complete data-inputid="cetsim-personalinfoedit-email" data-model="userModel.email"></span>
+
+                        <span style="display: none" toggle-by-status-of-validate-email>
+                            <span ng-if="isEmailFieldChanged">
+                                <span get-code-by-email-button data-email="userModel.email" data-isneedaccount="false"></span>
+                            </span>
+                            <span ng-if="!isEmailFieldChanged">
+                                <span style="cursor:default;" class="common-btn ml10 disabled">获取验证码</span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <span style="display: none" toggle-by-status-of-validate-email>
+                    <div class="inputbox clearfix" ng-if="isEmailFieldChanged">
+                        <div class="proname"><em>*</em> 验证码：</div>
+                        <div class="procontent">
+                            <input type="text" id="cetsim-validatorCode" class="webinput" style="width: 230px;" placeholder="您的邮箱已修改，请输入验证码" ng-model="userModel.emailCode"  autocomplete="off">
+                            <span verify-code-tip data-inputid="cetsim-validatorCode" data-status="isValid"></span>
+                        </div>
+                    </div>
+                    <div class="inputbox clearfix" ng-if="!isEmailFieldChanged">
+                        <div class="proname">验证码：</div>
+                        <div class="procontent">
+                            <input type="text" id="cetsim-validatorCode2" class="webinput" style="width: 230px;" placeholder="您未修改邮箱，无需输入验证码" disabled ng-model="userModel.emailCode"  autocomplete="off">
+                            <span verify-code-tip data-inputid="cetsim-validatorCode2" data-status="isValid"></span>
+                        </div>
+                    </div>
+                </span>
+
+
+
+                <div class="separated mt35"></div>
+
+                <div class="btnsbox tc">
+                    <button class="common-btn common-btn-primary" ng-click="submit()">保存</button>
+                    <button class="common-btn ml20" go-back="">取消</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

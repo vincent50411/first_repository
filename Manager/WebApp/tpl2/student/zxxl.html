@@ -1,0 +1,25 @@
+
+<div class="commonwidth">
+    <div class="commonbox">
+
+        <div style="margin:10px 0;">
+            <span class="inline-block h3-title" style="margin-right: 50px;">
+               专项训练
+            </span>
+        </div>
+
+        <div class="tab-box">
+            <ul class="clearfix">
+                <li ui-sref-active="current" ui-sref=".list"><a href="javascript:;">专项训练</a></li>
+                <li ng-class="{current : ('student.zxxl.record'|includedByState) || ('student.zxxl.ckbg'|includedByState)}"  ui-sref=".record"><a href="javascript:;">练习记录</a></li>
+            </ul>
+        </div>
+
+
+
+
+        <div data-ui-view=""></div>
+
+    </div>
+</div>
+

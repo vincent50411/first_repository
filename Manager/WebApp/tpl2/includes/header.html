@@ -1,0 +1,133 @@
+
+<div class="header-fixed">
+    <div class="header">
+        <div class="commonwidth clearfix">
+            <div class="logo"><img src="static/images/logo.png" alt=""></div>
+
+            <div class="header-nav" ng-cloak>
+                <ul class="clearfix" ng-if="curUser.role === 0">
+                    <li><a href="javascript:;"
+                           ng-class="{current : ('admin.resourceManage'|includedByState)}"
+                           ui-sref="admin.resourceManage.paperManage">资源管理</a></li>
+                    <li><a href="javascript:;" ui-sref-active="current" ui-sref="admin.teacherManage">教师管理</a></li>
+                    <li><a href="javascript:;" ui-sref-active="current" ui-sref="admin.studentManage">学生管理</a></li>
+                    <li><a href="javascript:;" ng-class="{current : ('admin.attributesManage'|includedByState)}" ui-sref="admin.attributesManage.institute">属性管理</a></li>
+                </ul>
+
+                <ul class="clearfix" ng-if="curUser.role === 1">
+                    <li><a href="javascript:;"
+                           ng-class="{current : ('teacher.classList'|includedByState) || ('teacher.teacherClassManage'|includedByState) || ('teacher.createClass'|includedByState) || ('teacher.importStudents' | includedByState)}"
+                           ui-sref="teacher.classList">班级管理</a></li>
+                    <li><a href="javascript:;"
+                           ng-class="{current : ('teacher.ceshiList'|includedByState) || ('teacher.taskview'|includedByState) || ('teacher.taskMonitor'|includedByState)}"
+                           ui-sref="teacher.ceshiList">测试管理</a></li>
+                </ul>
+
+                <ul class="clearfix" ng-if="curUser.role === 2">
+                    <li><a href="javascript:;"
+                           ng-class="{current : ('student.viewtask'|includedByState) || ('student.mytask'|includedByState)}"
+                           ui-sref="student.mytask">模拟测试</a></li>
+                    <li><a href="javascript:;"
+                           ng-class="{current : ('student.zxxl'|includedByState)}"
+                           ui-sref="student.zxxl.list">专项训练</a></li>
+                    <li><a href="javascript:;"
+                           ng-class="{current : ('student.zzks'|includedByState) || ('student.zjks'|includedByState)}"
+                           ui-sref="student.zzks.zdks">自主考试</a></li>
+
+                </ul>
+            </div>
+
+            <div class="header-right">
+                <a href="javascript:;" ng-click="showAdminContactPanel()" style="float:left;" ng-if="curUser.role === 1">帮助</a>
+                <a href="javascript:;" ui-sref="userHome.personalInfoEdit" style="float:left;" ng-if="curUser.role === 2">帮助</a>
+                <div class="userinfo">
+                    <a href="">
+                        <span class="inline-block">
+                            <!--<img ng-src="{{curUser.photo|userPhotoPathResolve}}" error-image="" alt="" class="userface">-->
+                            <span user-img data-src="{{curUser.photo}}"></span>
+                        </span>
+                        <span class="inline-block" ng-bind="curUser.name" max-char-over-show-title="5"></span>
+                        <i class="arrow inline-block"></i>
+                    </a>
+                    <div class="dropdown" ng-class="(curUser.role === 0) ? 'admin-dropdown' : 'normal-dropdown'">
+                        <i class="drop-arrow"><i></i></i>
+                        <ul>
+                            <li><a  href="javascript:;" ui-sref="userHome.personalInfoEdit">个人信息设置</a></li>
+                            <li ng-if="curUser.role === 0" ng-cloak="">
+                                <a href="javascript:;"
+                                   ng-click="showAdminSettingPanel()"
+                                   show-pop="#adminSettingsEditPanel" pop-width="480" pop-title="系统邮箱服务器设置">系统邮箱服务器设置</a>
+                            </li>
+                            <li><a  href="javascript:;" ng-click="signout()">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="showAdminContactPanel" style="display: none;">
+    <div class="common-pop" style="width:100%;min-width: 440px;">
+        <div class="pop-body pop-padding">
+            <p>若您遇到什么问题，可以联系系统管理员来帮助您及时解决，以下为管理员信息：</p>
+
+            <div class="pop-form mt35 mb35">
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        姓名：</div>
+                    <div class="procontent" ng-bind="adminInfo.name|EmptyText"></div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        邮箱：</div>
+                    <div class="procontent" ng-bind="adminInfo.email|EmptyText"></div>
+                </div>
+                <div class="inputbox clearfix">
+                    <div class="proname">
+                        联系电话：</div>
+                    <div class="procontent" ng-bind="adminInfo.telephone|EmptyText"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pop-footer">
+            <a href="javascript:;" class="common-btn ml10" hide-pop="#showAdminContactPanel">确认</a>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="adminSettingsEditPanel" class="common-pop" style="width: 480px;display: none;" ng-controller="adminSettingCtrl">
+    <div class="pop-body pop-padding" style="min-height: 200px;">
+        <div class="pop-form">
+            <h3 ng-bind="title" ng-if="title" class="hover-red" style="text-align: center;padding: 10px;"></h3>
+            <div class="inputbox clearfix" ng-repeat="item in items">
+                <div class="proname">
+                    {{item.displayName}}：</div>
+                <div class="procontent">
+                    <input type="text" class="webinput" style="width: 160px;" placeholder="" ng-model="item.configValue" ng-if="item.configType == 'TEXT'">
+                    <input type="password" id="cetsim-setting-password-{{$index}}" class="webinput" style="width: 160px;" placeholder="" ng-model="item.configValue" ng-if="item.configType == 'PASS_WOR'">
+                    <!--[if lte IE 9]>
+                    <input type="text" id="cetsim-setting-password-{{$index}}-for-lowie" class="webinput" style="width: 160px;display:none;" placeholder="" ng-model="item.configValue" ng-if="item.configType == 'PASS_WOR'">
+                    <![endif]-->
+
+
+                    <span ng-if="item.configType == 'PASS_WOR'">
+                        <span toggle-password-val data-id="{{'cetsim-setting-password-' + $index}}"></span>
+                    </span>
+
+                    <select class="eui-select" name="cetsim-admin-setting-select-{{$index}}" style="width:142px;" ng-model="item.configValue" ng-if="item.configType == 'STATUS'">
+                        <option value="1">启用</option>
+                        <option value="0">禁用</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <a class="common-btn common-btn-primary" ng-click="updateSettings()">保存</a>
+        <a href="javascript:;" class="common-btn ml10" hide-pop="#adminSettingsEditPanel">取消</a>
+    </div>
+</div>

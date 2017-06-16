@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.Account" >
+    <id column="account" property="account" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="session_id" property="sessionID" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="SMALLINT" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="last_login" property="lastLogin" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+
+
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    account, id, `password`, `name`, gender, `role`, `status`, address, email, telephone, 
+    last_login, create_time, reserved1, reserved2, session_id
+  </sql>
+
+  <sql id="student_Column_List" >
+    sim_user.account, sim_user.id, sim_user.`password`, sim_user.`name`, sim_user.gender, sim_user.`role`, sim_user.`status`, sim_user.address, sim_user.email, sim_user.telephone,
+    sim_user.last_login as lastLogin, sim_user.create_time as createTime, sim_user.session_id as sessionID, sim_user.reserved1 as reserved1, sim_user.reserved2 as reserved2, sim_student.institution, sim_student.major, sim_student.grade,
+    sim_student.school, sim_student.natural_class as naturalClass
+  </sql>
+
+
+  <sql id="teahcer_Column_List" >
+    sim_user.account, sim_user.id, sim_user.`password`, sim_user.`name`, sim_user.gender, sim_user.`role`, sim_user.`status`, sim_user.address, sim_user.email, sim_user.telephone,
+    sim_user.last_login as lastLogin, sim_user.create_time as createTime, sim_user.session_id as sessionID, sim_user.reserved1 as reserved1, sim_user.reserved2 as reserved2, sim_teacher.job_title as jobTitle
+  </sql>
+
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iflytek.cetsim.model.AccountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sim_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_user
+    where account = #{account,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectStudentInfoByPrimaryKey" resultType="com.iflytek.cetsim.dto.StudentAccountDTO" parameterType="java.lang.String" >
+    select
+    <include refid="student_Column_List" />
+    from sim_user left join sim_student on sim_user.account = sim_student.student_account
+    where sim_user.account = #{account,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="selectTeacherInfoByPrimaryKey" resultType="com.iflytek.cetsim.dto.TeacherAccountDTO" parameterType="java.lang.String" >
+    select
+    <include refid="teahcer_Column_List" />
+    from sim_user left join sim_teacher on sim_user.account = sim_teacher.employee_account
+    where account = #{account,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sim_user
+    where account = #{account,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.iflytek.cetsim.model.AccountExample" >
+    delete from sim_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.Account" >
+    insert into sim_user (account, id, `password`, 
+      `name`, gender, `role`, session_id,
+      `status`, address, email, 
+      telephone, last_login, create_time, 
+      reserved1, reserved2)
+    values (#{account,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{gender,jdbcType=SMALLINT}, #{role,jdbcType=INTEGER}, #{sessionID,jdbcType=VARCHAR},
+      #{status,jdbcType=SMALLINT}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.Account" >
+    insert into sim_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="password != null" >
+        `password`,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="role != null" >
+        `role`,
+      </if>
+      <if test="sessionID != null" >
+        session_id,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="lastLogin != null" >
+        last_login,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        md5(#{password,jdbcType=VARCHAR}),
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="sessionID != null" >
+        #{sessionID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iflytek.cetsim.model.AccountExample" resultType="java.lang.Integer" >
+    select count(*) from sim_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sim_user
+    <set >
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.password != null" >
+        `password` = md5(#{record.password,jdbcType=VARCHAR}),
+      </if>
+      <if test="record.name != null" >
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=SMALLINT},
+      </if>
+      <if test="record.role != null" >
+        `role` = #{record.role,jdbcType=INTEGER},
+      </if>
+      <if test="record.sessionID != null" >
+        session_id = #{record.sessionID,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        `status` = #{record.status,jdbcType=SMALLINT},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLogin != null" >
+        last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reserved1 != null" >
+        reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved2 != null" >
+        reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sim_user
+    set account = #{record.account,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=INTEGER},
+      `password` = #{record.password,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      session_id = #{record.sessionID,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=SMALLINT},
+      `role` = #{record.role,jdbcType=INTEGER},
+      `status` = #{record.status,jdbcType=SMALLINT},
+      address = #{record.address,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      reserved2 = #{record.reserved2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.Account" >
+    update sim_user
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        `password` = md5(#{password,jdbcType=VARCHAR}),
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionID != null" >
+        session_id = #{sessionID,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="role != null" >
+        `role` = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where account = #{account,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iflytek.cetsim.model.Account" >
+    update sim_user
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        `password` = md5(#{password,jdbcType=VARCHAR}),
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionID != null" >
+        session_id = #{sessionID,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="role != null" >
+        `role` = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null" >
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where account = #{account,jdbcType=VARCHAR}
+  </update>
+
+  <select id="login" parameterType="com.iflytek.cetsim.model.Account" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `sim_user` WHERE account = #{account} and password = md5(#{password})
+  </select>
+
+  <select id="selectByIdAndPwd" parameterType="com.iflytek.cetsim.model.Account" resultType="com.iflytek.cetsim.model.Account">
+    select * from sim_user
+    where account=#{account,jdbcType=INTEGER} and password = md5(#{password,jdbcType=VARCHAR})
+  </select>
+
+  <update id="updateUserPassByAccount" parameterType="com.iflytek.cetsim.model.Account">
+    update sim_user
+    <set>
+      <if test="password != null">
+        password = md5(#{password,jdbcType=VARCHAR})
+      </if>
+    </set>
+    where account=#{account,jdbcType=INTEGER} LIMIT 1
+  </update>
+
+
+  <select id="selectStudentExamDetailByExampleByMap" resultType="com.iflytek.cetsim.dto.StudentExamDetailDTO" parameterType="java.util.Map">
+    select sim_user.account, sim_user.`name`, sim_user.gender, student.grade, student.institution, student.major,
+    student.natural_class as className, student.school, paper.`name` as paperName,
+    record.start_time as startTime,  record.end_time as endTime, record.score as totalScore, record.examCount as examCount
+    from sim_user LEFT JOIN sim_student student on sim_user.account = student.student_account
+    LEFT JOIN (
+    select exam_task_code, start_time, end_time, score, student_no, sum(if(exam_state = 1, 1, 0)) examCount
+    from sim_exam_record where exam_state = 1 GROUP BY student_no
+    ) record on record.student_no = student.student_account
+    LEFT JOIN sim_exam_task task on task.`code` = record.exam_task_code
+    left join sim_paper paper on paper.`code` = task.paper_code
+
+    <where>
+      <if test="role != null">
+        sim_user.role = #{role, jdbcType=INTEGER}
+      </if>
+
+      <if test="exam_state != null">
+        and record.exam_state = #{exam_state, jdbcType=SMALLINT}
+      </if>
+
+      <if test="students_account_list != null and students_account_list.length != 0">
+        AND sim_user.account IN
+        <foreach collection="students_account_list" item="student_account" index="index" open="(" close=")" separator=",">
+          #{student_account}
+        </foreach>
+      </if>
+
+    </where>
+    ORDER BY sim_user.account asc
+  </select>
+
+
+</mapper>

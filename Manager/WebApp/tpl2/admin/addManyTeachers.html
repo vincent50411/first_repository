@@ -1,0 +1,44 @@
+<div class="common-pop out-of-view cetsim-file-import-panel" id="addManyTeachersPanel" ng-controller="addManyTeachersCtrl">
+    <div class="pop-header">
+        导入教师
+        <a href="javascript:;" class="pop-btn-close" view-out="#addManyTeachersPanel"></a>
+    </div>
+    <div class="pop-body pop-padding" style="padding: 40px 10px;">
+        <div class="pop-form">
+            <div class="inputbox clearfix">
+                <!--<div class="proname">Excel文件：</div>-->
+                <div class="procontent file-import-procontent">
+                    <!--<input type="file" class="webinput" name="file" file-model="file" accept=".xls,.xlsx">-->
+                    <!--<input type="file"-->
+                    <!--class="webinput"-->
+                    <!--name="file"-->
+                    <!--file-model="file"-->
+                    <!--accept=".xls,.xlsx"-->
+                    <!--ngf-select="_uploadFiles($file, $invalidFiles)">-->
+
+                    选择文件：
+                    <span ng-show="__file" ng-cloak>
+                        <a  href="javascript:;" class="common-btn common-btn-special">
+                            <span ng-bind="__file.name"></span>
+                            <em class="delete"><i class="icon icon-other-delete" ng-click="_clearFileComponent()"></i></em>
+                        </a>
+                    </span>
+                    <a href="javascript:;"
+                       type="file"
+                       name="file"
+                       file-model="file"
+                       ngf-select="_uploadFiles($file, $invalidFiles)"
+                       class="common-btn">选择</a>
+                    <a target="_blank" ng-href="{{_host}}/admin/downloadTeacherTemplate.action" class="hover text-decoration ml10" download>下载模板</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="classId" value="{{classId}}">
+
+
+    <div class="pop-footer">
+        <a class="common-btn common-btn-primary" ng-click="uploadFiles()">确认</a>
+        <a href="javascript:;" class="common-btn ml10" view-out="#addManyTeachersPanel" ng-click="onClickCancel()">取消</a>
+    </div>
+</div>

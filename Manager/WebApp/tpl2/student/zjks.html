@@ -1,0 +1,152 @@
+<div class="commonwidth" ng-controller="zjksCtrl">
+    <div class="commonbox">
+
+
+        <div class="breadcrumbs">
+            <a href="javascript:;" class="hover" ui-sref="student.zzks.zdks">组队考试</a> > 组建考试
+        </div>
+
+        <div class="searchbar clearfix mt20">
+
+            <div class="fl">
+            <span class="inline-block">
+                筛选
+                <select class="eui-select" name="cetsim-eui-select-05171" ng-model="_selectUseState" ng-options="item.key for item in []|useStateOptions track by item.key" ng-change="refresh(1)"></select>
+                &nbsp;&nbsp;
+                试卷类别：
+                <select class="eui-select" name="cetsim-eui-select-05172" ng-model="_selectPaperType" ng-options="item.key for item in []|paperTypeOptions track by item.key" ng-change="refresh(1)"></select>
+            </span>
+            </div>
+
+        </div>
+
+
+        <div class="stumanage-box mt25">
+            <div class="common-table common-table-tc">
+
+
+                <table ng-hide="maxPage === 0">
+                    <thead>
+                    <tr>
+                        <td>状态</td>
+                        <td>试卷名称</td>
+                        <td>类别</td>
+                        <td>发布时间</td>
+                        <td>
+                            <div cetsim-sort-column data-text="'平均分'"
+                                                data-column="order.column"
+                                                data-order="order.code"
+                                                data-column-name="'AVG_SCORE'"
+                                                data-refresh-method="refresh(1)"></div>
+                        </td>
+                        <td>
+                            <div cetsim-sort-column data-text="'考试次数'"
+                                                data-column="order.column"
+                                                data-order="order.code"
+                                                data-column-name="'TRAIM_EXAM_COUNT'"
+                                                data-refresh-method="refresh(1)"></div>
+                        </td>
+                        <td>
+                            <div cetsim-sort-column data-text="'历史最高成绩'"
+                                                data-column="order.column"
+                                                data-order="order.code"
+                                                data-column-name="'MAX_SCORE'"
+                                                data-refresh-method="refresh(1)"></div>
+                        </td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in items"
+                        ng-class="{'even': $index % 2===0}">
+                        <td>
+                            <div train-task-state use-count="item.useCount"></div>
+                        </td>
+                        <td ng-bind="item.name|EmptyText"></td>
+                        <td ng-bind="item.paperTypeCode|uppercase"></td>
+                        <td ng-bind="item.createTime|date:'yyyy/MM/dd HH:mm'"></td>
+                        <td ng-bind="item.averageScore|scoreValueFormater:item.useCount|EmptyText"></td>
+                        <td ng-bind="item.useCount|EmptyText"></td>
+                        <td ng-bind="item.maxScore|scoreValueFormater:item.useCount|EmptyText"></td>
+                        <td>
+                            <a href="javascript:;" ng-click="createTrainTaskRoom(item.code)" class="hover">组建考试</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div ng-show="maxPage === 0" ng-cloak class="nodata-box mt25">
+                    <div class="img"><img src="static/images/no-records.png" alt="暂无记录！"></div>
+                    <div class="txt">暂无记录！</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="common-page clearfix mt20" ng-hide="maxPage === 0">
+            <div class="pages" ng-show="maxPage > 1" ng-cloak>
+                <a href="javascript:;" ng-click="goPage(1)">首页</a>
+                <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+                <a ng-repeat="n in [] | midRange:maxPage:curPage" href="javascript:;" go-page2="goPage(n)" ng-class="{'current' : curPage === n}">
+                    {{n}}
+                </a>
+                <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+                <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <iframe id="trainTaskStartClientFrame_A" style="width: 0px; height: 0px;"></iframe>
+
+
+    <!-- 提示考试机成功启动弹出框内容 -->
+    <div id="flushTrainInfoListLayerHtml_A" style="display: none;">
+        <div class="common-pop" style="margin: 20px; float: left;">
+            <div class="pop-header">
+                提示
+            </div>
+            <div class="pop-body pop-padding">
+                <div class="pop-prompt">
+                    <p>
+                    <h5 style="text-align: left;">考试机已经启动,如果您已经完成考试，请点击查看报告按钮查看报告</h5>
+                    </p>
+                </div>
+            </div>
+            <div class="pop-footer">
+                <a href="javascript:;"
+                   ui-sref="student.zzks.taskReport({studentAccount:studentAccount, recordCode : candidateARecordCode, paperType : paperTypeCode})"
+                   class="common-btn  common-btn-primary">查看报告</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 下载提示-->
+    <div id="downloadExamClientInfoHtml_A" style="display: none;">
+        <div class="common-pop" style="margin: 20px; float: left;">
+            <div class="pop-header">
+                未检测到考试机启动，可能存在以下情况
+            </div>
+            <div class="pop-body pop-padding">
+                <div class="pop-prompt">
+                    <p>
+                    <h5 style="text-align: left;">1、未下载安装考试机程序或者程序被损坏 <a href="/upgrade/clientsetup.exe" style="color: red; font-size: 16px; text-decoration: underline;">请点击下载</a></h5>
+                    <h5 style="text-align: left;">2、已经安装考试机，但被浏览器阻止弹出启动提示信息框或者用户未点击允许运行启动命令</h5>
+                    </p>
+                </div>
+            </div>
+            <div class="pop-footer">
+                <a href="javascript:;" class="common-btn common-btn-primary">确定</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div ng-include="'tpl2/student/popWaitingZudui.html'"></div>
+
+
+

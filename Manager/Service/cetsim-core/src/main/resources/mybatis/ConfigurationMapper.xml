@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.ConfigurationMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.Configuration" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="config_key" property="configKey" jdbcType="VARCHAR" />
+    <result column="config_value" property="configValue" jdbcType="VARCHAR" />
+    <result column="display_name" property="displayName" jdbcType="VARCHAR" />
+    <result column="config_type" property="configType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, config_key, config_value, display_name, config_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_configuration
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByConfigName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sim_configuration
+    where config_key = #{config_key,jdbcType=VARCHAR}
+  </select>
+
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.Configuration" >
+    insert into sim_configuration (id, config_key, config_value, display_name, config_type
+      )
+    values (#{id,jdbcType=INTEGER}, #{configKey,jdbcType=VARCHAR}, #{configValue,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR}, #{configType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.Configuration" >
+    insert into sim_configuration
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="configKey != null" >
+        config_key,
+      </if>
+      <if test="configValue != null" >
+        config_value,
+      </if>
+      <if test="displayName != null" >
+        display_name,
+      </if>
+      <if test="configType != null" >
+        config_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="configKey != null" >
+        #{configKey,jdbcType=VARCHAR},
+      </if>
+      <if test="configValue != null" >
+        #{configValue,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null" >
+        #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="configType != null" >
+        #{configType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectAllConfig" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sim_configuration
+  </select>
+  
+  <update id="updateByPrimaryKey" parameterType="com.iflytek.cetsim.model.Configuration">
+    update sim_configuration
+    <set>
+      <if test="configValue != null" >
+        config_value = #{configValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where config_key = #{configKey, jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

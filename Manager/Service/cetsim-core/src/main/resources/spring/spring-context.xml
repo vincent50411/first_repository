@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd">
+
+    <description>Spring Configuration</description>
+    
+    <!-- 加载配置属性文件 -->
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:cetsim.properties" />
+	
+	<!-- 加载应用属性实例，可通过  @Value("#{CETSIM['jdbc.driver']}") String jdbcDriver 方式引用 -->
+    <util:properties id="CETSIM" location="classpath*:cetsim.properties" local-override="true"/>
+    
+	<!-- 启用注解 -->
+	<context:annotation-config />
+
+	<!-- 设置扫描类，解决事物失效问题：在主容器中不扫描@Controller等，在SpringMvc中只扫描@Controller等。  -->
+	<context:component-scan base-package="com.iflytek.cetsim" use-default-filters="true">
+		<!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />-->
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<!--<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />-->
+	</context:component-scan>
+
+	<!-- 数据源配置, 使用 durid 数据库连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.mysql.driver}" />
+		<property name="connectionProperties" value="useUnicode=true;characterEncoding=utf-8"/>
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${jdbc.mysql.url}" />
+		<property name="username" value="${jdbc.mysql.user}" />
+		<property name="password" value="${jdbc.mysql.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.pool.init}" />
+		<property name="minIdle" value="${jdbc.pool.minIdle}" />
+		<property name="maxActive" value="${jdbc.pool.maxActive}"  />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.evictionInterval}" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdle}" />
+
+		<property name="validationQuery" value="${jdbc.mysql.testSql}" />
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+		<property name="testOnReturn" value="${jdbc.testOnReturn}" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="${jdbc.maxPoolPreparedStatementPer}" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<task:executor id="taskExecutor" pool-size="${task.pool_size}" queue-capacity="${task.queue_capacity}" keep-alive="${task.keep_alive}" rejection-policy="CALLER_RUNS" />
+	<task:annotation-driven executor="taskExecutor" />
+</beans>

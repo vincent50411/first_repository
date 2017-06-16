@@ -1,0 +1,38 @@
+<div ng-controller="studentClassCtrl" class="container">
+            <div class="page-header">
+                我的班级 <a class="btn btn-primary" href="#/student/joinclass">加入班级</a>
+            </div>
+            <div class="col-md-12">                
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>班级编号</td>
+                            <td>班级名称</td>
+                            <td>教师</td>
+                            <td>学生数</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-class="{'even': $index % 2===0}"
+                                ng-repeat="x in rooms">
+                            <td>{{x.code}}</td>
+                            <td>{{x.name}}</td>
+                            <td>{{x.teacher_name}}</td>
+                            <td>{{x.student_count}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav aria-label="Page navigation">
+                  <ul class="pagination" style="margin: 0px;" >  
+                    <li ng-class="{true:'disabled'}[p_current==1]"><a href="javascript:void(0);" ng-click="p_index()">首页</a></li>  
+                    <li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]"><a href="javascript:void(0);" ng-click="load_page(page)">{{ page }}</a></li>  
+                    <li ng-class="{true:'disabled'}[p_current==p_all_page]"><a href="javascript:void(0);" ng-click="p_last()">尾页</a></li>  
+                    </ul>  
+                    <span style="vertical-align: 12px;">  共：{{total}} 条</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

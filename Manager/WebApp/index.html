@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="cn" ng-app="cetsim" id="ng-app" xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="四六级,CET,模拟考试"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <!-- for 360 use 极速核-->
+    <meta name="renderer" content="webkit">
+    <title>大学英语四六级口语智能考试系统</title>
+
+    <!--框架样式-->
+    <!--表单美化样式-->
+    <link type="text/css" rel="stylesheet" href="static/plugin/formbeautify/eui-form-beautify-min.css?t=20170613">
+    <!--sass自动生成的css-->
+    <link type="text/css" rel="stylesheet" href="static/css/common.css?t=20170613">
+    <!--/框架样式-->
+
+
+    <link rel="shortcut icon" href="img/favicon.ico?t=20170613">
+    <!--<link rel="stylesheet" href="css/common.css">-->
+    <!--<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">-->
+
+    <!--<link rel="stylesheet" href="lib/bootstrap-toggle/css/bootstrap-toggle.min.css">-->
+
+    <!-- layer弹出控件 by lws 20170328 -->
+    <link rel="stylesheet" href="lib/layer/skin/layer.css?t=20170613">
+    <link rel="stylesheet" href="lib/jplayer/skin/blue.monday/css/jplayer.blue.monday.css?t=20170613">
+
+    <!--研发自定义样式写入此样式表-->
+    <link type="text/css" rel="stylesheet" href="static/css/custom.css?t=20170613">
+
+    <link rel="stylesheet" href="css/global.main.css?t=20170613">
+    <link rel="stylesheet" href="font/iconfont.css?t=20170613">
+
+    <!--[if lte IE 9]>
+    <style type="text/css">
+        .hide-on-ie9orless{
+            display:none!important;
+        }
+        .combination input.cominput{
+            line-height:28px;
+        }
+    </style>
+    <![endif]-->
+
+    <!--[if lte IE 7]>
+    <style type="text/css">
+    .hide-on-ie7orless{
+        display:none!important;
+    }
+    </style>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <style type="text/css">
+        .hide-on-ie8orless{
+            display:none!important;
+        }
+    </style>
+    <script>
+        // 解决ie8 console 未定义的代码
+        if (!window.console || !console.firebug) {
+            var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+
+            window.console = {};
+            for (var i = 0; i < names.length; ++i)
+                window.console[names[i]] = function () {
+                }
+        }
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+    </script>
+    <script src="lib/json2.js?t=20170613"></script>
+    <script src="lib/html5shiv.js?t=20170613"></script>
+    <![endif]-->
+   
+    <!--[if lte IE 7]>
+    <script src="js/ie7.js?t=20170613"></script>
+    <![endif]-->
+    <!--jquery-->
+    <script src="static/plugin/jquery/jquery-1.9.1.min.js?t=20170613"></script>
+
+
+    <!-- lib-->
+    <script src="data/config.js?t=20170613"></script>
+    <script src="lib/underscore/underscore-min.js?t=20170613"></script>
+    <script src="lib/bootstrap/dist/js/html5shiv.js?t=20170613"></script>
+    <script src="lib/respond/dest/respond.min.js?t=20170613"></script>
+    <script src="lib/es5-shim.min.js?t=20170613"></script>
+    <script src="lib/es5-sham.min.js?t=20170613"></script>
+    <script src="lib/jquery/dist/jquery.min.js?t=20170613"></script>
+    <script src="lib/angular/angular.js?t=20170613"></script>
+    <script src="lib/angular/angular-ui-router.min.js?t=20170613"></script>
+    <script src="js/angular-ie7.js?t=20170613"></script>
+    <script src="lib/ng-file-upload-shim/ng-file-upload-shim.min.js?t=20170613"></script>
+    <script src="lib/ng-file-upload/ng-file-upload.min.js?t=20170613"></script>
+    <script src="lib/highcharts.js?t=20170613"></script>
+    <link rel="stylesheet" href="lib/slick-carousel/slick/slick.css?t=20170613">
+    <script src="lib/slick-carousel/slick/slick.js?t=20170613"></script>
+    <script src="lib/cookie.js?t=20170613"></script>
+    <script src="lib/My97DatePicker/WdatePicker.js?t=20170613"></script>
+    <script src="lib/urijs/src/URI.min.js?t=20170613"></script>
+    <script src="lib/moment.min.js?t=20170613"></script>
+
+    <!--表单美化样式-->
+    <script src="static/plugin/formbeautify/jquery.selectbeautify.js?t=20170613"></script>
+    
+    <!--自写js文件-->
+    <script src="static/js/common.js?t=20170613"></script>
+    <script src="js/main.js?t=20170613"></script>
+
+    <!--jplayer-->
+    <script src="lib/jplayer/jquery.jplayer.min.js?t=20170613"></script>
+    <script src="lib/jplayer/add-on/jplayer.playlist.min.js?t=20170613"></script>
+
+    <!-- layer v2.4 弹出控件 by lws 20170328 -->
+    <script src="lib/layer/layer-v2.4.js?t=20170613"></script>
+
+    <script src="lib/socket.io/socket.io/socket.io.js"></script>
+    <!--<script src="lib/socket.io/moment.min.js"></script>-->
+
+
+    <!-- app js-->
+    <script src="js/app-nui.js?t=20170613"></script>
+
+    <!-- controllers -->
+    <script src="js/controllers/userController.js?t=20170613"></script>
+    <script src="js/controllers/adminController.js?t=20170613"></script>
+    <script src="js/controllers/homeController.js?t=20170613"></script>
+
+
+    <script src="js/controllers/studentController.js?t=20170613"></script>
+    <script src="js/controllers/teacherController.js?t=20170613"></script>
+
+    <script src="js/controllers/studentTrainController.js?t=20170613"></script>
+    <script src="js/controllers/studentSpecialTrainController.js?t=20170613"></script>
+
+    <!-- directives -->
+    <script src="js/directives/commonDirective.js?t=20170613"></script>
+
+    <!-- services -->
+    <script src="js/services/commonService.js?t=20170613"></script>
+    <script src="js/services/userService.js?t=20170613"></script>
+    <script src="js/services/classService.js?t=20170613"></script>
+
+    <script src="js/services/studentService.js?t=20170613"></script>
+    <script src="js/services/teacherService.js?t=20170613"></script>
+    <script src="js/services/teacherService2.js?t=20170613"></script>
+    <script src="js/services/studentService2.js?t=20170613"></script>
+    <script src="js/services/taskService.js?t=20170613"></script>
+    <script src="js/services/resourceService.js?t=20170613"></script>
+
+    <script src="js/services/studentTrainService.js?t=20170613"></script>
+    <script src="js/services/studentSpecialTrainService.js?t=20170613"></script>
+
+
+    <!-- filter -->
+    <script src="js/filter/main.filter.js?t=20170613"></script>    
+</head>
+<body>
+
+<span style="display: none">
+    <!--[if IE 7]>
+        <span id="cetsim-browser-detect-ie7"></span>
+    <![endif]-->
+    <!--[if IE 8]>
+        <span id="cetsim-browser-detect-ie8"></span>
+    <![endif]-->
+    <!--[if IE 9]>
+        <span id="cetsim-browser-detect-ie9"></span>
+    <![endif]-->
+    <!--[if lte IE 9]>
+        <span id="cetsim-browser-detect-less-than-ie9"></span>
+    <![endif]-->
+</span>
+
+<div class="wrapper">
+
+    <div data-ui-view=""></div>
+
+    <div class="footer">皖ICP备05001217号 科大讯飞股份有限公司 版权所有</div>
+</div>
+
+
+<!--提示-->
+<!--参考 commonService.layerSuccess() 方法-->
+<!--参考 commonService.layerError() 方法-->
+<div id="global-info-panel" class="common-pop" style="display: none;width:100%;min-width: 440px;">
+    <div class="pop-body pop-padding">
+        <div class="pop-prompt">
+            <i class="icon cet-icon"></i>
+            <p class="mt15 information"></p>
+        </div>
+    </div>
+    <div class="pop-footer">
+        <button class="common-btn common-btn-primary btn-confirm" hide-pop="#global-info-panel">确定</button>
+        <a class="common-btn common-btn-primary btn-return" href="javascript:;" go-back style="display: none;" hide-pop="#global-info-panel"></a>
+    </div>
+</div>
+
+
+<!--进度不带按钮提示-->
+<!--暂时还没有用到, 因为用户体验没有 旋转等待 好-->
+<div id="importProgressPanel" class="common-pop" style="width: 280px; margin: 20px;display: none;">
+    <div class="pop-body">
+        <div class="pop-prompt">
+            <p class="fs16">导入中  <span class="progress-val"></span></p>
+            <p><span class="pop-progressbar"><span class="progressinner" style="width: 0%;"></span></span></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

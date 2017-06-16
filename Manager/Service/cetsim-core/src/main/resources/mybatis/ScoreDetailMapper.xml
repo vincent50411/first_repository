@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.ScoreDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.ScoreDetail" >
+    <id column="record_code" property="recordCode" jdbcType="VARCHAR" />
+    <id column="paper_item_type_code" property="paperItemTypeCode" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="socre" property="socre" jdbcType="REAL" />
+    <result column="engine_code" property="engineCode" jdbcType="INTEGER" />
+    <result column="eval_status" property="evalStatus" jdbcType="INTEGER" />
+    <result column="detail" property="detail" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    record_code, paper_item_type_code, id, socre, engine_code, eval_status, detail, reserved1, 
+    reserved2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.iflytek.cetsim.model.ScoreDetailKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_eval_record
+    where record_code = #{recordCode,jdbcType=VARCHAR}
+      and paper_item_type_code = #{paperItemTypeCode,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.ScoreDetail" >
+    insert into sim_eval_record (record_code, paper_item_type_code, id, 
+      socre, engine_code, eval_status, 
+      detail, reserved1, reserved2
+      )
+    values (#{recordCode,jdbcType=VARCHAR}, #{paperItemTypeCode,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, 
+      #{socre,jdbcType=REAL}, #{engineCode,jdbcType=INTEGER}, #{evalStatus,jdbcType=INTEGER}, 
+      #{detail,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.ScoreDetail" >
+    insert into sim_eval_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordCode != null" >
+        record_code,
+      </if>
+      <if test="paperItemTypeCode != null" >
+        paper_item_type_code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="socre != null" >
+        socre,
+      </if>
+      <if test="engineCode != null" >
+        engine_code,
+      </if>
+      <if test="evalStatus != null" >
+        eval_status,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordCode != null" >
+        #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paperItemTypeCode != null" >
+        #{paperItemTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="socre != null" >
+        #{socre,jdbcType=REAL},
+      </if>
+      <if test="engineCode != null" >
+        #{engineCode,jdbcType=INTEGER},
+      </if>
+      <if test="evalStatus != null" >
+        #{evalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateScoreDetail" parameterType="com.iflytek.cetsim.model.ScoreDetail">
+    update sim_eval_record set socre = #{socre,jdbcType=REAL}, engine_code = #{engineCode,jdbcType=INTEGER}, eval_status = #{evalStatus,jdbcType=INTEGER}
+    where record_code = #{recordCode,jdbcType=VARCHAR} and paper_item_type_code = #{paperItemTypeCode,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllByRecordId" parameterType="java.lang.String" resultType="com.iflytek.cetsim.model.ScoreDetail">
+    select id, record_code as recordCode, paper_item_type_code as paperItemTypeCode, socre,
+      engine_code as engineCode, eval_status as evalStatus, detail, reserved1, reserved2
+    from sim_eval_record where record_code = #{recordCode}
+  </select>
+  <update id="updateSimTotalScore" parameterType="java.util.Map">
+    update sim_exam_record set eval_state = #{evalState}, score = #{totalScore}
+    where code = #{code}
+  </update>
+  <update id="updateTrainTotalScore" parameterType="java.util.Map">
+    update sim_train_record set eval_state = #{evalState}, score = #{totalScore}
+    where code = #{code}
+  </update>
+  <update id="updateSpecialTotalScore" parameterType="java.util.Map">
+    update sim_special_train_record set eval_state = #{evalState}, score = #{totalScore}
+    where code = #{code}
+  </update>
+  <update id="insertXmlFile" parameterType="java.util.Map">
+    update sim_eval_record set detail = #{xmlFile}, reserved1 = #{ret}
+    where record_code = #{code} and paper_item_type_code = #{itemCode}
+  </update>
+</mapper>

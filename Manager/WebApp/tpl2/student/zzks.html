@@ -1,0 +1,27 @@
+
+<div class="commonwidth">
+    <div class="commonbox">
+
+
+        <div style="margin:10px 0;">
+            <span class="inline-block h3-title" style="margin-right: 50px;">
+                自主考试
+            </span>
+        </div>
+
+
+        <div class="tab-box">
+            <ul class="clearfix">
+                <li ui-sref-active="current" ui-sref=".zdks"><a href="javascript:;">组队考试</a></li>
+                <li ng-class="{current : ('student.zzks.record'|includedByState) || ('student.zzks.taskReport'|includedByState)}" ui-sref=".record"><a href="javascript:;">考试记录</a></li>
+            </ul>
+        </div>
+
+
+
+
+        <div data-ui-view=""></div>
+
+    </div>
+</div>
+

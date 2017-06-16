@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+      
+    <description>Spring MVC Configuration</description>
+    
+    <!-- 加载配置属性文件 -->
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:cetsim.properties" />
+
+	<!-- 设置扫描类，解决事物失效问题：在主容器中不扫描@Controller等，在SpringMvc中只扫描@Controller等。  -->
+	<context:component-scan base-package="com.iflytek.cetsim" use-default-filters="true">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<!--<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />-->
+		<!--<context:include-filter type="annotation" expression="com.iflytek.cetsim.common.annotation.MyBatisRepository" />-->
+	</context:component-scan>
+
+	<!-- 启用spring mvc 注解 -->
+	<context:annotation-config />
+
+    <!-- 取消循环引用 -->
+    <bean id="jsonConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+				<value>text/json;charset=UTF-8</value>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+        <property name="features">
+            <array value-type="com.alibaba.fastjson.serializer.SerializerFeature">
+                <value>DisableCircularReferenceDetect</value>
+                <value>WriteMapNullValue</value>
+            </array>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <ref bean="jsonConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+
+	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="${web.view.prefix}" />
+		<property name="suffix" value="${web.view.suffix}" />
+	</bean>
+
+    <!-- 文件上传下载 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="4096" />
+	</bean>
+
+
+
+
+
+	<mvc:interceptors>
+
+		<mvc:interceptor>
+			<!-- 对网站发送的所有请求做拦截 -->
+			<mvc:mapping path="/api/**/**"/>
+
+			<!-- 除了登录请求 -->
+			<mvc:exclude-mapping path="/api/user/login.action"/>
+
+			<bean class="com.iflytek.cetsim.interceptors.WebInterceptor"/>
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<!-- 网站管理员角色的请求路由 -->
+			<mvc:mapping path="/admin/**"/>
+
+			<bean class="com.iflytek.cetsim.interceptors.WebInterceptor"/>
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<!-- 只对考试机发送给PrepareExamController的请求做拦截，具体拦截配置在controller的接口上-->
+			<mvc:mapping path="/exam/**"/>
+
+			<bean class="com.iflytek.cetsim.interceptors.ClientExamInterceptor"/>
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+</beans>

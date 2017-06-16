@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.ExamTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.ExamTask" >
+    <id column="code" property="code" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="plan_code" property="planCode" jdbcType="VARCHAR" />
+    <result column="class_code" property="classCode" jdbcType="VARCHAR" />
+    <result column="paper_code" property="paperCode" jdbcType="VARCHAR" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <parameterMap id="scoreRamgeMap" type="java.util.Map">
+    <parameter property="min" mode="IN" jdbcType="DOUBLE"/>
+    <parameter property="max" mode="IN" jdbcType="DOUBLE"/>
+    <parameter property="task_code" mode="IN" jdbcType="BIGINT"/>
+  </parameterMap>
+
+
+
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    code, id, `name`, plan_code, class_code, paper_code, reserved1, reserved2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.iflytek.cetsim.model.ExamTaskExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sim_exam_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sim_exam_task
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sim_exam_task
+    where code = #{code,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.iflytek.cetsim.model.ExamTask" >
+    insert into sim_exam_task (code, id, `name`,
+      plan_code, class_code, paper_code, 
+      reserved1, reserved2)
+    values (#{code,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{planCode,jdbcType=VARCHAR}, #{classCode,jdbcType=VARCHAR}, #{paperCode,jdbcType=VARCHAR}, 
+      #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.iflytek.cetsim.model.ExamTask" >
+    insert into sim_exam_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="planCode != null" >
+        plan_code,
+      </if>
+      <if test="classCode != null" >
+        class_code,
+      </if>
+      <if test="paperCode != null" >
+        paper_code,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="planCode != null" >
+        #{planCode,jdbcType=VARCHAR},
+      </if>
+      <if test="classCode != null" >
+        #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paperCode != null" >
+        #{paperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iflytek.cetsim.model.ExamTaskExample" resultType="java.lang.Integer" >
+    select count(*) from sim_exam_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sim_exam_task
+    <set >
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.planCode != null" >
+        plan_code = #{record.planCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.classCode != null" >
+        class_code = #{record.classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paperCode != null" >
+        paper_code = #{record.paperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved1 != null" >
+        reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved2 != null" >
+        reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sim_exam_task
+    set code = #{record.code,jdbcType=VARCHAR},
+      id = #{record.id,jdbcType=INTEGER},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      plan_code = #{record.planCode,jdbcType=VARCHAR},
+      class_code = #{record.classCode,jdbcType=VARCHAR},
+      paper_code = #{record.paperCode,jdbcType=VARCHAR},
+      reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      reserved2 = #{record.reserved2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iflytek.cetsim.model.ExamTask" >
+    update sim_exam_task
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="planCode != null" >
+        plan_code = #{planCode,jdbcType=VARCHAR},
+      </if>
+      <if test="classCode != null" >
+        class_code = #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="paperCode != null" >
+        paper_code = #{paperCode,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iflytek.cetsim.model.ExamTask" >
+    update sim_exam_task
+    set id = #{id,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      plan_code = #{planCode,jdbcType=VARCHAR},
+      class_code = #{classCode,jdbcType=VARCHAR},
+      paper_code = #{paperCode,jdbcType=VARCHAR},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR}
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="queryPaperInfoByTaskCode" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.PaperInfoDTO">
+      select sim_paper.`code`, sim_paper.`name`, sim_paper.paper_type_code as paperTypeCode from sim_exam_task
+      left join sim_paper on sim_exam_task.paper_code = sim_paper.`code`
+      <where>
+        <if test="plantCode != null">
+          sim_exam_task.plan_code = #{plantCode,jdbcType=VARCHAR}
+        </if>
+      </where>
+
+    LIMIT 1
+
+
+  </select>
+
+  <!-- 一个人可以同时分配多个测试任务（属于同一个测试计划） -->
+  <!-- <select id="teacherQueryTaskStudentList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.StudentDTO">
+    select class.`name` as taskClassName, class.`code` as classCode,
+    if(record.max_score is null, 0, record.max_score) as max_score,
+    if(record.average_score is null, 0, record.average_score) as average_score,
+    record.exam_count, a.`code`, record.exam_task_code,
+    a.student_account as account,  userInfo.*, sim_student.natural_class className,
+    sim_student.grade, sim_student.institution, sim_student.major, sim_student.school,
+    paper.name paperName
+    from (
+    select task.`code`, task.paper_code, plan.code as planCode, sim_class_student.class_code,sim_class_student.student_account,
+    concat(sim_class_student.student_account, task.`code`) student_task_code
+    from sim_exam_plan plan
+    left join sim_exam_task task on plan.`code` = task.plan_code
+    left join sim_class_student on sim_class_student.class_code = task.class_code
+    where
+    plan.`code` = #{planCode, jdbcType=VARCHAR}
+    GROUP BY sim_class_student.class_code, sim_class_student.student_account
+    ) a
+    LEFT JOIN
+    (
+    select concat(student_no, exam_task_code) student_task_code, code, student_no, exam_task_code, exam_state, if(exam_state = 1, 1, null) as exam_count,
+    score as average_score, score as max_score
+    from sim_exam_record where exam_state = 1  and exam_task_code in (
+    select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+    ) record on a.student_task_code = record.student_task_code
+    LEFT JOIN sim_class class ON a.class_code = class.`code`
+    LEFT JOIN sim_user userInfo on userInfo.account = a.student_account
+    left join sim_student on sim_student.student_account = userInfo.account
+    left join sim_paper paper on paper.`code` = a.paper_code
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+
+  </select>-->
+
+  <!-- 与导出一直 -->
+  <select id="teacherQueryTaskStudentList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.StudentDTO">
+    select
+    if(record.taskClassName is null, (select GROUP_CONCAT(name separator ',') from sim_class where `code` in (select class_code from sim_class_student where student_account = a.student_account)), record.taskClassName) taskClassName,
+    record.classCode,
+    record.max_score as max_score, record.average_score,
+    record.exam_count, a.`code`, record.exam_task_code,
+    record.code as recordCode,
+    a.student_account as account,  userInfo.*, sim_student.natural_class className,
+    sim_student.grade, sim_student.institution, sim_student.major, sim_student.school,
+    paper.name paperName
+    from (
+    select task.`code`, task.paper_code, plan.code as planCode, sim_class_student.class_code,sim_class_student.student_account
+    from sim_exam_plan plan
+    left join sim_exam_task task on plan.`code` = task.plan_code
+    left join sim_class_student on sim_class_student.class_code = task.class_code
+    where
+    plan.`code` =  #{planCode, jdbcType=VARCHAR}
+    GROUP BY sim_class_student.student_account
+    ) a
+    LEFT JOIN
+    (
+      select class.`name` as taskClassName, class.`code` as classCode, z.code, z.student_no, z.exam_task_code, z.exam_state, z.max_score, b.exam_count, b.average_score
+      from (
+        select code, student_no, exam_task_code, exam_state, max(score) as max_score
+        from sim_exam_record as a where exam_state = 1 and exam_task_code in (
+        select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+        and score = (
+        select max(a.score) from sim_exam_record as b where a.student_no = b.student_no and exam_state = 1) group by a.student_no
+      ) z
+      LEFT JOIN(
+        select code, student_no, exam_task_code, count(*) as exam_count, AVG(score) as average_score
+        from sim_exam_record as a where exam_state = 1 and exam_task_code in (
+        select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+        group by student_no
+      ) b on z.student_no = b.student_no
+      LEFT JOIN sim_exam_task t on t.`code` = z.exam_task_code
+      left join sim_class class on class.`code` = t.class_code
+    ) record on a.student_account = record.student_no
+    LEFT JOIN sim_user userInfo on userInfo.account = a.student_account
+    left join sim_student on sim_student.student_account = userInfo.account
+    left join sim_paper paper on paper.`code` = a.paper_code
+
+    <where>
+      <if test="name != null">
+        account like #{name,jdbcType=VARCHAR} or userInfo.name like #{name,jdbcType=VARCHAR} or class.`name` like #{name,jdbcType=VARCHAR}
+      </if>
+
+    </where>
+
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+
+  </select>
+
+  <!-- 导出学生考试记录：只取最高分记录 -->
+  <select id="teacherExportTaskStudentList" parameterType="java.util.Map" resultType="com.iflytek.cetsim.dto.StudentDTO">
+    select class.`name` as taskClassName, class.`code` as classCode,
+    record.max_score as max_score, record.average_score,
+    record.exam_count, a.`code`, record.exam_task_code,
+    a.student_account as account,  userInfo.*, sim_student.natural_class className,
+    sim_student.grade, sim_student.institution, sim_student.major, sim_student.school,
+    paper.name paperName
+    from (
+    select task.`code`, task.paper_code, plan.code as planCode, sim_class_student.class_code,sim_class_student.student_account
+    from sim_exam_plan plan
+    left join sim_exam_task task on plan.`code` = task.plan_code
+    left join sim_class_student on sim_class_student.class_code = task.class_code
+    where
+    plan.`code` =  #{planCode, jdbcType=VARCHAR}
+    GROUP BY sim_class_student.student_account
+    ) a
+    LEFT JOIN
+    (
+    select z.code, z.student_no, z.exam_task_code, z.exam_state, z.max_score, b.exam_count, b.average_score
+    from (
+    select code, student_no, exam_task_code, exam_state, score as max_score
+    from sim_exam_record as a where exam_state = 1 and exam_task_code in (
+    select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+    and score = (
+    select max(b.score) from sim_exam_record as b where a.student_no = b.student_no and exam_state = 1)
+    ) z
+    LEFT JOIN(
+    select code, student_no, exam_task_code, count(*) as exam_count, AVG(score) as average_score
+    from sim_exam_record as a where exam_state = 1 and exam_task_code in (
+    select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+    group by student_no
+    ) b on z.student_no = b.student_no
+    ) record on a.student_account = record.student_no
+
+    LEFT JOIN sim_class class ON a.class_code = class.`code`
+    LEFT JOIN sim_user userInfo on userInfo.account = a.student_account
+    left join sim_student on sim_student.student_account = userInfo.account
+    left join sim_paper paper on paper.`code` = a.paper_code
+
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+
+  </select>
+
+  <select id="countTaskStudent" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*)
+    from (
+    select task.`code`, task.paper_code, plan.code as planCode, sim_class_student.class_code,sim_class_student.student_account
+    from sim_exam_plan plan
+    left join sim_exam_task task on plan.`code` = task.plan_code
+    left join sim_class_student on sim_class_student.class_code = task.class_code
+    where
+    plan.`code` =  #{planCode, jdbcType=VARCHAR}
+    GROUP BY sim_class_student.student_account
+    ) a
+    LEFT JOIN
+    (
+    select z.code, z.student_no, z.exam_task_code, z.exam_state, z.max_score, b.exam_count, b.average_score
+    from (
+    select code, student_no, exam_task_code, exam_state, max(score) as max_score
+    from sim_exam_record as a where exam_state = 1 and exam_task_code in (
+    select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+    and score = (
+    select max(a.score) from sim_exam_record as b where a.student_no = b.student_no and exam_state = 1) group by a.student_no
+    ) z
+    LEFT JOIN(
+    select code, student_no, exam_task_code, count(*) as exam_count, AVG(score) as average_score
+    from sim_exam_record as a where exam_state = 1 and exam_task_code in (
+    select code from sim_exam_task where plan_code = #{planCode, jdbcType=VARCHAR})
+    group by student_no
+    ) b on z.student_no = b.student_no
+    ) record on a.student_account = record.student_no
+
+    LEFT JOIN sim_class class ON a.class_code = class.`code`
+    LEFT JOIN sim_user userInfo on userInfo.account = a.student_account
+    left join sim_student on sim_student.student_account = userInfo.account
+    left join sim_paper paper on paper.`code` = a.paper_code
+
+    <where>
+      <if test="name != null">
+        account like #{name,jdbcType=VARCHAR} or userInfo.name like #{name,jdbcType=VARCHAR} or class.`name` like #{name,jdbcType=VARCHAR}
+      </if>
+
+    </where>
+  </select>
+
+
+  <select id="countScoreDistribution"  parameterType="java.util.Map" resultType="java.lang.Integer">
+      select count(a.student_account)
+      from (
+      select task.`code`, task.paper_code, plan.code as planCode, sim_class_student.class_code,sim_class_student.student_account,
+      concat(sim_class_student.student_account, task.`code`) student_task_code
+      from sim_exam_plan plan
+      left join sim_exam_task task on plan.`code` = task.plan_code
+      left join sim_class_student on sim_class_student.class_code = task.class_code
+      where
+      plan.`code` = #{plantCode, jdbcType=VARCHAR}
+      GROUP BY sim_class_student.class_code, sim_class_student.student_account
+      ) a
+      LEFT JOIN
+      (
+      select concat(student_no, exam_task_code) student_task_code, code, student_no, exam_task_code, exam_state, if(exam_state = 1, 1, null) as exam_count,
+      score as average_score, score as max_score, score
+      from sim_exam_record where exam_state = 1
+      ) record on a.student_task_code = record.student_task_code
+
+      <where>
+      <if test="nullScore != null">
+        score is null
+      </if>
+      <if test="min != null and max != null">
+        and score &gt;= #{min, jdbcType=DOUBLE} and score &lt;= #{max, jdbcType=DOUBLE}
+      </if>
+    </where>
+</select>
+
+
+  <delete id="deleteByPlanCode" parameterType="java.lang.String">
+    DELETE FROM sim_exam_task WHERE sim_exam_task.plan_code = #{code, jdbcType=VARCHAR}
+  </delete>
+
+
+</mapper>

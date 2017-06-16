@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iflytek.cetsim.dao.PropertiesMapper" >
+  <resultMap id="BaseResultMap" type="com.iflytek.cetsim.model.Properties" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="display_name" property="displayName" jdbcType="INTEGER" />
+    <result column="display_level" property="displayLevel" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="reserved2" property="reserved2" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, display_name, display_level, parent_id, create_time, reserved1, reserved2
+  </sql>
+
+
+
+</mapper>

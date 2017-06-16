@@ -1,0 +1,90 @@
+<div class="commonwidth">
+    <div class="commonbox">
+
+        <div class="common-pop">
+            <div class="pop-body pop-padding" style="padding: 0;">
+
+                <div class="clearfix">
+                    <div class="fr">
+				<span class="inline-block combination">
+					<input class="cominput" type="text" placeholder="请输入姓名或账号" style="width: 200px;"
+                           ng-model="condition"
+                           ng-enter="refresh(1)">
+					<button class="combuttton" ng-click="refresh(1)">查询</button>
+				</span>
+                    </div>
+                    <div class="fl">
+                        <a href="javascript:;" class="common-btn common-btn-special" ng-click="toggleQueryStatusOf(0)">
+                            未登录（<span ng-bind="_taskInfo.unlogin"></span>）
+                            <!--ng-class="{'selected' : status.indexOf(0) != -1}"-->
+                            <em class="selected" ng-show="status.indexOf(0) != -1">
+                                <i class="icon icon-other-selected"></i>
+                            </em>
+                        </a>
+                        <a href="javascript:;" class="common-btn common-btn-special ml5" ng-click="toggleQueryStatusOf(1)">
+                            正常考试中（<span ng-bind="_taskInfo.examnormal"></span>）
+                            <!--ng-class="{'selected' : status.indexOf(1) != -1}"-->
+                            <em class="selected" ng-show="status.indexOf(1) != -1"><i class="icon icon-other-selected"></i></em>
+                        </a>
+                        <a href="javascript:;" class="common-btn common-btn-special ml5" ng-click="toggleQueryStatusOf(2)">
+                            完成考试（<span ng-bind="_taskInfo.success"></span>）
+                            <em class="selected" ng-show="status.indexOf(2) != -1"><i class="icon icon-other-selected"></i></em>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="common-table common-table-tc common-table-sm mt20">
+                    <table ng-hide="!isHaveData" ng-cloak>
+                        <thead>
+                        <tr>
+                            <td>准考证号</td>
+                            <td>姓名</td>
+                            <td>考试进度</td>
+                            <td>答卷包状态</td>
+                            <td>IP</td>
+                            <td>考试状态</td>
+                        </tr>
+                        </thead>
+                        <tbody ng-show="isHaveData">
+                        <tr ng-class="{'even': $index % 2===0}"
+                            ng-repeat="record in records">
+                            <td ng-bind="record.account|EmptyText"></td>
+                            <td ng-bind="record.name|EmptyText"></td>
+                            <td ng-bind="record._flowStateName|EmptyText"></td>
+                            <td ng-bind="record.dataPath|paperPackageStatus"></td>
+                            <td ng-bind="record.clientIp|EmptyText"></td>
+                            <td ng-bind="record._examStateName|EmptyText" data-examstate="{{record.examState}}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="nodata-box mt25" ng-show="!isHaveData" ng-cloak="">
+                        <div class="img"><img src="static/images/no-records.png" alt="暂无记录！"></div>
+                        <div class="txt">暂无记录！</div>
+                    </div>
+                </div>
+
+
+                <div class="fs14 mt10">
+                    <span>本考场总人数：<span ng-bind="_taskInfo.total"></span></span>
+                    <span class="ml40">完成考试人数：<span ng-bind="_taskInfo.success"></span></span>
+                </div>
+
+                <div class="common-page clearfix mt20" ng-hide="!isHaveData" ng-cloak>
+                    <div class="pages">
+                        <a href="javascript:;" go-page="1">首页</a>
+                        <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+                        <a href="javascript:;"
+                           ng-repeat="n in []|midRange:maxPage:curPage"
+                           go-page2="goPage(n)"
+                           ng-class="{'current' : n == curPage}">{{n}}</a>
+                        <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+                        <a href="javascript:;" ng-click="goPage(maxPage)">尾页</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

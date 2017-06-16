@@ -1,0 +1,130 @@
+<div ng-controller="ceshiListCtrl">
+    <div class="commonwidth">
+        <div class="commonbox">
+            <div class="searchbar clearfix">
+                <div class="fl">
+                    <div class="searchbar clearfix">
+                        <div class="fl">
+
+                            测试状态：
+                            <span select-plan-status="" data-width="130" data-model="conditionStatus" data-onchange="refreshToPage1"></span>
+
+                            <span class="mr10"></span>
+                            试卷类别：
+                            <span select-paper-type="" data-width="130" data-model="paperType" data-onchange="refreshToPage1"></span>
+                            <span class="mr10"></span>
+                            测试名称：
+                            <span class="inline-block combination">
+                                <input class="cominput" type="text" placeholder="请输入测试名称" ng-model="conditionName" ng-enter="refreshToPage1()" style="width: 130px;">
+                                <button class="combuttton" ng-click="refreshToPage1()"><i class="icon icon-other-search"></i></button>
+                            </span>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="fr">
+                    <a href="javascript:;" class="common-btn common-btn-success" show-pop="#publish-ceshi-panel" pop-width="500" pop-title="发布测试"><i class="icon icon-other-release"></i> 发布测试</a>
+                </div>
+            </div>
+
+            <div class="searchbar clearfix" style="margin-top:10px;">
+                <div class="fl">
+                    起始时间：
+                    <span cetsim-time-picker="" data-model="conditionStartTime" data-onchange="refreshToPage1"></span>
+                    <span class="mr10"></span>
+                    结束时间：
+                    <span cetsim-time-picker="" data-model="conditionEndTime" data-onchange="refreshToPage1"></span>
+                </div>
+            </div>
+
+            <div class="stumanage-box mt25">
+                <div class="common-table common-table-tc">
+                    <table ng-hide="tasksMaxPage === 0" ng-cloak>
+                        <thead>
+                        <tr>
+                            <td>状态</td>
+                            <td>测试名称</td>
+                            <td>开始时间-结束时间</td>
+                            <td>试卷名称</td>
+                            <td>试卷类别</td>
+                            <td>提交人数/考生数</td>
+                            <!--<td>完成率</td>-->
+                            <!--<td>-->
+
+                                <!--<div cetsim-sort-column data-text="'最高成绩'"-->
+                                                    <!--data-column="order.column"-->
+                                                    <!--data-order="order.code"-->
+                                                    <!--data-column-name="'MAX_SCORE'"-->
+                                                    <!--data-refresh-method="refresh(1)"></div>-->
+                            <!--</td>-->
+                            <td>
+                                <div cetsim-sort-column data-text="'平均成绩'"
+                                                    data-column="order.column"
+                                                    data-order="order.code"
+                                                    data-column-name="'AVG_SCORE'"
+                                                    data-refresh-method="refresh(1)"></div>
+                            </td>
+                            <td style="min-width:100px;">详情</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-class="{'even': $index % 2===0}"
+                                 ng-repeat="task in tasks">
+                                <td>
+                                    <span task-process-status start-time="task.start_time" end-time="task.end_time"></span>
+                                </td>
+                                <td ng-bind="task.plan_name" max-char-over-show-title="6"></td>
+                                <td>{{task.start_time | date:"yyyy/MM/dd HH:mm"}}-{{task.end_time | date:"yyyy/MM/dd HH:mm"}}</td>
+                                <td ng-bind="task.paper_name|EmptyText" max-char-over-show-title="6"></td>
+                                <td ng-bind="task._paperTypeName|EmptyText"></td>
+                                <td>{{task.finish_count|EmptyText}}/{{task.student_count|EmptyText}}</td>
+                                <!--<td ng-bind="task.finish_percent|EmptyText"></td>-->
+
+
+                                <!--<td ng-bind="task.max_score|scoreValueFormater|EmptyText"></td>-->
+                                <td ng-bind="task.average_score|scoreValueFormater|EmptyText"></td>
+
+                                <td>
+                                    <input type="hidden" name="taskId" ng-attr-value="{{task.task_id}}">
+                                    <a ng-if="task['_process_code'] != planProcessCode.NOTBEGIN" href="#/teacher/taskview/{{task.plan_code}}/{{task.task_code}}/{{task.paper_type}}" class="hover">查看</a>
+                                    <a ng-if="task['_process_code'] === planProcessCode.NOTBEGIN" href ="javascript:return false;" onclick="return false;" style="color:#ccc;" class="hover">查看</a>
+                                    <a href="{{_host}}/api/teacher/exportfinish.action?planCode={{task.plan_code}}"
+                                       target="about:blank" class="ml10 hover" ng-if="task['_process_code'] !== planProcessCode.NOTBEGIN">导出成绩</a>
+                                    <a href="javascript:;" ng-if="task['_process_code'] === planProcessCode.NOTBEGIN" class="hover" ng-click="editPlan(task)">编辑</a>
+                                    <a href="javascript:;"
+                                       ng-if="task['_process_code'] === planProcessCode.NOTBEGIN"
+                                       class="hover-red" ng-click="deletePlan(task)">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div ng-show="tasksMaxPage === 0" ng-cloak class="nodata-box mt25">
+                        <div class="img"><img src="static/images/no-records.png" alt="暂无记录！"></div>
+                        <div class="txt">暂无记录！</div>
+                    </div>
+                </div>
+
+                <div class="common-page clearfix mt20" ng-show="tasksMaxPage > 1">
+                    <div class="pages">
+                        <a href="javascript:;" ng-click="goPage(1)">首页</a>
+                        <a href="javascript:;" ng-click="goPage(curPage - 1)">上一页</a>
+                        <a href="javascript:;" ng-repeat="n in []|midRange:tasksMaxPage:curPage"
+                           go-page2="goPage(n)"
+                           ng-class="{'current' : n == curPage}">{{n}}</a>
+                        <a href="javascript:;" ng-click="goPage(curPage + 1)">下一页</a>
+                        <a href="javascript:;" ng-click="goPage(tasksMaxPage)">尾页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div>
+    <div ng-include="'tpl2/teacher/publishCeshi.html'"></div>
+    <div ng-include="'tpl2/teacher/paperSelect.html'"></div>
+</div>
