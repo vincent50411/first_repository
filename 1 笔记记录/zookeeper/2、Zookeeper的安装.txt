@@ -1,0 +1,56 @@
+Zookeeper的安装
+
+准备工作：
+1、防火墙关闭。
+2、ssh在root用户下免密登录设置。如何创建秘钥，参考其他相关文档
+
+3、服务器之间复制文件的命令使用scp -r,如果提示没有权限，命令前加sudo
+
+如果使用其他用户非root用户，在非用户目录以外使用命令，需要在命令前面加上sudo 。
+
+
+具体安装步骤：
+1、下载zookeeper.tar.gz安装包，放到/home/liuwens/Document/目录下，
+
+2、拷贝压缩包到指定目录，如/usr/haddop/下，解压， tar -zxf zookeeper.tar.gz, 如果是非root用户，则在tar命令前增加sudo
+
+3、在zookeeper/conf/下新建一个zoo.cfg   ，新增文件操作： sudo vim <文件名称>  ==>  sudo vim zoo.cfg, 内容为：
+tickTime=2000
+initLimit=10
+syncLimit=5
+dataDir=/usr/local/zookeeper-3.4.10/dataDir/
+dataLogDir=/usr/local/zookeeper-3.4.10/logs/
+clientPort=2181
+server.1=10.3.99.58:2888:3888
+server.2=10.3.99.40:2888:3888
+server.3=10.3.99.27:2888:3888
+maxClientCnxns=60
+
+#tickTime：
+这个时间是作为 Zookeeper 服务器之间或客户端与服务器之间维持心跳的时间间隔，也就是每个 tickTime 时间就会发送一个心跳。
+#initLimit：
+这个配置项是用来配置 Zookeeper 接受客户端（这里所说的客户端不是用户连接 Zookeeper 服务器的客户端，而是 Zookeeper 服务器集群中连接到 Leader 的 Follower 服务器）初始化连接时最长能忍受多少个心跳时间间隔数。当已经超过 5个心跳的时间（也就是 tickTime）长度后 Zookeeper 服务器还没有收到客户端的返回信息，那么表明这个客户端连接失败。总的时间长度就是 5*2000=10 秒
+#syncLimit：
+这个配置项标识 Leader 与Follower 之间发送消息，请求和应答时间长度，最长不能超过多少个 tickTime 的时间长度，总的时间长度就是5*2000=10秒
+#dataDir：
+快照日志的存储路径
+#dataLogDir：
+事物日志的存储路径，如果不配置这个那么事物日志会默认存储到dataDir制定的目录，这样会严重影响zk的性能，当zk吞吐量较大的时候，产生的事物日志、快照日志太多
+#clientPort：
+这个端口就是客户端连接 Zookeeper 服务器的端口，Zookeeper 会监听这个端口，接受客户端的访问请求。修改他的端口改大点
+
+例子：https://www.cnblogs.com/jxwch/p/6433310.html
+
+4、需要在别的目录如/usr/local/下新建zookeeper的数据目录，如zookeeper-3.4.10/dataDir/ 和日志目录
+
+
+5、还需要在/usr/local/zookeeper-3.4.10/dataDir/目录下新建一个myid的文件
+在服务器的data(dataDir参数所指定的目录)下创建一个文件名为myid的文件，这个文件的内容只有一行，指定的是自身的id值。比如，服务器“1”应该在myid文件中写入“1”。
+
+6、设置zookeeper.out输出路劲，
+cd  zookeeper/bin 
+vim zkEnv.sh
+找到 ZOO_LOG_DIR="/usr/local/zookeeper-3.4.10/logs/" 这个是日志输出目录地址
+
+
+7、启动zookeeper； sudo ./zkServer.sh start  检查启动状态：sudo ./zkServer.sh status  如果现实leader或者follower；则表示启动正常

@@ -1,0 +1,67 @@
+https://www.cnblogs.com/luotianshuai/p/5206662.html
+linux命令大全
+http://man.linuxde.net/rpm
+
+必须要安装JAVA 1.8
+下载jdk-8u151-linux-x64.rpm，
+直接用rmp -ivh jdk-8u151-linux-x64.rpm 运行。安装后文件目录一般为/usr/java
+
+
+设置java环境变量
+JAVA_HOME=/usr/local/java/jdk1.8.0_151
+PATH=$PATH:$JAVA_HOME/bin
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME
+export PATH
+export CLASSPATH
+
+
+jps命令不可用的解决方法：
+java环境没有配置
+找到/etc/profile或者用户目录$HOME/.bash_profile 设置java环境变量
+
+source /etc/profile 使环境变量生效
+
+
+
+1、kafka配置
+
+2、kafka启动模式采用deamon模式（守护线程，后台执行，不能中断）
+
+./kafka-server-start.sh -daemon ../config/server.properties
+
+
+3、运行测试：
+启动
+./kafka-server-start.sh -daemon ../config/server.properties
+
+#创建Topic
+./kafka-topics.sh --create --zookeeper 10.3.99.58:2181 --replication-factor 2 --partitions 1 --topic test_topic
+#解释
+--replication-factor 2   #复制两份
+--partitions 1 #创建1个分区
+--topic #主题为shuaige
+
+'''在一台服务器上创建一个发布者'''
+#创建一个broker，发布者
+./kafka-console-producer.sh --broker-list 10.3.99.40:9092 --topic test_topic
+
+'''在一台服务器上创建一个订阅者'''
+./kafka-console-consumer.sh --zookeeper 10.3.99.58:2181 --topic test_topic --from-beginning
+
+
+
+
+什么是deamon？
+
+什么情况下用daemon进程
+
+生产环境下，除了我们ssh登录上去，然后手动跑的那部分以外，其他都是自动运行的，这些大部分都应该是后台执行的。如何才能后台执行呢？
+
+nohup ./XXX &
+由系统的其他daemon进程启动。这样的话，你的程序是它的子进程，跟终端没关系。退出终端也不会导致进程退出。如写在crontab里。
+写成daemon程序，可以手动执行，退出终端时程序不退出。
+如何选择呢？ 
+（1）首先，清理过期日志这一类需求，可以写一个死循环一直运行，也可以写在crontab里，每次执行完就退出（如果每分钟一次可以满足的话）； 
+（2）crontab的需要接受最多1分钟的时延，如果实时性要求更高一些，那么就需要考虑写个死循环了，这个程序可以由crontab来start和restart，只有在挂了重启时才会出现1分钟时延； 
+（3）服务不能中断的（nginx、redis、apache，所有在线服务），一般都是daemon程序。但理论上用（2）似乎也可以；当然这两者细节上有很多区别。
