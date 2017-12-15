@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rx-eurake-server-03-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: rx-eurake-server-03
+    spec:
+      containers:
+        - name: rx-eurake-server-03
+          image: 10.3.98.241/config-server/rx-eurake-server-03
+          ports:
+            - containerPort: 1113

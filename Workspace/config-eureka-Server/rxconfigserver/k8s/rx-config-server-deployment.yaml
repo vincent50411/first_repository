@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rx-config-server-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: rx-config-server
+    spec:
+      containers:
+        - name: rx-config-server
+          image: 10.3.98.241/config-server/rx-config-server
+          ports:
+            - containerPort: 9999

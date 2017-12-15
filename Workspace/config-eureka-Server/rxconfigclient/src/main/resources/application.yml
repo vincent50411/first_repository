@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: rx-config
+server:
+  port: 9001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://server1:1111/eureka/  #注册中心地址
+  instance:
+      hostname: localhost
+      instanceId: http://localhost:9001

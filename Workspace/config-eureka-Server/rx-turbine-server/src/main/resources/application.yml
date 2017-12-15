@@ -1,0 +1,15 @@
+server:
+  port: 3001
+spring:
+  application:
+    name: turbin-server
+turbine:
+  appConfig: demo-client #集成了Hystrix.steam 的application namegit
+  clusterNameExpression: "'default'"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.13.53:1111/eureka/  #注册中心地址
+  instance:
+      hostname: 192.168.13.51
+      instanceId: http://192.168.13.51:3001

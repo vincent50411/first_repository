@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rx-eurake-server-02-service
+spec:
+  type: NodePort
+  ports:
+    - port: 1112
+      nodePort: 30112
+      targetPort: 1112
+      protocol: TCP
+  selector:
+    name: rx-eurake-server-02

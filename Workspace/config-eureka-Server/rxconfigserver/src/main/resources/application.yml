@@ -1,0 +1,31 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://config-user@10.3.98.21:8999/config-eureka-Server/config-file.git
+          username: config-user
+          password: 123456789
+          search-paths:
+            - rx-demo-provider
+            - rx-modeler-provider
+            - rx-workFlow-provider
+            - rx-webchat-provider
+            - rx-sso-config
+            - rx-common-service
+            - rx-serviceCenter-provider
+            - biz-formula-designer
+            - biz-dynamic-method-config
+            - biz-schedule-config
+            - biz-monitor-config
+            - biz-empower-config
+            - biz-index-ppi
+    stream:
+      kafka:
+        binder:
+          brokers: 10.3.98.153:9092,10.3.98.154:9092,10.3.98.155:9092
+          zk-nodes: 10.3.98.153:2181,10.3.98.154:2181,10.3.98.155:2181

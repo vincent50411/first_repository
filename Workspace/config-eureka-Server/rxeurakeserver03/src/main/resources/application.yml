@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 1111
+eureka:
+  instance:
+    hostname: 10.3.98.155
+    metadataMap:
+      instanceId: ${spring.application.name}:${random.value}
+  client:
+    serviceUrl:
+      defaultZone: http://10.3.98.153:1111/eureka/,http://10.3.98.154:1111/eureka/
+  server:
+      enable-self-preservation: false

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rx-zipkin-server-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: rx-zipkin-server
+    spec:
+      containers:
+        - name: rx-zipkin-server
+          image: 10.3.98.241/config-server/rx-zipkin-server
+          ports:
+            - containerPort: 9411

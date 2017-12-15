@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: rx-zuul
+server:
+  port: 7001
+zuul:
+  routes:
+    rx-config:
+      path: /test/**
+      serviceId: rx-config
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://server1:1111/eureka/  #注册中心地址
+  instance:
+      hostname: localhost
+      instanceId: http://localhost:7001
