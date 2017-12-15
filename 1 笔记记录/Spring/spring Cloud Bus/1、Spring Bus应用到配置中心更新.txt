@@ -1,0 +1,134 @@
+相关参考网址：
+http://blog.didispace.com/springcloud7-2/
+
+http://blog.csdn.net/xiao_jun_0820/article/details/78115746
+
+demo源码参考：
+https://github.com/vincent50411/first_repository/tree/master/Workspace
+https://github.com/vincent50411/first_repository/tree/master/Workspace/config-eureka-Server
+
+
+1、Config-server中需要依赖bus模块，同时properties配置文件中加入bus配置，配置服务中心注册topic和订阅topic
+
+spring.cloud.stream.default-binder=kafka
+spring.cloud.stream.kafka.binder.brokers=10.3.99.40:9092,10.3.99.27:9092
+spring.cloud.stream.kafka.binder.zkNodes=10.3.99.58:2181,10.3.99.40:2181,10.3.99.27:2181
+spring.cloud.stream.kafka.binder.configuration.auto.offset.reset=latest
+
+不做鉴权处理
+management.security.enabled=false
+
+需要加入Euraka配置，使用本机服务
+eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
+
+
+##gitHub上的配置
+spring.cloud.config.server.git.uri=https://github.com/vincent50411/cloud-config-server-repo
+spring.cloud.config.server.git.searchPaths=/    // 如果Git上的cloud-config-server-repo仓库下存在子目录，这个地方指定
+spring.cloud.config.label=master
+#spring.cloud.config.server.git.username=your username
+#spring.cloud.config.server.git.password=your password
+
+###GitLable上的配置和GitHub基本一致，私有的需要提供gitLable登录用户名和密码
+spring.cloud.config.server.git.uri=http://liuwens@10.3.98.21:8999/liuwens/cloud-config-respo.git
+spring.cloud.config.server.git.searchPaths=/
+spring.cloud.config.label=master
+spring.cloud.config.server.git.username=liuwens
+spring.cloud.config.server.git.password=1qazxsw2
+
+========================================= 加入kafka消息模块依赖 ===============================================================
+pom.xml中加入依赖
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-kafka</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
+采用了Spring Cloud Stream的Kafka模块，所以对于Kafka的配置均采用了spring.cloud.stream.kafka的前缀，比如：
+
+属性名	说明	默认值
+spring.cloud.stream.kafka.binder.brokers		Kafka的服务端列表	10.3.99.40:9092,10.3.99.27:9092
+spring.cloud.stream.kafka.binder.defaultBrokerPort	Kafka服务端的默认端口，当brokers属性中没有配置端口信息时，就会使用这个默认端口	9092
+spring.cloud.stream.kafka.binder.zkNodes	Kafka服务端连接的ZooKeeper节点列表	10.3.99.58:2181,10.3.99.40:2181,10.3.99.27:2181
+spring.cloud.stream.kafka.binder.defaultZkPort	ZooKeeper节点的默认端口，当zkNodes属性中没有配置端口信息时，就会使用这个默认端口	2181
+================================================================================================================================================
+//config-server端代码
+@SpringBootApplication
+@EnableConfigServer
+public class SpringCloudConfigApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringCloudConfigApplication.class, args);
+	}
+}
+
+
+springcloud bus是用springcloud stream来实现消息的发布订阅的，所以配置中有许多stream相关的配置，比如binder的配置和bindings的配置，
+springcloud bus默认订阅发布的topic是springCloudBus,input channel是springCloudBusInput用来订阅处理消息,output channel是springCloudBusOutput用来发布消息到总线，
+比如/bus/refresh刷新配置事件，就是通过springCloudBusOutput channel将事件写入到springCloudBus这个topic中去。
+
+2、Config-cliet中也需要依赖bus模块，同时properties配置文件中加入bus配置，client端注册topic和订阅topic。
+spring.cloud.stream.default-binder=kafka
+spring.cloud.stream.kafka.binder.brokers=10.3.99.40:9092,10.3.99.27:9092
+spring.cloud.stream.kafka.binder.zkNodes=10.3.99.58:2181,10.3.99.40:2181,10.3.99.27:2181
+spring.cloud.stream.kafka.binder.configuration.auto.offset.reset=latest
+
+pom.xml中加入依赖
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-kafka</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+//Config-cliet代码
+
+@SpringBootApplication
+@EnableDiscoveryClient
+public class SpringCloudClientApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringCloudClientApplication.class, args);
+	}
+}
+
+//@RefreshScope注解必须要添加，不然不会自动刷新
+
+@RestController
+@RefreshScope//允许动态刷新配置  
+public class ConfigClientController
+{
+    @Value("${test.config.test}")
+    private String testValue;
+
+    @RequestMapping("/test")
+    public String test()
+    {
+        return testValue;
+    }
+
+}
+
+3、gitHub上设置Webhooks，将http://10.3.99.34:8888/bus/refresh加入，前提是外网能够访问内网
+	gitLable上在设置界面，选择Integrations，保存Webhooks
+以上设置，可实现提交git后，自动发送post请求到config-server，由config-server往kafka上定义的springCloudBus的topic发送消息，其他微服务订阅了kafka上的同一个topic，接收到订阅消息后，
+刷新本地配置信息。
+
+4、当将git上的配置文件从本地修改后，git add *   ； git commit -m "sdfds"; git push -u origin master; 提交到git上后。
+使用postman，发送POST的请求，这个请求是发送到config-server上的，URL地址是：http://10.3.99.34:8888/bus/refresh;  ip和端口是config-server的。
+
+
+测试步骤：
+a、先启动本地Euraka服务；
+b、启动config-server服务，启动完成后。
+c、启动config-client服务，可以通过查看控制台输出日志中是否有springCloudBus的Topic。
+d、修改配置信息提交git。
+e、发送post请求，/bus/refresh
