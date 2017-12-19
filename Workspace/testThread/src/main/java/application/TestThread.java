@@ -24,6 +24,10 @@ public class TestThread
         th2.start();
         th3.start();
 
+
+        TestClass testClass = new TestClass();
+        testClass.add("dsfdsf");
+
     }
 
     private void test()

@@ -9,6 +9,8 @@ public class MyThread implements Runnable
 
     public void run()
     {
+
+
         synchronized (Integer.valueOf(totalTickNum))
         {
             while(true)
