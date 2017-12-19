@@ -13,3 +13,7 @@ volatile的使用。http://www.importnew.com/18126.html
 ===============================================================================
 JAVA内存模型：http://blog.csdn.net/suifeng3051/article/details/52611310
 
+================================================================================
+volatile和synchronized的区别：http://blog.csdn.net/suifeng3051/article/details/52611233
+
+
