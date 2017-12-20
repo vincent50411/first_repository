@@ -2,3 +2,23 @@ EventObject
 
 
 http://blog.csdn.net/it_man/article/details/8440737
+
+
+
+EventObject     为JavaSE提供的事件类型基类，任何自定义的事件都继承自该类，例如上图中右侧灰色的各个事件。Spring中提供了该接口的子类ApplicationEvent。
+EventListener  为JavaSE提供的事件监听者接口，任何自定义的事件监听者都实现了该接口，如上图左侧的各个事件监听者。Spring中提供了该接口的子类ApplicationListener接口。
+
+JavaSE中未提供事件发布者这一角色类，由各个应用程序自行实现事件发布者这一角色。
+Spring中提供了ApplicationEventPublisher接口作为事件发布者，并且ApplicationContext实现了这个接口，担当起了事件发布者这一角色。
+但ApplicationContext在具体实现上有所差异，Spring提供了ApplicationEventMulticaster接口，负责管理ApplicationListener和发布ApplicationEvent。
+ApplicationContext会把相应的事件相关工作委派给ApplicationEventMulticaster接口实现类来做。
+
+
+
+
+
+
+
+
+
+

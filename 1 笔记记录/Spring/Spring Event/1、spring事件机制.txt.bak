@@ -1,0 +1,21 @@
+EventObject
+
+
+http://blog.csdn.net/it_man/article/details/8440737
+
+
+
+EventObject     为JavaSE提供的事件类型基类，任何自定义的事件都继承自该类，例如上图中右侧灰色的各个事件。Spring中提供了该接口的子类ApplicationEvent。
+EventListener  为JavaSE提供的事件监听者接口，任何自定义的事件监听者都实现了该接口，如上图左侧的各个事件监听者。Spring中提供了该接口的子类ApplicationListener接口。
+
+
+
+
+
+
+
+
+
+
+
+
