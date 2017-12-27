@@ -1,0 +1,48 @@
+
+
+1、先安装VM虚拟机，并破解
+
+2、下载CentOS 7 x 64版本iso文件
+
+3、在vm中创建虚拟机，选择好相关配置后，运行系统安装，记得要选择安装软件为GUI的，不要选择最小安装模式
+
+4、网络采用桥接模式
+以下是系统安装完成后，对系统环境的设置
+==================== 网络检查 ============================
+1、使用ip addre show 命令查看ip地址，如果是127的，则需要设置网络
+2、使用service firewalld status 来检查防火墙，防火墙需要关闭
+
+3、检查网关是否开
+
+4、重新启动网络  service network restart
+
+
+==================== java开发环境 ============================
+先检查centos上是否已经装有java，有则卸载
+> 查看命令如下
+[root@localhost jdk]# rpm -qa|grep jdk  
+java-1.6.0-openjdk-1.6.0.0-1.7.b09.el5  
+jdk-1.6.0_20-fcs  
+
+>查看系统自带jdk版本
+[root@localhost jdk]# rpm -qa|grep gcj  //gcj 是搜索关键字
+java-1.4.2-gcj-compat-1.4.2.0-40jpp.115  
+libgcj-4.1.2-48.el5  
+   
+> 开始卸载
+[root@localhost jdk]# yum -y remove java java-1.6.0-openjdk-1.6.0.0-1.7.b09.el5   
+
+
+1、安装java，下载rpm版本的， rpm -i java xxxx.rpm
+
+2、在/etc/profile中设置环境变量
+
+export JAVA_HOME=/usr/java/jdk1.8 
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
+export PATH=$PATH:$JAVA_HOME/bin
+
+3、使环境变量生效 source /etc/profile
+
+
+==================== python 2.7 ============================
+直接在终端输入python检查

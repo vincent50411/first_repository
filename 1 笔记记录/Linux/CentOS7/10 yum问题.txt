@@ -1,0 +1,11 @@
+
+CentOS server服务器版本没有自带GUI，需要手动安装GUI
+
+手动安装GUI需要使用到yum命令，yum命令的正常使用时需要配置repo仓库
+
+通过wget命令获取yum的远程资源库时报错，没有该命令
+
+
+安装wget命令，使用yum安装报错
+
+
