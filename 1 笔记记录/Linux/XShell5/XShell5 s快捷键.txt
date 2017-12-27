@@ -1,0 +1,9 @@
+http://www.xshellcn.com/wenti/copy-paste.html
+
+解决方法
+1、  使用xshell中的复制粘贴快捷键
+复制：Ctrl+Insert
+粘贴：ShIft+Insert
+2、  使用鼠标中键
+复制：Ctrl+Insert
+粘贴：鼠标中键

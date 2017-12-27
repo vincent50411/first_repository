@@ -1,0 +1,4 @@
+https://linux.cn/article-3144-1.html
+
+
+查看IP地址的命令：ip addre show
