@@ -1,0 +1,8 @@
+使用http://idea.lanyus.com/这个网站提供的工具进行
+
+1、进入hosts文件中：C:\Windows\System32\drivers\etc\hosts
+2、将“0.0.0.0 account.jetbrains.com”添加到hosts文件中
+注意：添加只有重新打开hosts文件进行确认之后在进行下一步操作。
+
+注：将这条数据加入之后会提示保存，然后确认之后，重新打开hosts文件确认是否添加成功，有时候会提示确认两次。
+3、点击获得注册码，然后将注册码复制，粘贴到IDEA中

@@ -1,0 +1,8 @@
+idea中使用自己下载的python插件安装，pip工具包 flask都没有，需要手动安装，
+最好是通过idea plugs中的在线安装
+
+
+1、下载get_pip.py，到linux对应目录下。
+
+2、cd到get_pip.py所在目录下，执行命令 python get_pip.py 执行。前提是必须有网络的情况下
+

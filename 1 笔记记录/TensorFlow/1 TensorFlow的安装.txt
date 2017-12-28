@@ -1,0 +1,13 @@
+
+采用Pip安装方式
+
+1 需要安装pip命令
+
+2 yum install python-pip python-devel
+
+3 如果python-pip不存在，安装扩展源：
+sudo yum -y install epel-release
+
+4、在安装python-pip
+
+yum install python-pip

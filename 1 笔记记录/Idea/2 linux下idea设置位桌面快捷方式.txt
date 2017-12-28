@@ -1,0 +1,16 @@
+
+http://blog.csdn.net/chengyuqiang/article/details/55046162
+
+
+
+#!/usr/bin/env xdg-open
+    [Desktop Entry]
+    Encoding=UTF-8
+    Name=IdeaIU
+    Comment=IdeaIU
+    Exec=/usr/idea/idea-IU-173.4127.27/bin/idea.sh
+    Icon=/usr/idea/idea-IU-173.4127.27/bin/idea.png
+    Terminal=false
+    StartupNotify=true
+    Type=Application
+    Categories=Application;Development;

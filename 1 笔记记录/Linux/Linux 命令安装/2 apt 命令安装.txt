@@ -1,0 +1,21 @@
+以下地址
+http://download.csdn.net/detail/mimi00x/8081263
+
+同目录已经保存该文件
+
+1 执行安装命令
+rpm -i rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
+
+如出现 Header V3 DSA/SHA1 Signature, key ID 6b8d79e6: NOKEY 
+
+2 执行
+rpm --import /etc/pki/rpm-gpg/RPM*
+
+
+3 yum 安装
+yum install apt
+
+
+
+apt-get update
+

@@ -18,6 +18,20 @@
 
 
 ==================== java开发环境 ============================
+先检查centos上是否已经装有java，有则卸载
+> 查看命令如下
+[root@localhost jdk]# rpm -qa|grep jdk  
+java-1.6.0-openjdk-1.6.0.0-1.7.b09.el5  
+jdk-1.6.0_20-fcs  
+
+>查看系统自带jdk版本
+[root@localhost jdk]# rpm -qa|grep gcj  //gcj 是搜索关键字
+java-1.4.2-gcj-compat-1.4.2.0-40jpp.115  
+libgcj-4.1.2-48.el5  
+   
+> 开始卸载
+[root@localhost jdk]# yum -y remove java java-1.6.0-openjdk-1.6.0.0-1.7.b09.el5   
+
 
 1、安装java，下载rpm版本的， rpm -i java xxxx.rpm
 
