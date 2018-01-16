@@ -11,16 +11,14 @@ import java.util.List;
  */
 public  class  TestClass{
 
-    public void add( <? extends A>)
+    public void add( )
     {
-        List<? extends A> test = new ArrayList<>();
+        List<? super A> test = new ArrayList<>();
 
         test.add(new A_0());
         test.add(new A_0());
 
         Object a_0 = test.get(0);
-
-        A_0 a_0 = new A();
 
     }
 
