@@ -1,0 +1,15 @@
+
+http://www.ruanyifeng.com/blog/2015/09/matrix-multiplication.html
+
+矩阵的加法
+
+矩阵的减法
+
+矩阵乘以常数
+
+矩阵乘以矩阵
+结果矩阵第m行与第n列交叉位置的那个值，等于第一个矩阵第m行与第二个矩阵第n列，对应位置的每个值的乘积之和。
+
+{  }
+
+
