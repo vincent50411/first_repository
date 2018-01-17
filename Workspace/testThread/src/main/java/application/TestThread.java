@@ -8,8 +8,12 @@ import threads.MyThread;
 public class TestThread
 {
 
+    //local branch dev 001
+
+
     public static void main(String[] args)
     {
+
         TestThread testThread = new TestThread();
 
         MyThread mt = new MyThread();
@@ -25,8 +29,6 @@ public class TestThread
         th3.start();
 
 
-        TestClass testClass = new TestClass();
-        testClass.add("dsfdsf");
 
     }
 
