@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 将Unicode字符编码 还原成本来的字符, http://blog.csdn.net/tectool/article/details/51577914
+ * 将Unicode字符编码 还原成本来的字符
  */
 public class FomatterUnicodeToString {
 
