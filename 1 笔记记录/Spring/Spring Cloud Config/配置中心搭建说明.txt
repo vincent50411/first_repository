@@ -102,6 +102,12 @@ http://localhost:8000/{application}/{profile}
 /{application}-{profile}.properties
 /{label}/{application}-{profile}.properties
 
+====== 客户端 对应关系 =====
+spring.cloud.config.name  =>{application}
+spring.cloud.config.profile  =>{profile}
+spring.cloud.config.label=master  =>{label}
+
+
 配置文件的名字一般是有两部分组成，举个例子感受下，alan-provider-data-config-dev.properties，
 其中alan-provider-data-config是第一部分application，这部分建议通过命名规则能让你知道是哪一个项目的配置（可以设置为微服务的名称，通过spring.application.name设置），
 并且客户端要配置spring.cloud.config.name=alan-provider-data-config，才能让客户端知道自己要去服务端找哪一个配置文件。

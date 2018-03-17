@@ -167,6 +167,6 @@ spring.cloud.config.profile=${config.profile:dev}
 
 spring.cloud.stream.kafka.binder.brokers=10.79.96.52:9092
 spring.cloud.stream.kafka.binder.zk-nodes=10.79.96.52:2182
-
+http://www.cnblogs.com/zhangjianbin/p/6347247.html
 
 

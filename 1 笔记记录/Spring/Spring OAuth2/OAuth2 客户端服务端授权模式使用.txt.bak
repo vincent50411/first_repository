@@ -1,0 +1,7 @@
+
+客户端按照需要发送POST请求，携带必要的参数，以及设置请求头信息包括 Authorization 为 Basic Auth；Content-type为：application/x-www-form-urlencoded
+
+
+
+
+
